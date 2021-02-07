@@ -1,9 +1,17 @@
-import Welcome from '@src/components/common/Welcome/Welcome'
+import Head from 'next/head'
+
+import Layout from '@components/layout/Layout/Layout'
+import Welcome from '@components/common/Welcome/Welcome'
 
 export default function index () {
   return (
-    <div className="app">
-      <Welcome />
-    </div>
+    <>
+      <Head>
+        <title>Welcome</title>
+      </Head>
+      <Layout>
+        <Welcome />
+      </Layout>
+    </>
   )
 }

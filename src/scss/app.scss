@@ -1,2 +1,8 @@
 @import 'config';
 @import 'mixin';
+
+@import 'reboot';
+
+#__next {
+  height: 100%;
+}
