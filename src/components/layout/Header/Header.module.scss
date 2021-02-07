@@ -1,3 +1,30 @@
+@import '@scss/config';
+
 .header {
   height: 114px;
 }
+
+.logo {
+  display: flex;
+  text-decoration: none;
+  color: $text-color;
+}
+
+.logo_svg {
+  display: inline-block;
+}
+
+.logo_note {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+
+  > a {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
+
