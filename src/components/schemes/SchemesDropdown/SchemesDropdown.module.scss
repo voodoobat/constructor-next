@@ -16,7 +16,8 @@
 }
 
 .chevron {
-  transition: transform .25s ease-in;
+  transition: transform .15s ease-in;
+  transform: rotate(-180deg);
 }
 
 .is_collapsed {
@@ -25,6 +26,6 @@
   }
 
   .chevron {
-    transform: rotate(-360deg);
+    transform: none;
   }
 }
