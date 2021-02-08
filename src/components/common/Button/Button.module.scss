@@ -1,13 +1,11 @@
 @import '@scss/config';
 
-.button,
-.button > a {
+.button {
   display: inline-block;
   text-decoration: none;
   user-select: none;
   line-height: 1;
   white-space: nowrap;
-  border: 1px solid transparent;
   transition: all .1s ease-in;
   cursor: pointer;
 

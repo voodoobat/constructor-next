@@ -14,7 +14,7 @@ $icon-width: 5.2rem;
 
 .feature {
   display: flex;
-  padding: 1em 0;
+  padding: 1.5em 0;
   margin-left: - $icon-width;
   align-items: center;
 }
@@ -28,17 +28,17 @@ $icon-width: 5.2rem;
 
 .feature_text {
   font-size: 1.2em;
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 
 .button_box {
-  margin-top: 1em;
-  padding-left: $icon-width + 1rem;
+  margin-top: 2em;
+  padding-left: $icon-width + 2rem;
 }
 
 .button {
   padding: 0.5em 1em 0.6em;
-  font-size: 1.8em;
+  font-size: 2em;
   border: 2px solid $text-color;
   border-radius: 1rem;
   color: $text-color;

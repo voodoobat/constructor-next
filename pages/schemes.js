@@ -6,7 +6,7 @@ import Hero from '@components/common/Hero/Hero';
 export default function index () {
   return <>
     <Head>
-      <title>Твои схемы</title>
+      <title>Мои схемы</title>
     </Head>
     <Layout>
       <Hero />

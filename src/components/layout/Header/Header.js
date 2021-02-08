@@ -23,7 +23,7 @@ export default function Header () {
               <span>Мастер-классы</span>
             </a>
           </Link>
-          <Link href="#">
+          <Link href="/schemes">
             <a className={scss.nav_link}>
               <ReactSVG src="svg/user-icon.svg" />
               <span>Мои схемы</span>
