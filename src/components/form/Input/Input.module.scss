@@ -1,0 +1,58 @@
+@import '@scss/config';
+@import '@scss/mixin';
+
+$border: 1px solid $medium-gray;
+
+.input {
+  width: 100%;
+  border: $border;
+  padding: 0 0.5em;
+  height: 2.4rem;
+  line-height: 2.4rem;
+
+  &:focus {
+    border-color: $medium-blue;
+  }
+}
+
+.input_default {
+  border-radius: $radius;
+}
+
+.input_number {
+  position: relative;
+
+  .input {
+    text-align: center;
+    border-radius: 1.2rem;
+  }
+}
+
+.number_icon {
+  @include size(2.4rem);
+  @include position(absolute, -4px);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $border;
+  background: white;
+  border-radius: 50%;
+  z-index: 10;
+
+  svg {
+    @include position(relative, -1px);
+  }
+
+  path {
+    stroke: $medium-gray;
+  }
+
+  &.is_minus {
+    left: 0;
+  }
+
+  &.is_plus {
+    right: 0;
+  }
+}

@@ -11,7 +11,7 @@ export default function Header () {
       <Container className={scss.container}>
         <Link href="/">
           <a className={scss.logo}>
-            <ReactSVG className={scss.logo_svg} src="svg/logo.svg" />
+            <ReactSVG className={scss.logo_svg} src="/svg/logo.svg" />
             {/* <span className={scss.logo_note}>
               Конструктор схем
             </span> */}
@@ -25,7 +25,7 @@ export default function Header () {
           </Link>
           <Link href="/schemes">
             <a className={scss.nav_link}>
-              <ReactSVG src="svg/user-icon.svg" />
+              <ReactSVG src="/svg/user-icon.svg" />
               <span>Мои схемы</span>
             </a>
           </Link>

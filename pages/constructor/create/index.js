@@ -1,6 +1,8 @@
 import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
+import Container from '@components/layout/Container/Container'
+import CreateForm from '@components/constructor/CreateForm/CreateForm'
 
 export default function index () {
   return <>
@@ -8,7 +10,9 @@ export default function index () {
       <title>Создание холста</title>
     </Head>
     <Layout>
-      Создание Холста
+     <Container>
+       <CreateForm />
+     </Container>
     </Layout>
   </>
 }
