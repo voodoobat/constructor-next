@@ -1,0 +1,11 @@
+.schemes {
+  padding: 2em 0;
+}
+
+.scheme {
+  margin-top: 1rem;
+
+  + .scheme {
+    margin-left: 1em;
+  }
+}

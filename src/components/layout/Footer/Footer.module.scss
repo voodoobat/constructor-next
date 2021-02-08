@@ -19,7 +19,7 @@ $text-color: lighten($text-color, 30%);
 
   &:hover {
     path {
-      fill: $brand-red;
+      fill: $medium-red;
     }
   }
 }
@@ -45,7 +45,7 @@ $text-color: lighten($text-color, 30%);
     transition: color .15s ease-in;
 
     &:hover {
-      color: $brand-red;
+      color: $medium-red;
     }
   }
 }
