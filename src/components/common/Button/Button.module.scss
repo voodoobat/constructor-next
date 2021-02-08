@@ -1,0 +1,22 @@
+@import '@scss/config';
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: all .1s ease-in;
+  cursor: pointer;
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.color_default {
+  color: $text-color;
+}

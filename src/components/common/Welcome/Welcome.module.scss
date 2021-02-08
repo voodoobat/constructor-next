@@ -1,3 +1,45 @@
+@import '@scss/config';
+@import '@scss/mixin';
+
+$icon-width: 5.2rem;
+
 .welcome {
-  // ...
+  padding: 3em 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.feature {
+  display: flex;
+  padding: 1em 0;
+  margin-left: - $icon-width;
+  align-items: center;
+}
+
+.feature_icon {
+  @include size($icon-width 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature_text {
+  font-size: 1.2em;
+  margin-left: 1rem;
+}
+
+.button_box {
+  margin-top: 1em;
+  padding-left: $icon-width + 1rem;
+}
+
+.button {
+  padding: 0.5em 1em 0.6em;
+  font-size: 1.8em;
+  border: 2px solid $text-color;
+  border-radius: 1rem;
+  color: $text-color;
 }
