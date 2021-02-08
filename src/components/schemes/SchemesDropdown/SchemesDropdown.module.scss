@@ -1,4 +1,5 @@
 .dropdown {
+  padding: 2em 0;
 }
 
 .caption {
@@ -12,4 +13,18 @@
 
 .content {
   display: flex;
+}
+
+.chevron {
+  transition: transform .25s ease-in;
+}
+
+.is_collapsed {
+  .content {
+    display: none;
+  }
+
+  .chevron {
+    transform: rotate(-360deg);
+  }
 }

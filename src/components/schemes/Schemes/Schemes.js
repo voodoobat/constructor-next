@@ -23,6 +23,10 @@ export default function Schemes () {
                         date="30.09.2020"
                         href="/" />
         </SchemesDropdown>
+        <SchemesDropdown caption="Схемы для вязания крючком">
+          <SchemeButtonCreate href="/constructor"
+                              className={scss.scheme} />
+        </SchemesDropdown>
       </Container>
     </div>
   )
