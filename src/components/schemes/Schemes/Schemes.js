@@ -10,7 +10,7 @@ export default function Schemes () {
     <div className={scss.schemes}>
       <Container>
         <SchemesDropdown caption="Схемы для вязания спицами">
-          <SchemeButtonCreate href="/constructor"
+          <SchemeButtonCreate href="/constructor/create"
                               className={scss.scheme} />
           <SchemeButton className={scss.scheme}
                         image="images/scheme_1.png"
