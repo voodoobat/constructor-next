@@ -2,16 +2,14 @@ import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
 import Hero from '@components/common/Hero/Hero';
-import Welcome from '@components/common/Welcome/Welcome'
 
 export default function index () {
   return <>
     <Head>
-      <title>Бесплатная онлайн-программа по созданию схем для вязания</title>
+      <title>Твои схемы</title>
     </Head>
     <Layout>
       <Hero />
-      <Welcome />
     </Layout>
   </>
 }

@@ -1,11 +1,13 @@
 import scss from './Button.module.scss'
 
+import Link from 'next/link'
 import classNames from 'classnames'
 
 export default function Button ({
   className = '',
   tagName = 'button',
-  type = 'button',
+  type,
+  href,
   children,
   color,
   size
@@ -19,7 +21,13 @@ export default function Button ({
     size ? scss[`size_${size}`] : ''
   )
 
-  return (
+  return href ? (
+    <Link href={href}>
+      <a className={buttonClasses}>
+        {children}
+      </a>
+    </Link>
+  ) : (
     <Tag className={buttonClasses}
          type={type}>
       {children}

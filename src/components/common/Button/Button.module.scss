@@ -1,6 +1,7 @@
 @import '@scss/config';
 
-.button {
+.button,
+.button > a {
   display: inline-block;
   text-decoration: none;
   user-select: none;

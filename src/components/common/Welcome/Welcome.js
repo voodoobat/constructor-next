@@ -1,6 +1,5 @@
 import scss from './Welcome.module.scss'
 
-import Link from 'next/link'
 import { ReactSVG } from 'react-svg'
 import classNames from 'classnames'
 
@@ -35,12 +34,10 @@ export default function Welcome () {
             </span>
           </div>
           <div className={classNames(scss.feature, scss.button_box)}>
-            <Link href="/">
-              <Button className={scss.button}
-                      tagName="a">
-                Создать схему
-              </Button>
-            </Link>
+            <Button className={scss.button}
+                    href="/schemes">
+              Создать схему
+            </Button>
           </div>
         </div>
       </Container>
