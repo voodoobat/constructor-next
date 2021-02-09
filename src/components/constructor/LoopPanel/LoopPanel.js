@@ -11,7 +11,7 @@ for (let j = 1; j <= 33; j++) {
   loops.push(j)
 }
 
-export default function LoopsBar ({ className, inactive }) {
+export default function LoopsBar ({ className }) {
   return (
     <div className={classNames(className, scss._)}>
       {loops.map(id =>
@@ -24,7 +24,6 @@ export default function LoopsBar ({ className, inactive }) {
                     id={id}
                     key={id} />
       )}
-      {inactive && <Overlay />}
     </div>
   )
 }
