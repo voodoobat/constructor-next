@@ -12,10 +12,12 @@ export default function FormField ({
 }) {
   return (
     <div className={classNames(className, scss.field)}>
-      <label className={classNames(labelClassName, scss.label)}
-             htmlFor={id}>
-        {label}
-      </label>
+      {label &&
+        <label className={classNames(labelClassName, scss.label)}
+               htmlFor={id}>
+          {label}
+        </label>
+      }
       <div className={classNames(fieldClassName, scss.input)}>
         {children}
       </div>
