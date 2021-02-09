@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
-import Container from '@components/layout/Container/Container'
+import Constructor from '@components/constructor/Constructor/Constructor'
 
 export default function index () {
   return <>
@@ -9,9 +9,7 @@ export default function index () {
       <title>Создание холста</title>
     </Head>
     <Layout>
-      <Container>
-        <h1>Конструктор</h1>
-      </Container>
+      <Constructor />
     </Layout>
   </>
 }

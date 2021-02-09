@@ -64,10 +64,10 @@ $transition: .15s ease-in;
 }
 
 .name {
-  font-size: 0.9em;
+  font-size: $text-sm;
 }
 
 .date {
-  font-size: 0.85em;
+  font-size: $text-xs;
   color: lighten($text-color, 25%);
 }

@@ -15,12 +15,12 @@ export default function Schemes () {
                         image="images/scheme_1.png"
                         name="Моя первая схема в этом онлайн-конструкторе"
                         date="30.09.2020"
-                        href="/" />
+                        href="/constructor" />
           <SchemeButton className={scss.scheme}
                         image="images/scheme_1.png"
                         name="Моя первая схема в этом онлайн-конструкторе"
                         date="30.09.2020"
-                        href="/" />
+                        href="/constructor" />
         </SchemesDropdown>
         <SchemesDropdown caption="Схемы для вязания крючком">
           <SchemeButtonCreate href="/constructor"

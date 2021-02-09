@@ -3,8 +3,9 @@ import scss from './ToolBar.module.scss'
 import classNames from 'classnames'
 import { Tool } from '@components/constructor/Tool/Tool'
 import Hint from '@components/constructor/Hint/Hint'
+import Overlay from '@components/common/Overlay/Overlay'
 
-export default function ToolBar ({ className }) {
+export default function ToolBar ({ className, inactive }) {
   return (
     <nav className={classNames(className, scss._)}>
       <Tool className={scss.tool}
@@ -56,6 +57,7 @@ export default function ToolBar ({ className }) {
           Добавляйте и удаляйте необходимое количестворядов или строк в схеме
         </Hint>
       </Tool>
+      {inactive && <Overlay />}
     </nav>
   )
 }

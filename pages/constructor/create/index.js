@@ -10,7 +10,7 @@ export default function index () {
       <title>Создание холста</title>
     </Head>
     <Layout>
-      <Constructor>
+      <Constructor inactive={true}>
        <CreateForm />
       </Constructor>
     </Layout>

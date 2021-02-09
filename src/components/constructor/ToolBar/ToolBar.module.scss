@@ -2,10 +2,11 @@
 @import '@scss/mixins';
 
 ._ {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: $light-gray;
-  border-radius: $radius ;
+  border-radius: $radius;
 }
 
 .tool {
