@@ -18,4 +18,13 @@
 
 .color_default {
   color: $text-color;
+  border-color: $text-color;
+  border-style: solid;
+}
+
+.size_large {
+  font-size: 1.85rem;
+  padding: 0.55em 1em 0.7em;
+  border-width: 1px;
+  border-radius: $radius * 2;
 }

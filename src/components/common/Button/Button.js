@@ -14,7 +14,7 @@ export default function Button ({
 }) {
 
   const Tag = tagName
-  const buttonClasses = classNames(
+  const classes = classNames(
     className,
     scss.button,
     color ? scss[`color_${color}`] : '',
@@ -23,12 +23,12 @@ export default function Button ({
 
   return href ? (
     <Link href={href}>
-      <a className={buttonClasses}>
+      <a className={classes}>
         {children}
       </a>
     </Link>
   ) : (
-    <Tag className={buttonClasses}
+    <Tag className={classes}
          type={type}>
       {children}
     </Tag>
