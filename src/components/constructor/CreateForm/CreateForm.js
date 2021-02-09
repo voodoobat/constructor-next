@@ -1,7 +1,7 @@
 import scss from './CreateForm.module.scss'
 
-import Input from '@components/form/Input/Input'
-import InputNumber from '@components/form/Input/InputNumber'
+// import Input from '@components/form/Input/Input'
+// import InputNumber from '@components/form/Input/InputNumber'
 
 export default function CreateForm () {
   return (
@@ -14,7 +14,7 @@ export default function CreateForm () {
           Название схемы
         </span>
         <span className={scss.input}>
-          <Input type="text" />
+          {/* <Input type="text" /> */}
         </span>
       </label>
       <label className={scss.field}>
@@ -22,7 +22,7 @@ export default function CreateForm () {
           Количество рядов
         </span>
         <span className={scss.input}>
-          <InputNumber />
+          {/* <InputNumber /> */}
         </span>
       </label>
       <label className={scss.field}>
@@ -30,7 +30,7 @@ export default function CreateForm () {
           Количество петель
         </span>
         <span className={scss.input}>
-          <InputNumber />
+          {/* <InputNumber /> */}
         </span>
       </label>
     </form>

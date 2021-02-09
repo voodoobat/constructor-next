@@ -2,8 +2,7 @@ import scss from './Schemes.module.scss'
 
 import Container from '@components/layout/Container/Container'
 import SchemesDropdown from '@components/schemes/SchemesDropdown/SchemesDropdown'
-import SchemeButton from '@src/components/schemes/SchemeButton/SchemeButton'
-import SchemeButtonCreate from '@src/components/schemes/SchemeButton/SchemeButtonCreate'
+import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/SchemeButton/SchemeButton'
 
 export default function Schemes () {
   return (

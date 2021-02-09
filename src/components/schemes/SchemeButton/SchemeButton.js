@@ -3,7 +3,7 @@ import scss from './SchemeButton.module.scss'
 import Link from 'next/link'
 import classNames from 'classnames'
 
-export default function Scheme ({ image, name, date, href, className }) {
+export function SchemeButton ({ image, name, date, href, className }) {
   return (
     <Link href={href || ''}>
       <a className={classNames(className, scss.button, scss.button_show)}>
@@ -18,6 +18,19 @@ export default function Scheme ({ image, name, date, href, className }) {
             Изменено: {date}
           </span>
         </div>
+      </a>
+    </Link>
+  )
+}
+
+
+import Icon from './svg/plus-icon.svg'
+
+export function SchemeButtonCreate ({ href, className }) {
+  return (
+    <Link href={href}>
+      <a className={classNames(className, scss.button, scss.button_create)}>
+        <Icon />
       </a>
     </Link>
   )

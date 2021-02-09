@@ -3,7 +3,7 @@ import scss from './SchemesDropdown.module.scss'
 import { useState } from 'react'
 import classNames from 'classnames'
 
-import Chevron from '@svg/schemes/chevron.svg'
+import Chevron from './svg/chevron.svg'
 
 export default function SchemesDropdown ({ className, caption, children }) {
   const [isCollapsed, setCollapsed] = useState(false)
