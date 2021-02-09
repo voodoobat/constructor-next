@@ -2,10 +2,30 @@ import scss from './Tool.module.scss'
 
 import classNames from 'classnames'
 
-export default function Tool ({ className }) {
-  return (
-    <button className={classNames(className, scss._)}>
+import Move from './svg/move.svg'
+import Eraze from './svg/eraze.svg'
+import ReportRow from './svg/report_row.svg'
+import ReportLoop from './svg/report_loop.svg'
+import Color from './svg/color.svg'
+import Group from './svg/group.svg'
+import Size from './svg/size.svg'
 
-    </button>
+const icon  = {
+  Move,
+  Eraze,
+  ReportRow,
+  ReportLoop,
+  Color,
+  Group,
+  Size
+}
+
+export function Tool ({ className, type }) {
+  const Icon = icon[type]
+
+  return (
+    <div className={classNames(className, scss._)}>
+      <Icon className={scss.icon} />
+    </div>
   )
 }

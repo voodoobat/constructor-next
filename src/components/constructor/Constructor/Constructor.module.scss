@@ -14,7 +14,7 @@ $space: 2rem;
 }
 
 .tools {
-  min-width: 4rem;
+  margin-right: $space;
 }
 
 .loops {
@@ -23,5 +23,4 @@ $space: 2rem;
 
 .content {
   flex-grow: 10;
-  margin-left: $space;
 }
