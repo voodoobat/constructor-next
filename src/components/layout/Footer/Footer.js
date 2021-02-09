@@ -11,7 +11,7 @@ export default function Footer () {
       <Container className={scss.container}>
         <Link href="https://вязаный.рф">
           <a className={scss.logo} target="_blank">
-            <ReactSVG src="svg/logo-brand.svg" />
+            <ReactSVG src="/svg/logo-brand.svg" />
           </a>
         </Link>
         <nav className={scss.nav}>
@@ -53,17 +53,17 @@ export default function Footer () {
           <div className={scss.sm_list}>
             <Link href="https://www.instagram.com/vazanyi.rf/">
               <a target="_blank">
-                <ReactSVG src="svg/sm/in.svg" />
+                <ReactSVG src="/svg/sm/in.svg" />
               </a>
             </Link>
             <Link href="https://vk.com/vazanyirf">
               <a target="_blank">
-                <ReactSVG src="svg/sm/vk.svg" />
+                <ReactSVG src="/svg/sm/vk.svg" />
               </a>
             </Link>
             <Link href="https://www.youtube.com/channel/UCIRRlU4uaSHAnVTKFslBFhQ">
               <a target="_blank">
-                <ReactSVG src="svg/sm/yt.svg" />
+                <ReactSVG src="/svg/sm/yt.svg" />
               </a>
             </Link>
           </div> 

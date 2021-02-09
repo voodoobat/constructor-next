@@ -1,38 +1,28 @@
 import scss from './CreateForm.module.scss'
 
-// import Input from '@components/form/Input/Input'
-// import InputNumber from '@components/form/Input/InputNumber'
+import { Input, Number } from '@components/form/Input/Input'
+import Field from '@src/components/form/Field/Field'
 
 export default function CreateForm () {
   return (
     <form className={scss.form}>
-      <div className={scss.legend}>
-        Введите параметры для схемы
-      </div>
-      <label className={scss.field}>
-        <span className={scss.label}>
-          Название схемы
-        </span>
-        <span className={scss.input}>
-          {/* <Input type="text" /> */}
-        </span>
-      </label>
-      <label className={scss.field}>
-        <span className={scss.label}>
-          Количество рядов
-        </span>
-        <span className={scss.input}>
-          {/* <InputNumber /> */}
-        </span>
-      </label>
-      <label className={scss.field}>
-        <span className={scss.label}>
-          Количество петель
-        </span>
-        <span className={scss.input}>
-          {/* <InputNumber /> */}
-        </span>
-      </label>
+      <Field label="Название схемы"
+             labelClassName={scss.label}
+             id={1}>
+        <Input id={1} />
+      </Field>
+      <Field label="Количество рядов"
+             labelClassName={scss.label}
+             id={2}>
+        <Number className={scss.number}
+                id={2} />
+      </Field>
+      <Field label="Количество петель"
+             labelClassName={scss.label}
+             id={3}>
+        <Number id={3}
+                className={scss.number} />
+      </Field>
     </form>
   )
 }

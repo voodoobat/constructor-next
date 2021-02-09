@@ -1,2 +1,55 @@
 @import '@scss/config';
 @import '@scss/mixin';
+
+.input {
+  display: block;
+  border: 1px solid $medium-gray;
+
+  > input {
+    width: 100%;
+    padding: $input-padding-y $input-padding-x;
+    color: $dark-gray;
+    line-height: 1;
+  }
+}
+
+.text {
+  border-radius: $radius;
+}
+
+.number {
+  position: relative;
+  border-radius: 10em;
+
+  > input {
+    text-align: center;
+  }
+}
+
+.number_dec,
+.number_inc {
+  @include size(1em);
+  @include position(absolute, 0);
+  display: inline-block;
+  padding: $input-padding-y;
+  box-sizing: content-box;
+  border: 1px solid $medium-gray;
+  border-radius: 50%;
+  cursor: pointer;
+
+  > svg {
+    @include position(absolute, 50% 50%);
+    transform: translate(50%, -50%);
+  }
+
+  path {
+  }
+}
+
+.number_dec {
+  left: -1px;
+}
+
+.number_inc {
+  right: -1px;
+}
