@@ -17,8 +17,8 @@ export default function Button ({
   const classes = classNames(
     className,
     scss.button,
-    color ? scss[`color_${color}`] : '',
-    size ? scss[`size_${size}`] : ''
+    color ? scss[`color_${color}`] : scss.color_default,
+    size ? scss[`size_${size}`] : scss.size_default
   )
 
   return href ? (

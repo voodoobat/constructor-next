@@ -1,0 +1,27 @@
+@import '@scss/config';
+@import '@scss/mixin';
+
+$space: 2rem;
+
+.constructor {
+  display: flex; 
+}
+
+.tools {
+  min-width: 4rem;
+}
+
+.main {
+  display: flex;
+  flex-directon: column;
+  flex-grow: 10;
+  margin-left: $space;
+}
+
+.loops {
+
+}
+
+.content {
+  flex-grow: 10;
+}
