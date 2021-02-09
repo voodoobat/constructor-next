@@ -9,7 +9,8 @@ import ToolBar from '@components/constructor/ToolBar/ToolBar'
 export default function Constructor ({ className, inactive, children }) {
   return (
     <Container className={classNames(className, scss._)}>
-      <TopPanel className={scss.top_panel} />
+      <TopPanel className={scss.top_panel}
+                inactive={inactive} />
       <div className={scss.main}>
         <div className={scss.tools}>
           <ToolBar inactive={inactive} />

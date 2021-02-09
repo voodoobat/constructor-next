@@ -3,7 +3,7 @@ import scss from './UndoRedo.module.scss'
 import classNames from 'classnames'
 
 import Undo from './svg/undo.svg'
-import Redo from './svg/Redo.svg'
+import Redo from './svg/redo.svg'
 
 export default function UndoRedo ({ className }) {
   return (

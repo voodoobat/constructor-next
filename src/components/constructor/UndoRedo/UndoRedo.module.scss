@@ -7,6 +7,6 @@
 }
 
 .button {
-  @include size($tool-button-size 3rem);
+  @include size($tool-button-size 2.5rem);
   margin: $tool-button-offset;
 }

@@ -3,6 +3,7 @@ import scss from './LoopPanel.module.scss'
 import classNames from 'classnames'
 
 import LoopButton from '@components/constructor/LoopButton/LoopButton'
+import Overlay from '@components/common/Overlay/Overlay'
 
 // TODO: replace this shit with api 
 const loops = []
@@ -10,7 +11,7 @@ for (let j = 1; j <= 33; j++) {
   loops.push(j)
 }
 
-export default function LoopsBar ({ className }) {
+export default function LoopsBar ({ className, inactive }) {
   return (
     <div className={classNames(className, scss._)}>
       {loops.map(id =>
@@ -23,6 +24,7 @@ export default function LoopsBar ({ className }) {
                     id={id}
                     key={id} />
       )}
+      {inactive && <Overlay />}
     </div>
   )
 }
