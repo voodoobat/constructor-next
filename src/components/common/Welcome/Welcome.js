@@ -35,7 +35,7 @@ export default function Welcome () {
           </div>
           <div className={classNames(scss.feature, scss.button_box)}>
             <Button className={scss.button}
-                    href="/schemes">
+                    href="/constructor/create">
               Создать схему
             </Button>
           </div>
