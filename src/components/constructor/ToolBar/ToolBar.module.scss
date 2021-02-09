@@ -1,12 +1,26 @@
 @import '@scss/config';
+@import '@scss/mixins';
 
 ._ {
   display: flex;
   flex-direction: column;
   background: $light-gray;
-  border-radius: $radius * 2;
+  border-radius: $radius ;
 }
 
 .tool {
-  margin: 0.25em;
+  margin: 0.2rem;
+
+  &:hover {
+    .hint {
+      display: block;
+    }
+  }
+}
+
+.hint {
+  @include position(null, 0 null null 100%); 
+  display: none;
+  min-width: 18.5rem;
+  margin-left: 0.2rem;
 }

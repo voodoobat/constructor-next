@@ -20,12 +20,13 @@ const icon  = {
   Size
 }
 
-export function Tool ({ className, type }) {
+export function Tool ({ className, type, children }) {
   const Icon = icon[type]
 
   return (
     <div className={classNames(className, scss._)}>
       <Icon className={scss.icon} />
+      {children}
     </div>
   )
 }

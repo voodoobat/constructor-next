@@ -2,24 +2,60 @@ import scss from './ToolBar.module.scss'
 
 import classNames from 'classnames'
 import { Tool } from '@components/constructor/Tool/Tool'
+import Hint from '@components/constructor/Hint/Hint'
 
 export default function ToolBar ({ className }) {
   return (
     <nav className={classNames(className, scss._)}>
       <Tool className={scss.tool}
-            type="Move" />
+            type="Move">
+        <Hint className={scss.hint}
+              caption="Рука">
+          Позволяет передвигаться по рабочему полю схемы 
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="Eraze" />
+            type="Eraze">
+        <Hint className={scss.hint}
+              caption="Ластик">
+          Удаляет выбранные в поле схемы элементы
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="ReportRow" />
+            type="ReportRow">
+        <Hint className={scss.hint}
+              caption="Раппорт рядов">
+          Определяет раппорт исходя из количества выбранных рядов
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="ReportLoop" />
+            type="ReportLoop">
+        <Hint className={scss.hint}
+              caption="Раппорт петель">
+          Определяет раппорт исходя из количества выбранных рядов
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="Color" />
+            type="Color">
+        <Hint className={scss.hint}
+              caption="Заливка цветом">
+          Окрашивает цветом необходимые областисхемы
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="Group" />
+            type="Group">
+        <Hint className={scss.hint}
+              caption="Группировка">
+          Группирует выбранные объекты в новый элементсхемы
+        </Hint>
+      </Tool>
       <Tool className={scss.tool}
-            type="Size" />
+            type="Size">
+        <Hint className={scss.hint}
+              caption="Редактировать размеры схемы">
+          Добавляйте и удаляйте необходимое количестворядов или строк в схеме
+        </Hint>
+      </Tool>
     </nav>
   )
 }
