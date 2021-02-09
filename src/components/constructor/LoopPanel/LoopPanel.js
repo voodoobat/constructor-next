@@ -3,7 +3,6 @@ import scss from './LoopPanel.module.scss'
 import classNames from 'classnames'
 
 import LoopButton from '@components/constructor/LoopButton/LoopButton'
-import Overlay from '@components/common/Overlay/Overlay'
 
 // TODO: replace this shit with api 
 const loops = []
