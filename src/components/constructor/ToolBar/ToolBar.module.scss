@@ -1,0 +1,11 @@
+@import '@scss/config';
+
+._ {
+  display: flex;
+  flex-direction: column;
+  background: $light-gray;
+  border-radius: $radius * 2;
+  height: 300px;
+}
+
+
