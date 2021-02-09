@@ -1,0 +1,5 @@
+@import '@scss/mixins';
+
+._ {
+  @include size(2.8rem 2rem);
+}
