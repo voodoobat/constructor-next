@@ -1,0 +1,12 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  @include size($tool-button-size 3rem);
+  margin: $tool-button-offset;
+}

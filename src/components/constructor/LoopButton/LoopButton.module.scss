@@ -1,5 +1,17 @@
+@import '@scss/config';
 @import '@scss/mixins';
 
 ._ {
   @include size(2.8rem 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.8rem;
+  border: 1px solid $light-gray;
+  transition: border-color .15s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $medium-blue;
+  }
 }

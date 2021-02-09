@@ -1,0 +1,10 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+}
+
+.undo_redo {
+  margin-right: $toolbar-offset;
+}

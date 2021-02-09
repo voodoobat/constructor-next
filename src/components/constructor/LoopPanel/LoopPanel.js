@@ -14,9 +14,14 @@ export default function LoopsBar ({ className }) {
   return (
     <div className={classNames(className, scss._)}>
       {loops.map(id =>
-        <LoopButton id={id} key={id} />
-      )} {loops.map(id =>
-        <LoopButton id={id} key={id} />
+        <LoopButton className={scss.button}
+                    id={id}
+                    key={id} />
+      )}
+      {loops.map(id =>
+        <LoopButton className={scss.button}
+                    id={id}
+                    key={id} />
       )}
     </div>
   )

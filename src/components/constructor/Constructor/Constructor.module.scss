@@ -1,8 +1,6 @@
 @import '@scss/config';
 @import '@scss/mixins';
 
-$space: 2rem;
-
 ._ {
   display: flex; 
   flex-direction: column;
@@ -14,11 +12,11 @@ $space: 2rem;
 }
 
 .tools {
-  margin-right: $space;
+  margin-right: $toolbar-offset;
 }
 
 .loops {
-  margin-bottom: $space;
+  margin-bottom: $toolbar-offset;
 }
 
 .content {
