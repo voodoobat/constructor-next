@@ -1,5 +1,6 @@
 import scss from './Tool.module.scss'
 
+import { useState } from 'react'
 import classNames from 'classnames'
 
 import Move from './svg/move.svg'
@@ -20,11 +21,13 @@ const icon  = {
   Size
 }
 
-export function Tool ({ className, type, children }) {
+export function Tool ({ className, type, active, children }) {
   const Icon = icon[type]
+  const [isActive, setActive] = useState(Boolean(active))
 
   return (
-    <div className={classNames(className, scss._)}>
+    <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
+         onClick={() => setActive(!isActive)}>
       <Icon className={scss.icon} />
       {children}
     </div>
