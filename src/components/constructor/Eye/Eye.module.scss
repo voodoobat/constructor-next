@@ -5,6 +5,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
+  height: 3rem;
   min-width: 3.5rem;
+}
+
+.active {
+  // ...
+}
+
+.inactive {
+  @include position(relative, 5px);
 }
