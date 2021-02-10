@@ -5,35 +5,32 @@ import classNames from 'classnames'
 import Loop from '@components/constructor/Loop/Loop'
 import OptionsIcon from './svg/options_icon.svg'
 
-export default function LoopButton ({ className, data }) {
-  const selected = data.id == 12 
+const Hint = ({ className, hint }) => (
+  <div className={classNames(className, scss.hint)}
+        dangerouslySetInnerHTML={{
+          __html: hint
+        }}>
+  </div>
+) 
 
+export default function LoopButton ({ className, data }) {
   return (
-    <div className={classNames(className, scss._, selected ? scss.is_selected : '')}>
+    <div className={classNames(className, scss._)}>
       <div className={classNames(scss.button, scss.button_main)}>
-        <Loop id={data.id} />
+        <Loop icon={`/svg/loop/${data.id}.svg`} />
         {data.options && <OptionsIcon className={scss.options_icon} />}
         {data.hint &&
-          <div className={classNames(scss.hint, scss.hint_down)}
-               dangerouslySetInnerHTML={{
-                 __html: data.hint
-               }}>
-          </div>
+          <Hint className={classNames(data.options != null ? scss.hint_up : scss.hint_down)}
+                hint={data.hint} />
         }
       </div>
       {data.options && (
         <div className={scss.dropdown}>
           <div className={scss.dropdown_data}>
-            {data.options.map(({ id, hint }) => (
+            {data.options.map(({ id, icon, hint }) => (
               <div className={scss.button} key={id}>
-                <Loop id={id} />
-                {hint &&
-                  <div className={classNames(scss.hint, scss.hint_right)}
-                      dangerouslySetInnerHTML={{
-                        __html: hint
-                      }}>
-                  </div>
-                }
+                <Loop icon={`/svg/loop/${id}.svg`} />
+                {hint && <Hint className={scss.hint_right} hint={hint} />}
               </div>
             ))}
           </div>

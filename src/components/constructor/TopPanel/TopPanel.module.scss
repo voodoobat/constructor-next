@@ -3,6 +3,7 @@
 
 ._ {
   display: flex;
+  justify-content: space-between;
   position: relative;
 }
 
@@ -11,6 +12,7 @@
 }
 
 .loops {
+  flex-grow: 10;
   padding-bottom: 1em;
 }
 
