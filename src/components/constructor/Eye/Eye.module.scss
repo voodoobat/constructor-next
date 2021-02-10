@@ -1,0 +1,10 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  min-width: 3.5rem;
+}

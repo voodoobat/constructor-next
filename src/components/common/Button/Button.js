@@ -16,7 +16,7 @@ export default function Button ({
   const Tag = tagName
   const classes = classNames(
     className,
-    scss.button,
+    scss._,
     color ? scss[`color_${color}`] : scss.color_default,
     size ? scss[`size_${size}`] : scss.size_default
   )

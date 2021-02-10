@@ -1,11 +1,12 @@
 @import '@scss/config';
 
-.button {
+._ {
   display: inline-block;
   text-decoration: none;
   user-select: none;
   line-height: 1;
   white-space: nowrap;
+  border-style: solid;
   transition: all .15s ease-in;
   cursor: pointer;
 
@@ -16,20 +17,41 @@
   }
 }
 
-.color_default {
-  color: $text-color;
-  border-color: $text-color;
-  border-style: solid;
+.color {
+  &_default {
+    color: $text-color;
+    border-color: $text-color;
 
-  &:hover {
-    color: white;
+    &:hover {
+      color: $body-bg;
+      background: $text-color;
+    }
+  }
+
+  &_black {
+    color: $body-bg;
     background: $text-color;
+    border-color: $text-color;
+
+    &:hover {
+      color: $text-color;
+      background: $body-bg;
+    }
   }
 }
 
-.size_large {
-  font-size: 1.85rem;
-  padding: 0.55em 1em 0.7em;
-  border-width: 1px;
-  border-radius: $radius * 2;
+.size {
+  &_default {
+    padding: 0.35em 1em;
+    border-radius: 10px;
+    font-size: 0.9em;
+    border-width: 1px;
+  }
+
+  &_large {
+    font-size: 1.85rem;
+    padding: 0.55em 1em 0.7em;
+    border-width: 1px;
+    border-radius: $radius * 2;
+  }
 }

@@ -10,6 +10,16 @@
   margin-right: $toolbar-offset;
 }
 
-.loops_panel {
+.loops {
   padding-bottom: 1em;
+}
+
+.controls {
+  display: flex;
+  padding-left: 0.5em;
+}
+
+.element_button {
+  margin-top: 0.15em;
+  margin-left: 1em;
 }
