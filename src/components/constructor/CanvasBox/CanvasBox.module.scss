@@ -6,3 +6,8 @@
   border: 1px solid lighten($dark-gray, 20%); 
   border-radius: $radius;
 }
+
+.legend_box {
+  display: flex;
+  padding: 2em 0;
+}

@@ -1,0 +1,15 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  display: flex;
+  position: relative;
+  padding: 0.5em;
+  border: 1px solid $medium-blue;
+}
+
+.legend {
+  &:focus {
+    outline: none;
+  }
+}
