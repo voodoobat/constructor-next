@@ -2,16 +2,62 @@
 @import '@scss/mixins';
 
 ._ {
+  position: relative;
+
+  &:hover {
+    .dropdown {
+      display: block;
+    }
+  }
+}
+
+.button {
   @include size(2.8rem 2rem);
+  position: relative;
   display: flex;
+  min-width: 2.8rem;
   align-items: center;
   justify-content: center;
-  min-width: 2.8rem;
   border: 1px solid $light-gray;
   transition: border-color .15s ease-in;
   cursor: pointer;
 
   &:hover {
     border-color: $medium-blue;
+
+    .options_icon {
+      > path {
+        fill: $medium-blue;
+      }
+    }
   }
+}
+
+.options_icon {
+  @include position(absolute, null -1px -1px);
+
+  > path {
+    transition: fill .15s ease-in;
+  }
+}
+
+$dropdown-space: 2px;
+
+.dropdown {
+  @include position(absolute, 100% 50%);
+  display: none;
+  transform: translateX(50%);
+  padding-top: $dropdown-space;
+  z-index: 15;
+
+  .button {
+    margin: $dropdown-space;
+  }
+}
+
+.dropdown_data {
+  padding: $dropdown-space;
+  background: $body-bg;
+  border-radius: $radius / 2;
+  box-shadow: 0 0 4px rgba(black, 0.3);
 }
