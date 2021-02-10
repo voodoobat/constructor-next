@@ -5,8 +5,10 @@ import { ReactSVG } from 'react-svg'
 
 export default function Loop ({ className, id }) {
   return (
-    <div className={classNames(className, scss._)}>
-      <ReactSVG src={`/svg/loop/${id}.svg`} />
+    <div className={classNames(className, scss._)}
+         data-key={id}>
+      <ReactSVG className={scss.svg_box}
+                src={`/svg/loop/${id}.svg`} />
     </div>
   )
 }
