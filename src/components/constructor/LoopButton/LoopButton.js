@@ -6,12 +6,13 @@ import Loop from '@components/constructor/Loop/Loop'
 import OptionsIcon from './svg/options_icon.svg'
 
 export default function LoopButton ({ className, data }) {
-  const selected = data.id == 27
+  const selected = data.id == 12 
 
   return (
     <div className={classNames(className, scss._, selected ? scss.is_selected : '')}>
       <div className={classNames(scss.button, scss.button_main)}>
         <Loop id={data.id} />
+        {data.options && <OptionsIcon className={scss.options_icon} />}
         {data.hint &&
           <div className={classNames(scss.hint, scss.hint_down)}
                dangerouslySetInnerHTML={{
@@ -19,7 +20,6 @@ export default function LoopButton ({ className, data }) {
                }}>
           </div>
         }
-        {data.options && <OptionsIcon className={scss.options_icon} />}
       </div>
       {data.options && (
         <div className={scss.dropdown}>
