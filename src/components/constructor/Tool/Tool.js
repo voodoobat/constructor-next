@@ -11,6 +11,8 @@ import Color from './svg/color.svg'
 import Group from './svg/group.svg'
 import Size from './svg/size.svg'
 
+import OptionIcon from './svg/option_icon.svg'
+
 const icon  = {
   Move,
   Eraze,
@@ -30,6 +32,7 @@ export function Tool ({ className, type, active, children }) {
          onClick={() => setActive(!isActive)}>
       <Icon className={scss.icon} />
       {children}
+      {type == 'Color' && <OptionIcon className={scss.option_icon} />}
     </div>
   )
 }
