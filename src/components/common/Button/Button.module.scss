@@ -6,7 +6,7 @@
   user-select: none;
   line-height: 1;
   white-space: nowrap;
-  transition: all .1s ease-in;
+  transition: all .15s ease-in;
   cursor: pointer;
 
   &:disabled {
@@ -20,6 +20,11 @@
   color: $text-color;
   border-color: $text-color;
   border-style: solid;
+
+  &:hover {
+    color: white;
+    background: $text-color;
+  }
 }
 
 .size_large {
