@@ -13,7 +13,6 @@
 
 .button {
   @include size(2.8rem 2rem);
-  position: relative;
   display: flex;
   min-width: 2.8rem;
   align-items: center;
@@ -25,10 +24,20 @@
   &:hover {
     border-color: $medium-blue;
 
-    .options_icon {
-      > path {
-        fill: $medium-blue;
-      }
+    .options_icon > path {
+      fill: $medium-blue;
+    }
+  }
+}
+
+.button_main {
+  position: relative;
+
+  .is_selected & {
+    border-color: $medium-red;
+
+    .options_icon > path {
+      fill: $medium-red;
     }
   }
 }

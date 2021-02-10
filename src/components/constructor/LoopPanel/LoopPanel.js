@@ -9,18 +9,15 @@ const getData = () => {
   const data = []
 
   for (let j = 1; j <= 60; j++) {
-    if (j != 13 && j != 14 &&
-        j != 15 && j != 16 &&
-        j != 29 && j != 30 &&
-        j != 31 && j != 32) {
-
+    if (j != 13 && j != 14 && j != 15 &&
+        j != 16 && j != 28 && j != 29 &&
+        j != 30 && j != 31 && j != 32) {
       data.push({ id: j })
     }
   }
 
   data[11].options = [{ id: 13 }, { id: 14 }, { id: 15 }, { id: 16 }]
-  data[23].options = [{ id: 29 }, { id: 30 }, { id: 31 }, { id: 32 }]
-
+  data[22].options = [{ id: 28 }, { id: 29 }, { id: 30 }, { id: 31 }, { id: 32 }]
 
   return data
 }

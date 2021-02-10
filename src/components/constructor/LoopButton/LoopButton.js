@@ -6,9 +6,11 @@ import Loop from '@components/constructor/Loop/Loop'
 import OptionsIcon from './svg/options_icon.svg'
 
 export default function LoopButton ({ className, data }) {
+  const selected = data.id == 27
+
   return (
-    <div className={classNames(className, scss._)}>
-      <div className={classNames(scss.button, scss.button_is_selected)}>
+    <div className={classNames(className, scss._, selected ? scss.is_selected : '')}>
+      <div className={classNames(scss.button, scss.button_main)}>
         <Loop id={data.id} />
         {data.options && <OptionsIcon className={scss.options_icon} />}
       </div>
