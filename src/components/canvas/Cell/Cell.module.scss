@@ -2,5 +2,8 @@
 @import '@scss/mixins';
 
 ._ {
-
+  @include size($canvas-cell-width $canvas-cell-height);
+  display: table-cell;
+  border: 1px solid $light-gray;
+  text-align: center;
 }
