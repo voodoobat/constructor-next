@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
 import Constructor from '@components/constructor/Constructor/Constructor'
-import Canvas from '@components/constructor/CanvasBox/CanvasBox'
+// import Canvas from '@components/constructor/CanvasBox/CanvasBox'
 
 export default function index () {
   return <>
@@ -11,7 +11,7 @@ export default function index () {
     </Head>
     <Layout>
       <Constructor>
-        <Canvas />
+        {/* <Canvas /> */}
       </Constructor>
     </Layout>
   </>

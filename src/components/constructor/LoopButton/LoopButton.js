@@ -17,7 +17,7 @@ export default function LoopButton ({ className, data }) {
   return (
     <div className={classNames(className, scss._)}>
       <div className={classNames(scss.button, scss.button_main)}>
-        <Loop icon={`/svg/loop/${data.id}.svg`} />
+        <Loop icon={`/svg/loop/${data.icon}`} />
         {data.options && <OptionsIcon className={scss.options_icon} />}
         {data.hint &&
           <Hint className={classNames(data.options != null ? scss.hint_up : scss.hint_down)}
@@ -29,7 +29,7 @@ export default function LoopButton ({ className, data }) {
           <div className={scss.dropdown_data}>
             {data.options.map(({ id, icon, hint }) => (
               <div className={scss.button} key={id}>
-                <Loop icon={`/svg/loop/${id}.svg`} />
+                <Loop icon={`/svg/loop/${icon}`} />
                 {hint && <Hint className={scss.hint_right} hint={hint} />}
               </div>
             ))}
