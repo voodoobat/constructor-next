@@ -33,9 +33,8 @@ export default function Welcome () {
               чтобы вернуться к их редактированию
             </span>
           </div>
-          <div className={classNames(scss.feature, scss.button_box)}>
-            <Button className={scss.button}
-                    size="extra"
+          <div className={classNames(scss.feature, scss.button)}>
+            <Button size="extra"
                     href="/constructor/create">
               Создать схему
             </Button>
