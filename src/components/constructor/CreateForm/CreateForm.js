@@ -1,6 +1,6 @@
 import scss from './CreateForm.module.scss'
 
-import Field from '@src/components/form/Field/Field'
+import Field from '@components/form/Field/Field'
 import { Input, Number } from '@components/form/Input/Input'
 import { Checkbox } from '@components/form/Checkbox/Checkbox'
 import Button from '@components/common/Button/Button'

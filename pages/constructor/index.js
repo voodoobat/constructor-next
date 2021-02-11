@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
-import Constructor from '@components/constructor/Constructor/Constructor'
 import CanvasContainer from '@components/canvas/CanvasContainer/CanvasContainer'
 import LegendContainer from '@components/constructor/LegendContainer/LegendContainer'
+import Constructor from '@components/constructor/Constructor/Constructor'
 
 export default function index () {
   return <>

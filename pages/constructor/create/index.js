@@ -11,7 +11,7 @@ export default function index () {
     </Head>
     <Layout>
       <Constructor inactive={true}>
-       <CreateForm />
+        <CreateForm />
       </Constructor>
     </Layout>
   </>

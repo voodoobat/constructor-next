@@ -5,8 +5,8 @@ import classNames from 'classnames'
 import LoopPanel from '@components/constructor/LoopPanel/LoopPanel'
 import UndoRedo from '@components/constructor/UndoRedo/UndoRedo'
 import Eye from '@components/constructor/Eye/Eye'
+import OfferButton from '@components/constructor/OfferButton/OfferButton'
 import Overlay from '@components/common/Overlay/Overlay'
-import Button from '@components/common/Button/Button'
 
 export default function TopPanel ({ className, inactive }) {
   return (
@@ -19,11 +19,7 @@ export default function TopPanel ({ className, inactive }) {
       </div>
       <div className={scss.controls}>
         <Eye />
-        <div className={scss.element_button}>
-          <Button color="black">
-            Предложить свой элемент
-          </Button>
-        </div>
+        <OfferButton className={scss.offer_button} />
       </div>
       {inactive && <Overlay />}
     </div>

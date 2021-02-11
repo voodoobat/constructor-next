@@ -6,6 +6,7 @@ import classNames from 'classnames'
 export default function Button ({
   className = '',
   tagName = 'button',
+  onClick,
   type,
   href,
   children,
@@ -29,6 +30,7 @@ export default function Button ({
     </Link>
   ) : (
     <Tag className={classes}
+         onClick={onClick}
          type={type}>
       {children}
     </Tag>
