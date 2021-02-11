@@ -13,7 +13,7 @@ export default function Canvas ({ className, matrix }) {
         <Row key={j}>
           {row.map((cell, j) => (
             <Cell key={j}>
-              <Loop icon={cell} />
+              <Loop icon={`${cell}.svg`} />
             </Cell>
           ))}
         </Row>
