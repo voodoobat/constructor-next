@@ -9,11 +9,12 @@
   display: inline-flex;
   align-items: flex-end;
   position: relative;
-  padding: 0.5em;
   border: 1px solid $medium-blue;
+  padding: 0.5em;
   border-radius: $radius;
 
   &:hover {
+
     .icon {
       transform: scale(1);
       opacity: 1;

@@ -6,9 +6,9 @@ import Loop from '@components/constructor/Loop/Loop'
 import Cell from '@components/canvas/Cell/Cell'
 import Row from '@components/canvas/Row/Row'
 
-export default function Canvas ({ className, matrix }) {
+export default function Canvas ({ className, matrix, scale }) {
   return (
-    <div className={classNames(className, scss._, scss.scale_150)}>
+    <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
      {matrix.map((row, j) => (
         <Row key={j}>
           {row.map((cell, j) => (

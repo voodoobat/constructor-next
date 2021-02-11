@@ -5,19 +5,21 @@ import classNames from 'classnames'
 import IncIcon from './svg/inc.svg'
 import DecIcon from './svg/dec.svg'
 
-export default function Zoom ({ className }) {
+export default function Zoom ({ className, scale, setScale }) {
   return (
     <div className={classNames(className, scss._)}>
       <button
         className={scss.button}
+        onClick={() => setScale(scale - 10)}
         type="button">
         <DecIcon />
       </button>
       <span className={scss.value}>
-        100%
+        {scale}%
       </span>
       <button
         className={scss.button}
+        onClick={() => setScale(scale + 10)}
         type="button">
         <IncIcon />
       </button>
