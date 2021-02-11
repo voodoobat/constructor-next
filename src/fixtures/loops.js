@@ -193,7 +193,7 @@ export const getData = () => {
     }
   ]
 
-  for (let j = 38; j <= 61; j++) {
+  for (let j = 39; j <= 61; j++) {
     data.push({
       id: j,
       icon: `${j}.svg`

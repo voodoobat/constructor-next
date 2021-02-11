@@ -19,6 +19,7 @@
   min-width: 15rem;
   padding: 0.25em;
   border-radius: $radius;
+  font-size: $text-sm;
 
   &:focus {
     box-shadow: 0 0 3px rgba(black, 0.25);
