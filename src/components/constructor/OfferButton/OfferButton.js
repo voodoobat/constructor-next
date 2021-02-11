@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { useState } from 'react'
 
 import Modal from '@components/common/Modal/Modal'
+import ElementForm from '@components/form/ElementForm/ElementForm'
 import Button from '@components/common/Button/Button'
 
 export default function OfferButton ({ className }) {
@@ -18,7 +19,7 @@ export default function OfferButton ({ className }) {
       </Button>
       <Modal isOpen={isOpen}
              setOpen={setOpen}>
-
+        <ElementForm />
       </Modal>
     </div>
   )

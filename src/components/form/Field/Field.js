@@ -8,10 +8,11 @@ export default function FormField ({
   id,
   labelClassName,
   fieldClassName,
+  required,
   children
 }) {
   return (
-    <div className={classNames(className, scss.field)}>
+    <div className={classNames(className, scss._, required ? scss.is_required : '')}>
       {label &&
         <label className={classNames(labelClassName, scss.label)}
                htmlFor={id}>

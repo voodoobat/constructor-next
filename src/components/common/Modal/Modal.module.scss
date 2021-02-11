@@ -14,7 +14,6 @@
 .window {
   @include position(absolute, 50% 50%);
   padding: 1em;
-  width: 40rem; height: 40rem;
   transform: translate(50%, -50%);
   background: white;
   box-shadow: 0 0 5px rgba(black, 0.25);

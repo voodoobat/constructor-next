@@ -7,7 +7,7 @@ import Button from '@components/common/Button/Button'
 
 export default function CreateForm () {
   return (
-    <form className={scss.form}>
+    <form className={scss._}>
       <Field className={scss.caption}>
         Введите параметры для схемы
       </Field>
