@@ -3,4 +3,67 @@
 
 ._ {
   @include position(fixed, 0 0 0 0);
+  display: none;
+  z-index: 100;
+
+  &.is_open {
+    display: block;
+  }
+}
+
+.window {
+  @include position(absolute, 50% 50%);
+  padding: 1em;
+  width: 40rem; height: 40rem;
+  transform: translate(50%, -50%);
+  background: white;
+  box-shadow: 0 0 5px rgba(black, 0.25);
+  border-radius: $radius;
+  z-index: 110;
+}
+
+.close {
+  $translate: translate(50%, -50%);
+
+  @include size(3rem);
+  @include position(absolute, 1rem 1rem);
+  font: 0/0 x;
+  overflow: hidden;
+
+  &:hover {
+
+    &::before,
+    &::after {
+      background: $medium-red;
+    }
+
+    &::before {
+      transform: $translate rotate(135deg);
+    }
+
+    &::after {
+      transform: $translate rotate(225deg);
+    }
+  }
+
+  &::before,
+  &::after {
+    $sz-x: 3px;
+    $sz-y: 18px;
+
+    @include size($sz-x $sz-y);
+    @include position(absolute, 50% 50%);
+    content: '';
+    background: lighten($dark-gray, 20%);
+    border-radius: 3px;
+    transition: all .35s ease-in;
+  }
+
+  &::before {
+    transform: $translate rotate(-135deg);
+  }
+
+  &::after {
+    transform: $translate rotate(-225deg);
+  }
 }

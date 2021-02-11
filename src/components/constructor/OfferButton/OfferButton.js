@@ -3,14 +3,12 @@ import scss from './OfferButton.module.scss'
 import classNames from 'classnames'
 
 import { useState } from 'react'
-import ReactModal from 'react-modal'
 
+import Modal from '@components/common/Modal/Modal'
 import Button from '@components/common/Button/Button'
 
 export default function OfferButton ({ className }) {
   const [isOpen, setOpen] = useState(false)
-
-  // setInterval(() => setOpen(!isOpen), 1000)
 
   return (
     <div className={classNames(className, scss._)}>
@@ -18,12 +16,10 @@ export default function OfferButton ({ className }) {
               onClick={() => setOpen(true)}>
         Предложить свой элемент
       </Button>
-      <ReactModal isOpen={isOpen}>
-        <button type="button" onClick={() => setOpen(false)}>
-          Закрыть
-        </button>
-        <h1>Hello</h1>
-      </ReactModal>
+      <Modal isOpen={isOpen}
+             setOpen={setOpen}>
+
+      </Modal>
     </div>
   )
 }
