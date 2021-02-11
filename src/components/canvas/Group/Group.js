@@ -11,7 +11,6 @@ const data = getData()
 
 const getLoop = id => {
   const loop = data.find(obj => obj.id == id)
-  console.log(loop)
   return <Loop icon={`/svg/loop/${loop.icon}`} />
 }
 
