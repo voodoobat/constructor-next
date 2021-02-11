@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import RemoveIcon from './svg/remove.svg'
 // import RestoreIcon from './svg/restore.svg'
 
-export default function CanvasBox ({ className, legend, children }) {
+export default function Legend ({ className, legend, children }) {
   return (
     <div className={classNames(className, scss._)}>
       <div className={scss.legend}>
