@@ -7,7 +7,7 @@ export default function Loop ({ className, icon }) {
   return (
     <div className={classNames(className, scss._)}>
       <ReactSVG className={scss.svg_box}
-                src={icon} />
+                src={`/svg/loop/${icon}`} />
     </div>
   )
 }

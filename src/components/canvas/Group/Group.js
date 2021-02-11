@@ -11,7 +11,7 @@ const data = getData()
 
 const getLoop = id => {
   const loop = data.find(obj => obj.id == id)
-  return <Loop icon={`/svg/loop/${loop.icon}`} />
+  return <Loop icon={loop.icon} />
 }
 
 export default function Group ({ className, matrix }) {
