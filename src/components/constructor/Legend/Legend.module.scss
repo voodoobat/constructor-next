@@ -2,6 +2,10 @@
 @import '@scss/mixins';
 
 ._ {
+  // ...
+}
+
+.legend {
   display: inline-flex;
   align-items: flex-end;
   position: relative;
@@ -10,8 +14,8 @@
   border-radius: $radius;
 }
 
-.legend {
-  margin: 0 0 0 0.5em;
+.caption {
+  margin-left: 0.5em;
   min-width: 15rem;
   padding: 0.25em;
   border-radius: $radius;

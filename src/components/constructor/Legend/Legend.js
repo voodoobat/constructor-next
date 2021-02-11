@@ -8,14 +8,16 @@ import RemoveIcon from './svg/remove.svg'
 export default function CanvasBox ({ className, legend, children }) {
   return (
     <div className={classNames(className, scss._)}>
-      <i className={scss.icon}>
-        <RemoveIcon />
-      </i>
-      <div className={scss.element}>
-        {children}
-      </div>
-      <div className={scss.legend} contentEditable>
-        {legend || 'Мой элемент'}
+      <div className={scss.legend}>
+        <i className={scss.icon}>
+          <RemoveIcon />
+        </i>
+        <div className={scss.element}>
+          {children}
+        </div>
+        <div className={scss.caption} contentEditable>
+          {legend || 'Мой элемент'}
+        </div>
       </div>
     </div>
   )
