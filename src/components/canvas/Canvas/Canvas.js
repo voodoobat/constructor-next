@@ -8,7 +8,7 @@ import Row from '@components/canvas/Row/Row'
 
 export default function Canvas ({ className, matrix }) {
   return (
-    <div className={classNames(className, scss._)}>
+    <div className={classNames(className, scss._, scss.scale_150)}>
      {matrix.map((row, j) => (
         <Row key={j}>
           {row.map((cell, j) => (

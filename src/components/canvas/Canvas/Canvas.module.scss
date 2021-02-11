@@ -4,4 +4,14 @@
 ._ {
   margin: 1em;
   border-collapse: collapse;  
+  transform-origin: 0 0;
+}
+
+@for $j from 0 through 10 {
+  $scale: 1 + $j * 0.1;
+  $size: 100 + $j * 10;
+
+  .scale_#{$size} {
+    transform: scale($scale);
+  }
 }
