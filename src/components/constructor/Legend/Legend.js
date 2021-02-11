@@ -9,7 +9,7 @@ export default function CanvasBox ({ className, legend, children }) {
   return (
     <div className={classNames(className, scss._)}>
       <i className={scss.icon}>
-        <RemoveIcon className={scss.icon_svg} />
+        <RemoveIcon />
       </i>
       <div className={scss.element}>
         {children}

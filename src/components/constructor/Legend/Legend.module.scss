@@ -2,14 +2,39 @@
 @import '@scss/mixins';
 
 ._ {
-  display: flex;
+  display: inline-flex;
+  align-items: flex-end;
   position: relative;
   padding: 0.5em;
   border: 1px solid $medium-blue;
+  border-radius: $radius;
 }
 
 .legend {
+  margin: 0 0 0 0.5em;
+  min-width: 15rem;
+  padding: 0.25em;
+  border-radius: $radius;
+
   &:focus {
+    box-shadow: 0 0 3px rgba(black, 0.25);
     outline: none;
+  }
+}
+
+.icon {
+  @include size(15px);
+  @include position(absolute, -7px -7px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $text-color;
+  transition: background .15s ease-in;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover {
+    background: $medium-blue;
   }
 }
