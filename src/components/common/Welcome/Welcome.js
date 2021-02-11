@@ -8,7 +8,7 @@ import Button from '@components/common/Button/Button'
 
 export default function Welcome () {
   return (
-    <div className={scss.welcome}>
+    <div className={scss._}>
       <Container className={scss.container}>
         <div className={scss.feature_box}>
           <div className={scss.feature}>
@@ -35,6 +35,7 @@ export default function Welcome () {
           </div>
           <div className={classNames(scss.feature, scss.button_box)}>
             <Button className={scss.button}
+                    size="extra"
                     href="/constructor/create">
               Создать схему
             </Button>

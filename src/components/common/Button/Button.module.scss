@@ -49,9 +49,16 @@
   }
 
   &_large {
-    font-size: 1.85rem;
     padding: 0.55em 1em 0.7em;
+    font-size: 1.85rem;
     border-width: 1px;
     border-radius: $radius * 2;
+  }
+
+  &_extra {
+    padding: 0.5em 1em 0.6em;
+    border: 2px solid $text-color;
+    border-radius: $radius * 2;
+    font-size: 2em;
   }
 }
