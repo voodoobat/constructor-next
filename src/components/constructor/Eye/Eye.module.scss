@@ -10,9 +10,9 @@
 }
 
 .active {
-  // ...
+  @include position(relative, 5px);
 }
 
 .inactive {
-  @include position(relative, 5px);
+  // ...
 }
