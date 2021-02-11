@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import Layout from '@components/layout/Layout/Layout'
 import Constructor from '@components/constructor/Constructor/Constructor'
-// import Canvas from '@components/constructor/CanvasBox/CanvasBox'
+import CanvasContainer from '@components/canvas/CanvasContainer/CanvasContainer'
 import LegendContainer from '@components/constructor/LegendContainer/LegendContainer'
 
 export default function index () {
@@ -12,7 +12,7 @@ export default function index () {
     </Head>
     <Layout>
       <Constructor>
-        {/* <Canvas /> */}
+        <CanvasContainer />
         <LegendContainer />
       </Constructor>
     </Layout>
