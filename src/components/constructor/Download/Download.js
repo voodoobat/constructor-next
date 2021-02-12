@@ -10,7 +10,7 @@ import Button from '@components/common/Button/Button'
 import DownloadIcon from './svg/download.svg'
 import BackIcon from './svg/back.svg'
 
-export default function Download ({ className, children }) {
+export default function Download ({ className }) {
   const [isOpen, setOpen] = useState(false)
 
   return (
