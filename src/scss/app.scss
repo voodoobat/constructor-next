@@ -8,3 +8,15 @@
 #__next {
   height: 100%;
 }
+
+// bootstrap overrites
+
+.modal-content {
+  padding: 1.5em;
+  border: none;
+  background: $snow-gray;
+}
+
+#faq-modal {
+  max-width: 75rem;
+}

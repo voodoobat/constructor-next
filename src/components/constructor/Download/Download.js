@@ -1,8 +1,10 @@
 import scss from './Download.module.scss'
 
 import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import classNames from 'classnames'
 
+import { ButtonClose } from '@components/common/Modal/Modal'
 import Button from '@components/common/Button/Button'
 
 export default function Download ({ className, children }) {
@@ -15,6 +17,9 @@ export default function Download ({ className, children }) {
               size="large">
         Скачать схему
       </Button>
+      <Modal show={isOpen} onHide={() => setOpen(false)}>
+        <ButtonClose onClick={() => setOpen(false)} />
+      </Modal>
     </div>
   )
 }
