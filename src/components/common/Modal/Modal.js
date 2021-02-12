@@ -16,7 +16,8 @@ export default function Modal ({className, isOpen, setOpen, children }) {
 
         {children}
       </div>
-      <Overlay onClick={close} />
+      <Overlay onClick={close}
+               isDark={true} />
     </div>
   )
 }
