@@ -3,9 +3,10 @@ import scss from './OfferButton.module.scss'
 import classNames from 'classnames'
 
 import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 
-import Modal from '@components/common/Modal/Modal'
 import ElementForm from '@components/form/ElementForm/ElementForm'
+import { ButtonClose } from '@components/common/Modal/Modal'
 import Button from '@components/common/Button/Button'
 
 export default function OfferButton ({ className }) {
@@ -17,9 +18,11 @@ export default function OfferButton ({ className }) {
               onClick={() => setOpen(true)}>
         Предложить свой элемент
       </Button>
-      <Modal isOpen={isOpen}
-             setOpen={setOpen}>
-        <ElementForm />
+      <Modal show={isOpen} onHide={() => setOpen(false)}>
+        <ButtonClose onClick={() => setOpen(false)} />
+        <Modal.Dialog>
+          <ElementForm />
+        </Modal.Dialog>
       </Modal>
     </div>
   )
