@@ -26,7 +26,7 @@ export default function CanvasContainer ({ className }) {
         ]} />
       <div className={classNames(scss.bottom)}>
         <Zoom scale={scale}
-              setScale={setScale}/>
+              setScale={setScale} />
       </div>
     </div>
   )

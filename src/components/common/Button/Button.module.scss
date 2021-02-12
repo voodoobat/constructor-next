@@ -39,6 +39,11 @@
       background: $body-bg;
     }
   }
+
+  &_blue {
+    color: $body-bg;
+    background: $medium-blue;
+  }
 }
 
 .size {

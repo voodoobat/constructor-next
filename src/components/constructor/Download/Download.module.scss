@@ -4,3 +4,57 @@
 ._ {
 
 }
+
+.modal {
+  .modal-content {
+    background: #000;
+  }
+}
+
+.back_to_edit {
+  display: flex;
+  align-items: center;
+  margin-top: -0.5em;
+  padding-bottom: 1em;
+  cursor: pointer;
+
+  &:hover {
+    .back_icon {
+      path {
+        fill: $medium-red;
+      }
+    }
+  }
+}
+
+.back_icon {
+  margin: 0 0.5em 0 -1em;
+
+  path {
+    fill: lighten($dark-gray, 20%);
+    transition: fill .15s ease;
+  }
+}
+
+.submit {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
+
+.submit_note {
+  font-size: $text-sm;
+}
+
+.submit_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: $radius;
+}
+
+.submit_button_text {
+  padding-right: 1em;
+  line-height: 1.2;
+}
+
