@@ -24,5 +24,10 @@
 }
 
 #download-modal {
-  max-width: 44rem;
+  max-width: 47rem;
+
+  .modal-content {
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+  }
 }
