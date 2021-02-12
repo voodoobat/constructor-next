@@ -6,6 +6,25 @@
   flex-direction: column;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1em;
+  padding-left: 6.4rem;
+}
+
+.name {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.note {
+  font-size: $text-sm;
+  text-decoration: underline;
+  color: $dark-gray;
+}
+
 .main {
   display: flex;
   flex-grow: 10;
