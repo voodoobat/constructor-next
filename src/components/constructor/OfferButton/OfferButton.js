@@ -20,9 +20,7 @@ export default function OfferButton ({ className }) {
       </Button>
       <Modal show={isOpen} onHide={() => setOpen(false)}>
         <ButtonClose onClick={() => setOpen(false)} />
-        <Modal.Dialog>
-          <ElementForm />
-        </Modal.Dialog>
+        <ElementForm />
       </Modal>
     </div>
   )

@@ -5,6 +5,15 @@
 
 @import 'bootstrap/scss/modal';
 
+
+// overrites
+
 .modal-content {
+  padding: 1em 2em;
   border: none;
 }
+
+#faq-modal {
+  max-width: 75%;
+}
+
