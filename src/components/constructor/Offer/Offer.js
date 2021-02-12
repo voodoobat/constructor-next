@@ -1,4 +1,4 @@
-import scss from './OfferButton.module.scss'
+import scss from './Offer.module.scss'
 
 import classNames from 'classnames'
 
@@ -6,10 +6,10 @@ import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 
 import ElementForm from '@components/form/ElementForm/ElementForm'
-import { ButtonClose } from '@components/common/Modal/Modal'
+import CloseButton from '@components/common/CloseButton/CloseButton'
 import Button from '@components/common/Button/Button'
 
-export default function OfferButton ({ className }) {
+export default function Offer ({ className }) {
   const [isOpen, setOpen] = useState(false)
 
   return (
@@ -19,7 +19,7 @@ export default function OfferButton ({ className }) {
         Предложить свой элемент
       </Button>
       <Modal show={isOpen} onHide={() => setOpen(false)}>
-        <ButtonClose onClick={() => setOpen(false)} />
+        <CloseButton onClick={() => setOpen(false)} />
         <ElementForm />
       </Modal>
     </div>

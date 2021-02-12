@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import classNames from 'classnames'
 
-import { ButtonClose } from '@components/common/Modal/Modal'
+import CloseButton from '@components/common/CloseButton/CloseButton'
 import Button from '@components/common/Button/Button'
 
 export default function Download ({ className, children }) {
@@ -18,7 +18,7 @@ export default function Download ({ className, children }) {
         Скачать схему
       </Button>
       <Modal show={isOpen} onHide={() => setOpen(false)}>
-        <ButtonClose onClick={() => setOpen(false)} />
+        <CloseButton onClick={() => setOpen(false)} />
       </Modal>
     </div>
   )

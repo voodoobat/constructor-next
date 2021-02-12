@@ -1,0 +1,48 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+$translate: translate(50%, -50%);
+
+._ {
+  @include size(3rem);
+  @include position(absolute, 1rem 1rem);
+  font: 0/0 x;
+  overflow: hidden;
+
+  &:hover {
+
+    &::before,
+    &::after {
+      background: $medium-red;
+    }
+
+    &::before {
+      transform: $translate rotate(135deg);
+    }
+
+    &::after {
+      transform: $translate rotate(225deg);
+    }
+  }
+
+  &::before,
+  &::after {
+    $sz-x: 3px;
+    $sz-y: 18px;
+
+    @include size($sz-x $sz-y);
+    @include position(absolute, 50% 50%);
+    content: '';
+    background: lighten($dark-gray, 20%);
+    border-radius: 3px;
+    transition: all .35s ease-in;
+  }
+
+  &::before {
+    transform: $translate rotate(-135deg);
+  }
+
+  &::after {
+    transform: $translate rotate(-225deg);
+  }
+}

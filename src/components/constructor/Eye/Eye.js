@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap'
 import classNames from 'classnames'
 
 import LoopFaq from '@components/constructor/LoopFaq/LoopFaq'
-import { ButtonClose } from '@components/common/Modal/Modal'
+import CloseButton from '@components/common/CloseButton/CloseButton'
 
 import ActiveIcon from './svg/active.svg'
 import InactiveIcon from './svg/inactive.svg'
@@ -26,7 +26,7 @@ export default function Eye ({ className, active }) {
            className={scss.modal}
            show={isActive}
            onHide={() => setActive(false)}>
-      <ButtonClose onClick={() => setActive(false)} />
+      <CloseButton onClick={() => setActive(false)} />
       <LoopFaq />
     </Modal>
   </>
