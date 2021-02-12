@@ -2,5 +2,24 @@
 @import '@scss/mixins';
 
 ._ {
+  // ...
+}
 
+.element {
+  display: flex;
+  align-items: top;
+  padding: .25em 0;
+}
+
+.icon {
+  min-width: 3.5rem;
+}
+
+.hint {
+  padding-top: 0.25em;
+  font-size: $text-sm;
+
+  br {
+    display: none;
+  }
 }

@@ -1,4 +1,4 @@
-export const getData = () => { 
+export const getData = (flat = false) => { 
   const data = [
     {
       "id": "1",
@@ -198,6 +198,23 @@ export const getData = () => {
       id: j,
       icon: `${j}.svg`
     })
+  }
+
+
+  if (flat) {
+    const result = []
+
+    data.forEach(element => {
+      const { id, hint, icon, options } = element
+
+      result.push({ id, hint, icon })
+
+      if (options) options.forEach(child => {
+        result.push(child)
+      })
+    })
+
+    return result
   }
 
   return data
