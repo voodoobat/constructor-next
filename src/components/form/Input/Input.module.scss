@@ -29,27 +29,26 @@
 .number_dec,
 .number_inc {
   @include size(1em);
-  @include position(absolute, 0);
+  @include position(absolute, 2px);
   display: inline-block;
   padding: $input-padding-y;
   box-sizing: content-box;
-  border: 1px solid $medium-gray;
   border-radius: 50%;
   cursor: pointer;
 
   > svg {
-    @include position(absolute, 50% 50%);
-    transform: translate(50%, -50%);
+    @include position(absolute, -3px -2px);
   }
 
-  path {
+  path, circle {
+    stroke: lighten($medium-gray, 10%);
   }
 }
 
 .number_dec {
-  left: -1px;
+  left: 0;
 }
 
 .number_inc {
-  right: -1px;
+  right: 0;
 }
