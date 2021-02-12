@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import Field from '@components/form/Field/Field'
 import { Input } from '@components/form/Input/Input'
+import DropInput from '@components/form/DropInput/DropInput'
 import Button from '@components/common/Button/Button'
 
 export default function ElementForm ({ className }) {
@@ -18,9 +19,13 @@ export default function ElementForm ({ className }) {
         </p>
       </Field>
       <Field label="Название элемента"
+             id="101"
              labelClassName={scss.label}
              required={true}>
-        <Input className={scss.input} />
+        <Input className={scss.input} id="101" />
+      </Field>
+      <Field>
+        <DropInput />
       </Field>
       <Field className={scss.submit}>
         <Button type="submit"
