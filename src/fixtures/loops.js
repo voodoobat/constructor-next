@@ -6,7 +6,7 @@ export const getData = (flat = false) => {
       "hint": "пустая петля"
     },
     {
-      "id": "3",
+      "id": "2",
       "icon": "3.svg",
       "hint": "лицевая"
     },

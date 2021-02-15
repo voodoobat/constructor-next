@@ -1,9 +1,15 @@
 import scss from './LoopButton.module.scss'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
+
+import * as actions from '@src/actions'
+
 import OptionsIcon from './svg/options_icon.svg'
+
 
 const Hint = ({ className, hint }) => (
   <div className={classNames(className, scss.hint)}
@@ -11,11 +17,16 @@ const Hint = ({ className, hint }) => (
           __html: hint
         }}>
   </div>
-) 
+)
 
-export default function LoopButton ({ className, data }) {
+function LoopButton ({ className, data, activeLoop, setActiveLoop }) {
+  const isActive = activeLoop == data.id
+
+  console.log(activeLoop)
+
   return (
-    <div className={classNames(className, scss._)}>
+    <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
+         onClick={() => setActiveLoop(data.id)}>
       <div className={classNames(scss.button, scss.button_main)}>
         <Loop icon={data.icon} />
         {data.options && <OptionsIcon className={scss.options_icon} />}
@@ -39,3 +50,13 @@ export default function LoopButton ({ className, data }) {
     </div>
   )
 }
+
+export default connect(state => ({
+  activeLoop: state.activeLoop
+}), dispatch => {
+  const { setActiveLoop } = bindActionCreators(actions, dispatch)
+
+  return {
+    setActiveLoop
+  }
+})(LoopButton)
