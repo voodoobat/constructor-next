@@ -1,24 +1,36 @@
 import scss from './Cell.module.scss'
 
-import { useState } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import Loop from '@components/constructor/Loop/Loop'
+import * as actions from '@src/actions'
+import { setNewCanvas } from '@src/functions'
 
-const mapState = state => ({
-  activeLoop: state.activeLoop
-})
-
-export default connect(mapState)(({ className, children, activeLoop }) => {
-  const [loop, setLoop] = useState(children)
+function Cell ({ className, canvas, x, y, activeLoop, setCanvas, children }) {
 
   return (
     <div className={classNames(className, scss._)}
-         onClick={() => setLoop(
-           <Loop icon={`${activeLoop}.svg`} />
+         onClick={() => setCanvas(
+           setNewCanvas(canvas, x, y, activeLoop)
          )}>
-      {loop}
+      {children}
     </div>
   )
+}
+
+
+const mapState = state => ({
+  activeLoop: state.activeLoop,
+  canvas: state.canvas
 })
+
+const mapDispatch = dispatch => {
+  const { setCanvas } = bindActionCreators(actions, dispatch)
+
+  return {
+    setCanvas
+  }
+}
+
+export default connect(mapState, mapDispatch)(Cell)

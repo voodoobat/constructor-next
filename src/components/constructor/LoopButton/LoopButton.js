@@ -22,8 +22,6 @@ const Hint = ({ className, hint }) => (
 function LoopButton ({ className, data, activeLoop, setActiveLoop }) {
   const isActive = activeLoop == data.id
 
-  console.log(activeLoop)
-
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
          onClick={() => setActiveLoop(data.id)}>
@@ -51,12 +49,16 @@ function LoopButton ({ className, data, activeLoop, setActiveLoop }) {
   )
 }
 
-export default connect(state => ({
+const mapState = state => ({
   activeLoop: state.activeLoop
-}), dispatch => {
+})
+
+const mapDispatch = dispatch => {
   const { setActiveLoop } = bindActionCreators(actions, dispatch)
 
   return {
     setActiveLoop
   }
-})(LoopButton)
+}
+
+export default connect(mapState, mapDispatch)(LoopButton)
