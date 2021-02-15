@@ -1,9 +1,4 @@
-import { createCanvas } from '@src/functions'
-
-const initialState = {
-  activeLoop: 2,
-  canvas: createCanvas(100, 50, null)
-}
+import { initialState } from '@src/state'
 
 export const reducer = (state = initialState, { type, loop, canvas }) => {
 
