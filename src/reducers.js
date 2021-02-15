@@ -2,7 +2,7 @@ import { createCanvas } from '@src/functions'
 
 const initialState = {
   activeLoop: 2,
-  canvas: createCanvas(48, 23, null)
+  canvas: createCanvas(100, 50, null)
 }
 
 export const reducer = (state = initialState, { type, loop, canvas }) => {
