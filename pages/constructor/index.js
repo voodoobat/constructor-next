@@ -6,6 +6,7 @@ import LegendContainer from '@components/constructor/LegendContainer/LegendConta
 import Constructor from '@components/constructor/Constructor/Constructor'
 
 export default function index () {
+
   return <>
     <Head>
       <title>Создание холста</title>
