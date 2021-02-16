@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case 'SAVE_STEP':
       return {
         ...state,
-        canvas: action.payload.canvas
+        history: [...state.history, action.payload.canvas]
       }
 
     case 'CHANGE_CANVAS':

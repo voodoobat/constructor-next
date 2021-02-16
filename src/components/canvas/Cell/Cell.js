@@ -12,9 +12,7 @@ function Cell ({
   dispatch,
   children }) {
 
-  const clickHandle = () => dispatch(
-    changeScheme(x, y, activeLoop)
-  )
+  const clickHandle = () => dispatch(changeScheme(x, y, activeLoop))
 
   return (
     <div className={classNames(className, scss._)}

@@ -17,17 +17,18 @@ const Hint = ({ className, hint }) => (
   </div>
 )
 
-function LoopButton ({ className, data, activeLoop }) {
+function LoopButton ({ className, data, activeLoop, dispatch }) {
   const { id } = data
 
   const isActive = activeLoop == id
-  const handleClick = () => {
-    changeActiveLoop(id)
-  }
+  const clickHandle = () => dispatch(changeActiveLoop(id))
+  // const clickHandle = dispatch(
+  //   changeActiveLoop(id)
+  // )
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
-         onClick={handleClick}>
+         onClick={clickHandle}>
       <div className={classNames(scss.button, scss.button_main)}>
         <Loop icon={data.icon} />
         {data.options && <OptionsIcon className={scss.options_icon} />}
