@@ -1,18 +1,18 @@
-export const createCanvas = (cols, rows, value = null) => {
-  const row = []
-  const matrix = []
+import * as actions from '@src/actions'
+import { cloneCanvasWithNewCell } from '@src/util'
 
-  for (let j = 0; j < cols; j++) row.push(value)
-  for (let j = 0; j < rows; j++) matrix.push(row)
 
-  return matrix
-}
+export function changeScheme (x, y, loop) {
+  return (dispatch, getState) => {
+    const { canvas } = getState()
 
-export const setNewCanvas = (canvas, x, y, value = null) => {
-  const result = [...canvas]
-  const resultRow =  [...result[y]]
+    console.log(
+      cloneCanvasWithNewCell(canvas, x, y, loop)
+    )
 
-  resultRow[x] = value
-  result[y] = resultRow
-  return result
+    dispatch(actions.saveStep(canvas))
+    dispatch(actions.changeCanvas(
+      cloneCanvasWithNewCell(canvas, x, y, loop)
+    ))
+  }
 }

@@ -1,19 +1,24 @@
 import scss from './Cell.module.scss'
 
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import * as actions from '@src/actions'
-import { setNewCanvas } from '@src/functions'
+import { changeScheme } from '@src/functions'
 
-function Cell ({ className, canvas, x, y, activeLoop, setCanvas, children }) {
+function Cell ({
+  className,
+  x, y,
+  activeLoop,
+  dispatch,
+  children }) {
+
+  const clickHandle = () => dispatch(
+    changeScheme(x, y, activeLoop)
+  )
 
   return (
     <div className={classNames(className, scss._)}
-         onClick={() => setCanvas(
-           setNewCanvas(canvas, x, y, activeLoop)
-         )}>
+         onClick={clickHandle}>
       {children}
     </div>
   )
@@ -25,12 +30,4 @@ const mapState = state => ({
   canvas: state.canvas
 })
 
-const mapDispatch = dispatch => {
-  const { setCanvas } = bindActionCreators(actions, dispatch)
-
-  return {
-    setCanvas
-  }
-}
-
-export default connect(mapState, mapDispatch)(Cell)
+export default connect(mapState)(Cell)

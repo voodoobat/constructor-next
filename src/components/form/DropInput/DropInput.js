@@ -26,7 +26,7 @@ export default function DropInput ({ className }) {
         {({ getRootProps, getInputProps }) => ( 
           <div {...getRootProps()}>
             <input {...getInputProps()} />
-            {image != null ? (
+            {image ? (
               <img src={src} className={scss.img} />
             ) : (
               <p className={scss.hint}>

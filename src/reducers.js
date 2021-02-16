@@ -1,20 +1,22 @@
 import { initialState } from '@src/state'
 
-export const reducer = (state = initialState, { type, loop, canvas }) => {
+export default (state = initialState, action) => {
 
-  if (type == 'SET_ACTIVE_LOOP') {
-    return {
-      ...state,
-      activeLoop: loop
-    }
+  switch (action.type) {
+
+    case 'SAVE_STEP':
+      return {
+        ...state,
+        canvas: action.payload.canvas
+      }
+
+    case 'CHANGE_CANVAS':
+      return {
+        ...state,
+        canvas: action.payload.canvas
+      }
+    
+    default:
+      return state
   }
-
-  if (type == 'SET_CANVAS') {
-    return {
-      ...state,
-      canvas
-    }
-  }
-
-  return state
 }
