@@ -9,6 +9,8 @@
   height: $canvas-cell-height;
   border: 1px solid $light-gray;
   text-align: center;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .is_selected {
