@@ -28,6 +28,12 @@ export function changeActiveLoop (activeLoop) {
   }
 }
 
+export function setIsDrawning (isDrawning) {
+  return (dispatch) => {
+    dispatch(actions.setIsDrawning(isDrawning)) 
+  }
+}
+
 export function changeActiveTool (activeTool) {
   return (dispatch, getState) => {
     const { activeLoop } = getState()

@@ -5,17 +5,26 @@ import classNames from 'classnames'
 
 import * as fn from '@src/functions'
 
-function Cell ({ className, cell, x, y, dispatch, children }) {
+function Cell ({ className, cell, x, y, dispatch, children, isDrawning }) {
 
-  const onClick = () => dispatch(fn.changeScheme(x, y, cell))
-  // const onMouseDown = () => console.log('mousedown')
+  const onMouseDown = () => {
+    dispatch(fn.setIsDrawning(true))
+    dispatch(fn.changeScheme(x, y, cell))
+  }
 
+  const onMouseEnter = () => {
+    if (isDrawning) dispatch(fn.changeScheme(x, y, cell))
+  }
+
+  const onMouseUp = () => dispatch(
+    fn.setIsDrawning(false)
+  )
 
   return (
     <div className={classNames(className, scss._, cell?.selected ? scss.is_selected : '')}
-         onClick={onClick}>
-         {/* onMouseDown={onMouseDown}> */}
-
+         onMouseDown={onMouseDown}
+         onMouseUp={onMouseUp}
+         onMouseEnter={onMouseEnter}>
       {children}
     </div>
   )
@@ -23,8 +32,7 @@ function Cell ({ className, cell, x, y, dispatch, children }) {
 
 
 const mapState = state => ({
-  activeLoop: state.activeLoop,
-  canvas: state.canvas
+  isDrawning: state.isDrawning
 })
 
 export default connect(mapState)(Cell)
