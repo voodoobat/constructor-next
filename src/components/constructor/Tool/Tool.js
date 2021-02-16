@@ -1,7 +1,9 @@
 import scss from './Tool.module.scss'
 
-import { useState } from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
+
+import { changeActiveTool } from '@src/functions'
 
 import Move from './svg/move.svg'
 import Eraze from './svg/eraze.svg'
@@ -23,16 +25,22 @@ const icon  = {
   Size
 }
 
-export function Tool ({ className, type, active, children }) {
+function Tool ({ className, type, active, dispatch, children }) {
   const Icon = icon[type]
-  const [isActive, setActive] = useState(Boolean(active))
+  const isActive = active == type
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
-         onClick={() => setActive(!isActive)}>
+         onClick={() => dispatch(changeActiveTool(type))}>
       <Icon className={scss.icon} />
       {children}
       {type == 'Color' && <OptionIcon className={scss.option_icon} />}
     </div>
   )
 }
+
+const mapState = state => ({
+  active: state.activeTool
+})
+
+export default connect(mapState)(Tool)

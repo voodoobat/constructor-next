@@ -1,7 +1,18 @@
 import { createCanvas } from '@src/util'
 
 export const initialState = {
-  activeLoop: 10,
+  activeLoop: null,
+  activeTool: null,
+  canvas: createCanvas(40, 20, null),
   history: [],
-  canvas: createCanvas(40, 20, null)
+
+  tools: [
+    { type: 'Move' },
+    { type: 'Eraze' },
+    { type: 'ReportRow' },
+    { type: 'ReportLoop' },
+    { type: 'Color' },
+    { type: 'Group' },
+    { type: 'Size' },
+  ]
 }

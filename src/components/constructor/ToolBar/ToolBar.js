@@ -1,7 +1,7 @@
 import scss from './ToolBar.module.scss'
 
 import classNames from 'classnames'
-import { Tool } from '@components/constructor/Tool/Tool'
+import Tool from '@components/constructor/Tool/Tool'
 import Hint from '@src/components/common/Hint/Hint'
 import Overlay from '@components/common/Overlay/Overlay'
 

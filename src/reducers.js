@@ -1,25 +1,30 @@
 import { initialState } from '@src/state'
 
-export default (state = initialState, action) => {
+export default (state = initialState, { type, payload }) => {
 
-  switch (action.type) {
-
+  switch (type) {
     case 'SAVE_STEP':
       return {
         ...state,
-        history: [...state.history, action.payload.canvas]
+        history: [...state.history, payload.canvas]
       }
 
     case 'CHANGE_CANVAS':
       return {
         ...state,
-        canvas: action.payload.canvas
+        canvas: payload.canvas
       }
     
     case 'CHANGE_ACTIVE_LOOP':
       return {
         ...state,
-        activeLoop: action.payload.activeLoop
+        activeLoop: payload.activeLoop
+      }
+
+    case 'CHANGE_ACTIVE_TOOL':
+      return {
+        ...state,
+        activeTool: payload.activeTool
       }
     
     default:

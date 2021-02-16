@@ -5,17 +5,12 @@ import classNames from 'classnames'
 
 import { changeScheme } from '@src/functions'
 
-function Cell ({
-  className,
-  x, y,
-  activeLoop,
-  dispatch,
-  children }) {
+function Cell ({ className, cell, x, y, activeLoop, dispatch, children }) {
 
   const clickHandle = () => dispatch(changeScheme(x, y, activeLoop))
 
   return (
-    <div className={classNames(className, scss._)}
+    <div className={classNames(className, scss._, cell?.selected ? scss.is_selected : '')}
          onClick={clickHandle}>
       {children}
     </div>

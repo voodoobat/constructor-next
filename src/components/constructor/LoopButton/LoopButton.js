@@ -19,12 +19,8 @@ const Hint = ({ className, hint }) => (
 
 function LoopButton ({ className, data, activeLoop, dispatch }) {
   const { id } = data
-
   const isActive = activeLoop == id
   const clickHandle = () => dispatch(changeActiveLoop(id))
-  // const clickHandle = dispatch(
-  //   changeActiveLoop(id)
-  // )
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}

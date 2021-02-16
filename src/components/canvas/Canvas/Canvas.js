@@ -13,8 +13,11 @@ function Canvas ({ className, canvas, scale }) {
      {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (
-            <Cell x={x} y={y} cell={cell} key={x}>
-              {cell != null && <Loop icon={`${cell}.svg`} />}
+            <Cell cell={cell}
+                  key={x}
+                  x={x}
+                  y={y}>
+              {cell && <Loop icon={`${cell.loop}.svg`} />}
             </Cell>
           ))}
         </Row>
