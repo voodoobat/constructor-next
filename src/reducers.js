@@ -16,6 +16,12 @@ export default (state = initialState, action) => {
         canvas: action.payload.canvas
       }
     
+    case 'CHANGE_ACTIVE_LOOP':
+      return {
+        ...state,
+        activeLoop: action.payload.activeLoop
+      }
+    
     default:
       return state
   }

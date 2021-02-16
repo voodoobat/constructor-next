@@ -11,4 +11,3 @@ const store = typeof window == 'undefined'
     ))
 
 export default store
-
