@@ -8,12 +8,18 @@ import * as fn from '@src/functions'
 function Cell ({ className, cell, x, y, dispatch, children, isDrawning }) {
 
   const onMouseDown = () => {
-    dispatch(fn.setIsDrawning(true))
+    dispatch(fn.setIsDrawning(true, { x, y }))
     dispatch(fn.changeScheme(x, y, cell))
   }
 
   const onMouseEnter = () => {
-    if (isDrawning) dispatch(fn.changeScheme(x, y, cell))
+    if (isDrawning) {
+      dispatch(fn.changeScheme(x, y, cell))
+      dispatch(fn.setSelectionEndPoint({
+        x: cell.x,
+        y: cell.y
+      }))
+    }
   }
 
   const onMouseUp = () => dispatch(

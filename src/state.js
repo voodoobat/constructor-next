@@ -5,7 +5,8 @@ export const initialState = {
   activeTool: null,
   isDrawning: false,
   canvas: createCanvas(40, 20, null),
-  selections: [],
+  selectionStartPoint: null,
+  selectionEndPoint: null,
   history: [],
 
   tools: [
