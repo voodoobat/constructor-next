@@ -3,15 +3,19 @@ import scss from './Cell.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import { changeScheme } from '@src/functions'
+import * as fn from '@src/functions'
 
 function Cell ({ className, cell, x, y, dispatch, children }) {
 
-  const change = () => dispatch(changeScheme(x, y, cell))
+  const onClick = () => dispatch(fn.changeScheme(x, y, cell))
+  // const onMouseDown = () => console.log('mousedown')
+
 
   return (
     <div className={classNames(className, scss._, cell?.selected ? scss.is_selected : '')}
-         onClick={change}>
+         onClick={onClick}>
+         {/* onMouseDown={onMouseDown}> */}
+
       {children}
     </div>
   )

@@ -2,6 +2,7 @@
 @import '@scss/mixins';
 
 ._ {
+  position: relative;
   display: table-cell;
   min-width: $canvas-cell-width;
   min-height: $canvas-cell-height;
@@ -11,5 +12,11 @@
 }
 
 .is_selected {
-  outline: 2px solid $medium-blue;
+  &::before {
+    @include position(absolute, 0 0 0 0);
+    content: '';
+    display: flex;
+    border: 1px solid $medium-blue;
+    z-index: -10;
+  }
 }

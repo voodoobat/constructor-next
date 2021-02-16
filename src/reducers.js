@@ -1,6 +1,6 @@
 import { initialState } from '@src/state'
 
-export default (state = initialState, { type, payload }) => {
+export default function reducers (state = initialState, { type, payload }) {
 
   switch (type) {
     case 'SAVE_HISTORY_STEP':
@@ -12,19 +12,25 @@ export default (state = initialState, { type, payload }) => {
     case 'CHANGE_CANVAS':
       return {
         ...state,
-        canvas: payload.canvas
+        ...payload
       }
     
     case 'CHANGE_ACTIVE_LOOP':
       return {
         ...state,
-        activeLoop: payload.activeLoop
+        ...payload
+      }
+    
+    case 'SET_IS_DRAWNING':
+      return {
+        ...state,
+        ...payload
       }
 
     case 'CHANGE_ACTIVE_TOOL':
       return {
         ...state,
-        activeTool: payload.activeTool
+        ...payload
       }
     
     default:
