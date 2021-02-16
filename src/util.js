@@ -12,7 +12,17 @@ export const cloneCanvasWithNewCell = (canvas, x, y, loop = null) => {
   const clone = [...canvas]
   const cell = [...canvas[y]]
 
-  cell[x] = { loop }
+  cell[x] = { ...cell[x], loop }
+  clone[y] = cell
+
+  return clone
+}
+
+export const setSelectedCell = (canvas, x, y) => {
+  const clone = [...canvas]
+  const cell = [...canvas[y]]
+
+  cell[x] = { ...cell[x], selected: true }
   clone[y] = cell
 
   return clone

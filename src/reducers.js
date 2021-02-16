@@ -3,7 +3,7 @@ import { initialState } from '@src/state'
 export default (state = initialState, { type, payload }) => {
 
   switch (type) {
-    case 'SAVE_STEP':
+    case 'SAVE_HISTORY_STEP':
       return {
         ...state,
         history: [...state.history, payload.canvas]

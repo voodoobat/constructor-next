@@ -1,30 +1,38 @@
 import * as actions from '@src/actions'
-import { cloneCanvasWithNewCell } from '@src/util'
+import { cloneCanvasWithNewCell, setSelectedCell } from '@src/util'
 
 
-export function changeScheme (x, y, loop) {
+export function changeScheme (x, y) {
   return (dispatch, getState) => {
-    const { canvas, activeLoop } = getState()
+    const { canvas, activeLoop, activeTool } = getState()
 
     if (activeLoop) {
-      dispatch(actions.saveStep(canvas))
+      dispatch(actions.saveHistoryStep(canvas))
       dispatch(actions.changeCanvas(
-        cloneCanvasWithNewCell(canvas, x, y, loop)
+        cloneCanvasWithNewCell(canvas, x, y, activeLoop)
       ))
+    }
+
+    if (activeTool == 'Group') {
+      dispatch(actions.changeCanvas(setSelectedCell(canvas, x, y)))
     }
   }
 }
 
 export function changeActiveLoop (activeLoop) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { activeTool } = getState()
+
     dispatch(actions.changeActiveLoop(activeLoop))
-    dispatch(actions.changeActiveTool(null))
+    if (activeTool) dispatch(actions.changeActiveTool(null))
   }
 }
 
 export function changeActiveTool (activeTool) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const { activeLoop } = getState()
+
     dispatch(actions.changeActiveTool(activeTool))
-    dispatch(actions.changeActiveLoop(null))
+    if (activeLoop) dispatch(actions.changeActiveLoop(null))
   }
 }
