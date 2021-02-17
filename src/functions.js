@@ -1,3 +1,4 @@
+import { uid } from 'uid'
 import * as actions from '@src/actions'
 
 export function commitCanvas (canvas) {
@@ -7,9 +8,20 @@ export function commitCanvas (canvas) {
 export function commitNewGroup (canvas) {
   return (dispatch, getState) => {
     const { groups } = getState()
-    dispatch(actions.changeGroups([ ...groups, { canvas }]))
+    dispatch(actions.changeGroups([ ...groups, {
+      uid: uid(),
+      canvas
+    }]))
   }
 }
+
+export function removeGroup ({ uid }) {
+  return (dispatch, getState) => {
+    const { groups } = getState()
+    dispatch(actions.changeGroups(groups.filter(group => group.uid != uid)))
+  }
+}
+
 
 export function changeActiveLoop (activeLoop) {
   return (dispatch, getState) => {
