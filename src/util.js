@@ -54,38 +54,17 @@ const select = (canvas, start, end) => {
   clone.forEach(element => element.forEach(cell => {
     const { x, y } = cell
 
-    const selected = (
+    cell.selected = (
       x >= start.x &&
       x <= end.x &&
       y >= start.y &&
       y <= end.y
     )
-
-    cell.selected = selected
   }))
 
   return clone
 }
 
 export const setSelectedCell = (canvas, start, end) => {
-  // let clone = [...canvas]
-  // const cell = [...canvas[y]]
-
-  // let selected = []
-
-  // cell[x] = { ...cell[x], selected: true }
-  // clone[y] = cell
-
-  // selected = flatten(clone).filter(({ selected }) => selected)
-
-  // const greatX = getGreaterCell(selected, 'x')
-  // const greatY = getGreaterCell(selected, 'y')
-  // const smallX = getSmallerCell(selected, 'x', greatX)
-  // const smallY = getSmallerCell(selected, 'y', greatY)
-
-  // selectSquare(clone, smallY, greatY, smallX, greatX)
-
-  // return clone
-
   return select(canvas, start, end)
 }
