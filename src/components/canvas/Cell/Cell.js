@@ -10,26 +10,29 @@ function Cell ({
   cell,
   dispatch,
   select,
-  setStart,
+  commit,
+  setStartCell,
   children,
-  isDrawning
+  isDrawning,
+  activeTool
 }) {
 
   const onMouseDown = () => {
-    dispatch(fn.setIsDrawning(true, { cell }))
+    dispatch(fn.setDrawning(true))
     dispatch(fn.changeScheme(cell))
-    setStart(cell)
+    setStartCell(cell)
   }
 
   const onMouseEnter = () => {
-    if (isDrawning) {
+    if (isDrawning && activeTool == 'Group') {
       select(cell)
     }
   }
 
-  const onMouseUp = () => dispatch(
-    fn.setIsDrawning(false)
-  )
+  const onMouseUp = () => {
+    dispatch(fn.setDrawning(false))
+    commit()
+  }
 
   return (
     <div className={classNames(className, scss._, cell?.selected ? scss.is_selected : '')}
@@ -43,7 +46,8 @@ function Cell ({
 
 
 const mapState = state => ({
-  isDrawning: state.isDrawning
+  isDrawning: state.isDrawning,
+  activeTool: state.activeTool
 })
 
 export default connect(mapState)(Cell)

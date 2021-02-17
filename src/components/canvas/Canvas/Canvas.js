@@ -8,15 +8,19 @@ import Loop from '@components/constructor/Loop/Loop'
 import Cell from '@components/canvas/Cell/Cell'
 import Row from '@components/canvas/Row/Row'
 
-function Canvas ({ className, canvas, scale }) {
-  const [start, setStart] = useState(null)
+import * as fn from '@src/functions'
+
+function Canvas ({ className, canvas, dispatch, scale }) {
+  const [startCell, setStartCell] = useState(null)
   const [cnvs, setCnvs] = useState(canvas)
 
+  const commit = () => dispatch(fn.commitCanvas(cnvs))
   const select = cell => {
     const clone = [...cnvs]
 
     clone.forEach(element => element.forEach(c => {
       const { x, y } = c
+      const start = startCell
 
       if (x >= start.x && y >= start.y)
         return c.selected = (
@@ -60,7 +64,8 @@ function Canvas ({ className, canvas, scale }) {
         <Row key={y}>
           {row.map((cell, x) => (
             <Cell cell={cell}
-                  setStart={setStart}
+                  setStartCell={setStartCell}
+                  commit={commit}
                   select={select}
                   key={x}>
               {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
@@ -74,7 +79,6 @@ function Canvas ({ className, canvas, scale }) {
 
 const mapState = state => ({
   canvas: state.canvas
-  
 })
 
 export default connect(mapState)(Canvas)

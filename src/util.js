@@ -14,33 +14,14 @@ export const createCanvas = (x, y, loop = null) => {
   return canvas
 }
 
-export const cloneCanvasWithNewCell = (canvas, x, y, loop = null) => {
+export const setLoopToCanvas = (canvas, { x, y }, loop) => {
   const clone = [...canvas]
   const cell = [...canvas[y]]
 
   cell[x] = { ...cell[x], loop }
   clone[y] = cell
 
-  return clone
-}
-
-const select = (canvas, start, end) => {
-  const clone = [...canvas]
-
-  clone.forEach(element => element.forEach(cell => {
-    const { x, y } = cell
-
-    cell.selected = (
-      x >= start.x &&
-      x < end.x &&
-      y >= start.y &&
-      y < end.y
-    )
-  }))
+  console.log(cell[x])
 
   return clone
-}
-
-export const setSelectedCell = (canvas, start, end) => {
-  return select(canvas, start, end)
 }

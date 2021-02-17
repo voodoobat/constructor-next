@@ -1,26 +1,22 @@
 import * as actions from '@src/actions'
-import { cloneCanvasWithNewCell } from '@src/util'
+import * as util from '@src/util'
 
 
-export function changeScheme ({ x, y }) {
+export function changeScheme (cell) {
   return (dispatch, getState) => {
-    const {
-      canvas,
-      activeLoop,
-      activeTool,
-    } = getState()
+    const { canvas, activeLoop } = getState()
 
     if (activeLoop) {
       dispatch(actions.saveHistoryStep(canvas))
       dispatch(actions.changeCanvas(
-        cloneCanvasWithNewCell(canvas, x, y, activeLoop)
+        util.setLoopToCanvas(canvas, cell, activeLoop)
       ))
     }
-
-    if (activeTool == 'Group') {
-      console.log('G')
-    }
   }
+}
+
+export function commitCanvas (canvas) {
+  return dispatch => dispatch(actions.changeCanvas(canvas))
 }
 
 export function changeActiveLoop (activeLoop) {
@@ -32,12 +28,9 @@ export function changeActiveLoop (activeLoop) {
   }
 }
 
-export function setIsDrawning (isDrawning, start) {
+export function setDrawning (isDrawning) {
   return dispatch => {
-    const point = isDrawning ? start : null
-
     dispatch(actions.setIsDrawning(isDrawning))
-    dispatch(actions.setSelectionStartPoint(point))
   }
 }
 
