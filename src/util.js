@@ -1,5 +1,3 @@
-import { flatten } from 'lodash'
-
 export const createCanvas = (x, y, loop = null) => {
   const canvas = []
 
@@ -26,63 +24,47 @@ export const cloneCanvasWithNewCell = (canvas, x, y, loop = null) => {
   return clone
 }
 
-const getGreaterCell = (data, prop) => {
-  let result = 0
+// const getGreaterCell = (data, prop) => {
+//   let result = 0
 
-  data.forEach(cell => {
-    if (cell[prop] > result) {
-      result = cell[prop]
-    }
-  })
+//   data.forEach(cell => {
+//     if (cell[prop] > result) {
+//       result = cell[prop]
+//     }
+//   })
 
-  return result
-}
+//   return result
+// }
 
-const getSmallerCell = (data, prop, max) => {
-  let result = max
+// const getSmallerCell = (data, prop, max) => {
+//   let result = max
 
-  data.forEach(cell => {
-    if (cell[prop] < result) {
-      result = cell[prop]
-    }
-  })
+//   data.forEach(cell => {
+//     if (cell[prop] < result) {
+//       result = cell[prop]
+//     }
+//   })
 
-  return result
-}
+//   return result
+// }
 
-const selectSquare = (canvas, sY, gY, sX, gX) => {
+const select = (canvas, start, end) => {
   const clone = [...canvas]
 
-  clone.forEach(elements => {
-    elements.forEach(cell => {
-      const { x, y } = cell
-      const selected = (
-        x >= sX && x <= gX &&
-        y >= sY && y <= gY
-      )
+  clone.forEach(element => element.forEach(cell => {
+    const { x, y } = cell
 
-      cell.selected = selected
-    }) 
-  })
-}
-
-export const setSelectedCell = (canvas, x, y) => {
-  let clone = [...canvas]
-  const cell = [...canvas[y]]
-
-  let selected = []
-
-  cell[x] = { ...cell[x], selected: true }
-  clone[y] = cell
-
-  selected = flatten(clone).filter(({ selected }) => selected)
-
-  const greatX = getGreaterCell(selected, 'x')
-  const greatY = getGreaterCell(selected, 'y')
-  const smallX = getSmallerCell(selected, 'x', greatX)
-  const smallY = getSmallerCell(selected, 'y', greatY)
-
-  selectSquare(clone, smallY, greatY, smallX, greatX)
+    cell.selected = (
+      x >= start.x &&
+      x <= end.x &&
+      y >= start.y &&
+      y <= end.y
+    )
+  }))
 
   return clone
+}
+
+export const setSelectedCell = (canvas, start, end) => {
+  return select(canvas, start, end)
 }

@@ -4,7 +4,13 @@ import { cloneCanvasWithNewCell, setSelectedCell } from '@src/util'
 
 export function changeScheme (x, y) {
   return (dispatch, getState) => {
-    const { canvas, activeLoop, activeTool } = getState()
+    const {
+      canvas,
+      activeLoop,
+      activeTool,
+      selectionStartPoint,
+      selectionEndPoint
+    } = getState()
 
     if (activeLoop) {
       dispatch(actions.saveHistoryStep(canvas))
@@ -14,7 +20,11 @@ export function changeScheme (x, y) {
     }
 
     if (activeTool == 'Group') {
-      dispatch(actions.changeCanvas(setSelectedCell(canvas, x, y)))
+      dispatch(actions.changeCanvas(setSelectedCell(
+        canvas,
+        selectionStartPoint,
+        selectionEndPoint
+      )))
     }
   }
 }
@@ -28,9 +38,21 @@ export function changeActiveLoop (activeLoop) {
   }
 }
 
-export function setIsDrawning (isDrawning) {
-  return (dispatch) => {
-    dispatch(actions.setIsDrawning(isDrawning)) 
+export function setIsDrawning (isDrawning, start) {
+  return dispatch => {
+    const point = isDrawning ? start : null
+
+    dispatch(actions.setIsDrawning(isDrawning))
+    dispatch(actions.setSelectionStartPoint(point))
+  }
+}
+
+export function setSelectionEndPoint (end) {
+  return (dispatch, getState) => {
+    const { isDrawning } = getState()
+    const point = isDrawning ? end : null
+
+    dispatch(actions.setSelectionEndPoint(point))
   }
 }
 

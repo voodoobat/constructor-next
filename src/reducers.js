@@ -26,6 +26,18 @@ export default function reducers (state = initialState, { type, payload }) {
         ...state,
         ...payload
       }
+    
+    case 'SET_SELECTION_START_POINT':
+      return {
+        ...state,
+        ...payload
+      }
+
+    case 'SET_SELECTION_END_POINT':
+      return {
+        ...state,
+        ...payload
+      }
 
     case 'CHANGE_ACTIVE_TOOL':
       return {
