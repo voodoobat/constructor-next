@@ -2,6 +2,7 @@
 @import '@scss/mixins';
 
 ._ {
+  position: relative;
   display: table;
   border-collapse: collapse;
 }
@@ -9,6 +10,13 @@
 .canvas {
   padding: .5em;
   margin: 0 .5em .5em 0;
-  border: 1px solid $light-gray;
+  border: 1px solid $dark-gray;
   border-radius: $radius;
+}
+
+.delete {
+  @include size(10px);
+  @include position(absolute, -5px null null -4px);
+  display: flex;
+  background: $body-bg;
 }

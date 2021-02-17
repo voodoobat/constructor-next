@@ -22,6 +22,7 @@
     "react-bootstrap": "^1.4.3",
     "react-dom": "17.0.1",
     "react-dropzone": "^11.3.1",
+    "react-masonry-component": "^6.2.1",
     "react-redux": "^7.2.2",
     "react-svg": "^11.2.3",
     "redux": "^4.0.5",
