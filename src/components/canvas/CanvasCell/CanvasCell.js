@@ -39,7 +39,8 @@ function CanvasCell ({
   }
 
   return (
-    <div className={classNames(className, scss._, cell?.selected ? scss.is_selected : '')}
+    <div className={classNames(className, scss._, cell.selected ? scss.is_selected : '')}
+         data-selected={cell.selected ? 'true' : ''}
          onMouseDown={onMouseDown}
          onMouseUp={onMouseUp}
          onMouseEnter={onMouseEnter}>

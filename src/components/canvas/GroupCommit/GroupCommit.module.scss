@@ -2,5 +2,7 @@
 @import '@scss/mixins';
 
 ._ {
-
+  @include position(absolute);
+  transform: translate(-55%, 100%);
+  z-index: 155;
 }

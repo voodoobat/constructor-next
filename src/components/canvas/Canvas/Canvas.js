@@ -8,6 +8,7 @@ import Loop from '@components/constructor/Loop/Loop'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 import GroupCommit from '@components/canvas/GroupCommit/GroupCommit'
+import Overlay from '@components/common/Overlay/Overlay'
 
 import {
   selectSquare,
@@ -15,6 +16,7 @@ import {
   rmSelect,
   createCanvasFromSelect
 } from './Canvas.fn'
+
 import * as store from '@src/functions'
 
 function Canvas ({
@@ -36,17 +38,34 @@ function Canvas ({
     setCnvs(setToCanvas(cnvs, cell, loop))
   }
 
+  const group = {
+    save () {
+      dispatch(store.commitNewGroup(activeGroup))
+      setCnvs(rmSelect(cnvs))
+      setActiveGroup(null)
+    },
+
+    cansel () {
+      setCnvs(rmSelect(cnvs))
+      setActiveGroup(null)
+    }
+  }
+
   const commit = () => {
     if (activeTool == 'Group') {
       setActiveGroup(createCanvasFromSelect(cnvs))
-      setCnvs(rmSelect(cnvs))
     }
 
     dispatch(store.commitCanvas(cnvs))
   }
 
   return <>
-    {activeGroup && <GroupCommit />}
+    {activeGroup && (
+      <>
+        <GroupCommit save={group.save} cansel={group.cansel} />
+        <Overlay transparent={true} />
+      </>
+    )}
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
      {canvas.map((row, y) => (
         <Row key={y}>

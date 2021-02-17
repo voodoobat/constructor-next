@@ -8,5 +8,9 @@
   &.is_dark {
     background: rgba(black, 0.35);
   }
+
+  &.is_transparent {
+    background: transparent;
+  }
 }
 
