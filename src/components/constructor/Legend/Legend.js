@@ -15,7 +15,7 @@ export default function Legend ({ className, legend, children }) {
         <div className={scss.element}>
           {children}
         </div>
-        <div className={scss.caption} contentEditable>
+        <div className={scss.caption}>
           {legend || 'Мой элемент'}
         </div>
       </div>
