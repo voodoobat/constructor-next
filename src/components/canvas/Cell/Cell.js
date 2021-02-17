@@ -5,20 +5,25 @@ import classNames from 'classnames'
 
 import * as fn from '@src/functions'
 
-function Cell ({ className, cell, x, y, dispatch, children, isDrawning }) {
+function Cell ({
+  className,
+  cell,
+  dispatch,
+  select,
+  setStart,
+  children,
+  isDrawning
+}) {
 
   const onMouseDown = () => {
-    dispatch(fn.setIsDrawning(true, { x, y }))
-    dispatch(fn.changeScheme(x, y, cell))
+    dispatch(fn.setIsDrawning(true, { cell }))
+    dispatch(fn.changeScheme(cell))
+    setStart(cell)
   }
 
   const onMouseEnter = () => {
     if (isDrawning) {
-      dispatch(fn.changeScheme(x, y, cell))
-      dispatch(fn.setSelectionEndPoint({
-        x: cell.x,
-        y: cell.y
-      }))
+      select(cell)
     }
   }
 

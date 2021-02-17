@@ -1,15 +1,13 @@
 import * as actions from '@src/actions'
-import { cloneCanvasWithNewCell, setSelectedCell } from '@src/util'
+import { cloneCanvasWithNewCell } from '@src/util'
 
 
-export function changeScheme (x, y) {
+export function changeScheme ({ x, y }) {
   return (dispatch, getState) => {
     const {
       canvas,
       activeLoop,
       activeTool,
-      selectionStartPoint,
-      selectionEndPoint
     } = getState()
 
     if (activeLoop) {
@@ -20,11 +18,7 @@ export function changeScheme (x, y) {
     }
 
     if (activeTool == 'Group') {
-      dispatch(actions.changeCanvas(setSelectedCell(
-        canvas,
-        selectionStartPoint,
-        selectionEndPoint
-      )))
+      console.log('G')
     }
   }
 }
