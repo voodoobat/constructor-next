@@ -9,15 +9,17 @@ import Loop from '@components/constructor/Loop/Loop'
 export default function Group ({ className, group }) {
   return (
     <div className={classNames(className, scss._)}>
-      {group.canvas.map((element, y) => (
-        <Row key={y}>
-          {element.map((cell, x) => (
-            <Cell cell={cell} key={x}>
-              {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
-            </Cell>
-          ))}
-        </Row>
-      ))}
+      <div className={scss.canvas}>
+        {group.canvas.map((element, y) => (
+          <Row key={y}>
+            {element.map((cell, x) => (
+              <Cell cell={cell} key={x}>
+                {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
+              </Cell>
+            ))}
+          </Row>
+        ))}
+      </div>
     </div>
   )
 }

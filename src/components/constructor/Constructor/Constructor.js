@@ -6,10 +6,10 @@ import classNames from 'classnames'
 import Container from '@components/layout/Container/Container'
 import TopPanel from '@components/constructor/TopPanel/TopPanel'
 import ToolBar from '@components/constructor/ToolBar/ToolBar'
+import GroupContainer from '@components/canvas/GroupContainer/GroupContainer'
 import Download from '@components/constructor/Download/Download'
-import Group from '@components/canvas/Group/Group'
 
-function Constructor ({ className, inactive, children, groups }) {
+function Constructor ({ className, inactive, children }) {
   return (
     <Container className={classNames(className, scss._)}>
       <div className={scss.header}>
@@ -30,9 +30,7 @@ function Constructor ({ className, inactive, children, groups }) {
           <ToolBar inactive={inactive} />
         </div>
         <div className={scss.content}>
-          <div className={scss.groups}>
-            {groups.map((group, key) => <Group group={group} key={key} />)}
-          </div>
+          <GroupContainer />
           {children}
         </div>
       </div>
