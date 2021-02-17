@@ -1,12 +1,13 @@
 import scss from './CanvasContainer.module.scss'
 
 import { useState } from 'react'
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Canvas from '@components/canvas/Canvas/Canvas'
 import Zoom from '@components/canvas/Zoom/Zoom'
 
-export default function CanvasContainer ({ className }) {
+function CanvasContainer ({ className  }) {
   const [scale, setScale] = useState(100)
 
   return (
@@ -19,3 +20,5 @@ export default function CanvasContainer ({ className }) {
     </div>
   )
 }
+
+export default connect(s => ({ ...s }))(CanvasContainer)

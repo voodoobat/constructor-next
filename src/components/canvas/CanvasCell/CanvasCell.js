@@ -48,4 +48,4 @@ function CanvasCell ({
   )
 }
 
-export default connect(state => ({ ...state }))(CanvasCell)
+export default connect(s => ({ ...s }))(CanvasCell)

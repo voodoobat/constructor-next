@@ -40,6 +40,11 @@
     }
   }
 
+  &_red {
+    color: $body-bg;
+    background: $medium-red;
+  }
+
   &_blue {
     color: $body-bg;
     background: $medium-blue;

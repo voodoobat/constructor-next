@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import Loop from '@components/constructor/Loop/Loop'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
+import GroupCommit from '@components/canvas/GroupCommit/GroupCommit'
 
 import {
   selectSquare,
@@ -24,8 +25,10 @@ function Canvas ({
   activeLoop,
   activeTool
 }) {
+
   const [startCell, setStartCell] = useState(null)
   const [cnvs, setCnvs] = useState(canvas)
+  const [activeGroup, setActiveGroup] = useState(null)
 
   const select = cell => setCnvs(selectSquare(cnvs, cell, startCell))
   const change = cell => {
@@ -34,16 +37,16 @@ function Canvas ({
   }
 
   const commit = () => {
-
     if (activeTool == 'Group') {
-      dispatch(store.commitNewGroup(createCanvasFromSelect(cnvs)))
+      setActiveGroup(createCanvasFromSelect(cnvs))
       setCnvs(rmSelect(cnvs))
     }
 
     dispatch(store.commitCanvas(cnvs))
   }
 
-  return (
+  return <>
+    {activeGroup && <GroupCommit />}
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
      {canvas.map((row, y) => (
         <Row key={y}>
@@ -60,7 +63,7 @@ function Canvas ({
         </Row>
       ))}
     </div>
-  )
+  </>
 }
 
 export default connect((state => ({ ...state })))(Canvas)

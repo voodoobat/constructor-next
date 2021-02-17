@@ -36,4 +36,4 @@ function Group ({ className, group, dispatch }) {
   )
 }
 
-export default connect((s => ({ ...s })))(Group)
+export default connect(s => ({ ...s }))(Group)
