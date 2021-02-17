@@ -21,7 +21,10 @@ function Cell ({
   const onMouseDown = () => {
     dispatch(fn.setDrawning(true))
     setStartCell(cell)
-    change(cell)
+
+    if (!activeTool) {
+      change(cell)
+    }
   }
 
   const onMouseEnter = () => {
