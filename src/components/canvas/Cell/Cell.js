@@ -10,6 +10,7 @@ function Cell ({
   cell,
   dispatch,
   select,
+  change,
   commit,
   setStartCell,
   children,
@@ -19,8 +20,8 @@ function Cell ({
 
   const onMouseDown = () => {
     dispatch(fn.setDrawning(true))
-    dispatch(fn.changeScheme(cell))
     setStartCell(cell)
+    change(cell)
   }
 
   const onMouseEnter = () => {

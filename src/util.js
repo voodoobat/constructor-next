@@ -13,15 +13,3 @@ export const createCanvas = (x, y, loop = null) => {
 
   return canvas
 }
-
-export const setLoopToCanvas = (canvas, { x, y }, loop) => {
-  const clone = [...canvas]
-  const cell = [...canvas[y]]
-
-  cell[x] = { ...cell[x], loop }
-  clone[y] = cell
-
-  console.log(cell[x])
-
-  return clone
-}

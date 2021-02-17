@@ -1,19 +1,4 @@
 import * as actions from '@src/actions'
-import * as util from '@src/util'
-
-
-export function changeScheme (cell) {
-  return (dispatch, getState) => {
-    const { canvas, activeLoop } = getState()
-
-    if (activeLoop) {
-      dispatch(actions.saveHistoryStep(canvas))
-      dispatch(actions.changeCanvas(
-        util.setLoopToCanvas(canvas, cell, activeLoop)
-      ))
-    }
-  }
-}
 
 export function commitCanvas (canvas) {
   return dispatch => dispatch(actions.changeCanvas(canvas))
