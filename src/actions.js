@@ -23,12 +23,7 @@ export const setIsDrawning = isDrawning => ({
   payload: { isDrawning }
 })
 
-export const setSelectionStartPoint = selectionStartPoint => ({
-  type: 'SET_SELECTION_START_POINT',
-  payload: { selectionStartPoint }
-})
-
-export const setSelectionEndPoint = selectionEndPoint => ({
-  type: 'SET_SELECTION_END_POINT',
-  payload: { selectionEndPoint }
+export const changeGroups = groups => ({
+  type: 'CHANGE_GROUPS',
+  payload: { groups }
 })

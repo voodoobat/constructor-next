@@ -4,24 +4,16 @@ import classNames from 'classnames'
 
 import Row from '@components/canvas/Row/Row'
 import Cell from '@components/canvas/Cell/Cell'
-
-import { getData } from '@src/fixtures/loops'
 import Loop from '@components/constructor/Loop/Loop'
-const data = getData()
 
-const getLoop = id => {
-  const loop = data.find(obj => obj.id == id)
-  return <Loop icon={loop.icon} />
-}
-
-export default function Group ({ className, matrix }) {
+export default function Group ({ className, group }) {
   return (
     <div className={classNames(className, scss._)}>
-      {matrix.map((row, j) => (
-        <Row key={j}>
-          {row.map((cell, j) => (
-            <Cell key={j}>
-              {getLoop(cell)}
+      {group.canvas.map((element, y) => (
+        <Row key={y}>
+          {element.map((cell, x) => (
+            <Cell cell={cell} key={x}>
+              {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
             </Cell>
           ))}
         </Row>

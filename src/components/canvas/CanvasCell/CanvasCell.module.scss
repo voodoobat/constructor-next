@@ -1,0 +1,24 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  position: relative;
+  display: table-cell;
+  min-width: $canvas-cell-width;
+  min-height: $canvas-cell-height;
+  height: $canvas-cell-height;
+  border: 1px solid $light-gray;
+  text-align: center;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.is_selected {
+  &::before {
+    @include position(absolute, 0 0 0 0);
+    content: '';
+    display: flex;
+    border: 1px solid $medium-blue;
+    z-index: -10;
+  }
+}

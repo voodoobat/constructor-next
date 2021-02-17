@@ -5,6 +5,13 @@ export const initialState = {
   activeTool: null,
   isDrawning: false,
   canvas: createCanvas(40, 20, null),
+  groups: [
+    {
+      id: 1,
+      name: 'Моя группа элементов',
+      canvas: createCanvas(4, 4, 3)
+    }
+  ],
   history: [],
 
   tools: [

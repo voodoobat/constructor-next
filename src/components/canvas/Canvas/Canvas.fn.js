@@ -5,10 +5,25 @@ export const setToCanvas = (canvas, { x, y }, loop) => {
   cell[x] = { ...cell[x], loop }
   clone[y] = cell
 
-  console.log(cell[x])
-
   return clone
 }
+
+export const createCanvasFromSelect = canvas => {
+  const group = []
+
+  canvas.forEach(element => group.push(
+    element.filter(({ selected }) => selected == true)
+  ))
+
+  return group
+}
+
+export const rmSelect = canvas => {
+  const clone = [...canvas]
+
+  clone.forEach(element => element.forEach(cell => cell.selected = false))
+  return clone
+} 
 
 export const selectSquare = (canvas, cell, start) => {
   const clone = [...canvas]

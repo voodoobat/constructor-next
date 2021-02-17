@@ -27,13 +27,7 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
-    case 'SET_SELECTION_START_POINT':
-      return {
-        ...state,
-        ...payload
-      }
-
-    case 'SET_SELECTION_END_POINT':
+    case 'CHANGE_GROUPS':
       return {
         ...state,
         ...payload
