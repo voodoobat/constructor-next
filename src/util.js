@@ -24,30 +24,6 @@ export const cloneCanvasWithNewCell = (canvas, x, y, loop = null) => {
   return clone
 }
 
-// const getGreaterCell = (data, prop) => {
-//   let result = 0
-
-//   data.forEach(cell => {
-//     if (cell[prop] > result) {
-//       result = cell[prop]
-//     }
-//   })
-
-//   return result
-// }
-
-// const getSmallerCell = (data, prop, max) => {
-//   let result = max
-
-//   data.forEach(cell => {
-//     if (cell[prop] < result) {
-//       result = cell[prop]
-//     }
-//   })
-
-//   return result
-// }
-
 const select = (canvas, start, end) => {
   const clone = [...canvas]
 
@@ -56,9 +32,9 @@ const select = (canvas, start, end) => {
 
     cell.selected = (
       x >= start.x &&
-      x <= end.x &&
+      x < end.x &&
       y >= start.y &&
-      y <= end.y
+      y < end.y
     )
   }))
 
