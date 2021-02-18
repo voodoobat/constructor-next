@@ -1,13 +1,3 @@
-export const setToCanvas = (canvas, { x, y }, loop) => {
-  const clone = [...canvas]
-  const cell = [...canvas[y]]
-
-  cell[x] = { ...cell[x], loop }
-  clone[y] = cell
-
-  return clone
-}
-
 export const createCanvasFromSelect = canvas => {
   const group = []
 
@@ -25,16 +15,19 @@ export const reset = canvas => {
   return clone
 } 
 
+export const mapCanvas = (canvas, fn) => canvas.map(y => y.map(x => fn(x)))
+
 export const select = (canvas, cell, props) => {
   return canvas.map(y => y.map(x => {
-    return cell.uid == x.uid
+    if (props) return cell.uid == x.uid
       ? { ...x, ...props }
       : x
+    return x
   }))
 }
 
 export const square = (canvas, cell, start, props) => {
-  const cnvs = [...canvas]
+  let cnvs = [...canvas]
 
   cnvs.forEach(element => element.forEach(c => {
     const { x, y } = c
@@ -76,9 +69,11 @@ export const square = (canvas, cell, start, props) => {
     }
   }))
 
-  return cnvs.map(y => y.map(x => {
-    return x.selected
-      ? { ...x, ...props }
-      : x
-  }))
+  if (props) return mapCanvas(cnvs, cell => {
+    return cell.selected
+      ? { ...cell, ...props }
+      : cell
+  })
+
+  return cnvs
 }

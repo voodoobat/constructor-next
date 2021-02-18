@@ -27,3 +27,8 @@ export const changeGroups = groups => ({
   type: 'CHANGE_GROUPS',
   payload: { groups }
 })
+
+export const setActiveColor = activeColor => ({
+  type: 'SET_ACTIVE_COLOR',
+  payload: { activeColor }
+})

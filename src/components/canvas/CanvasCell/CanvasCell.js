@@ -1,29 +1,33 @@
 import scss from './CanvasCell.module.scss'
 
-import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
 
-function CanvasCell ({
+export default function CanvasCell ({
   className,
   cell,
-  loop,
   onClick,
   onMouseDown,
   onMouseEnter,
   onMouseUp
 }) {
 
+  const classList = classNames(
+    className,
+    scss._,
+    cell.selected ? scss.is_selected : ''
+  )
+
   return (
-    <div className={classNames(className, scss._, cell.selected ? scss.is_selected : '')}
+    <div className={classList}
          onClick={onClick}
          onMouseDown={onMouseDown}
          onMouseUp={onMouseUp}
-         onMouseEnter={onMouseEnter}>
-      {loop && <Loop icon={`${loop}.svg`} />}
+         onMouseEnter={onMouseEnter}
+         style={{ background: cell.background }}>
+      {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
     </div>
   )
 }
 
-export default connect(s => ({ ...s }))(CanvasCell)

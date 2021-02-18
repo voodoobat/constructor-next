@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import Loop from '@components/constructor/Loop/Loop'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 
@@ -16,6 +15,7 @@ function Canvas ({
   canvas,
   dispatch,
   scale,
+  activeColor,
   activeLoop,
   activeTool
 }) {
@@ -23,38 +23,52 @@ function Canvas ({
   const [cnvs, setCnvs] = useState(canvas)
   const [active, setActive] = useState(null)
 
+  // TODO: replace me with color logic
+
   const onMouseDown = cell => {
-
     setActive(cell)
-
-    setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
-    dispatch(store.commitCanvas(cnvs))
+    // if (activeLoop) setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
   }
 
   const onMouseUp = cell => {
     setActive(null)
-    setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
+
+    // if (activeLoop) setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
     dispatch(store.commitCanvas(cnvs))
+  }
+
+  const onMouseLeave = cell => {
+
   }
 
   const onMouseEnter = cell => {
     if (active) {
 
-      if (activeTool) {
-        if (activeTool == 'Eraze') return setCnvs(
-          fn.square(cnvs, cell, active, {
+      if (activeTool) switch (activeTool) {
+
+        case 'Eraze':
+          return setCnvs(fn.square(cnvs, cell, active, {
             loop: null,
+            background: 'transparent',
             selected: false
-          })
-        )
+          }))
+
+        case 'Group':
+          return setCnvs(fn.square(cnvs, cell, active))
+
+        case 'Color':
+          return setCnvs(fn.square(cnvs, cell, active, {
+            background: activeColor,
+            selected: false
+          }))
       }
 
-      if (activeLoop) return setCnvs(
-        fn.square(cnvs, cell, active, {
+      if (activeLoop) {
+        setCnvs(fn.square(cnvs, cell, active, {
           loop: activeLoop,
           selected: false
-        })
-      )
+        }))
+      }
     }
   }
 
@@ -65,9 +79,9 @@ function Canvas ({
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
                         onMouseEnter={() => onMouseEnter(cell)}
+                        onMouseLeave={() => onMouseLeave(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}
-                        loop={cell.loop}
                         key={x} />
           ))}
         </Row>

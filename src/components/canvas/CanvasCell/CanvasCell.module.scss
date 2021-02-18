@@ -18,7 +18,7 @@
     @include position(absolute, 0 0 0 0);
     content: '';
     display: flex;
-    border: 1px solid $medium-blue;
-    z-index: -10;
+    border: 1px solid $medium-gray;
+    z-index: 10;
   }
 }

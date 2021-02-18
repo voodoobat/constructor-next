@@ -3,7 +3,7 @@ import scss from './Tool.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import { changeActiveTool } from '@src/functions'
+import * as store from '@src/functions'
 
 import Move from './svg/move.svg'
 import Eraze from './svg/eraze.svg'
@@ -31,7 +31,7 @@ function Tool ({ className, type, active, dispatch, children }) {
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
-         onClick={() => dispatch(changeActiveTool(type))}>
+         onClick={() => dispatch(store.changeActiveTool(type))}>
       <Icon className={scss.icon} />
       {children}
       {type == 'Color' && <OptionIcon className={scss.option_icon} />}

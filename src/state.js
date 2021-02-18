@@ -3,7 +3,8 @@ import { createCanvas } from '@src/util'
 export const initialState = {
   activeLoop: null,
   activeTool: null,
-  isDrawning: false,
+  activeColor: null,
+  isDrawning: false, // ? how i use this
   canvas: createCanvas(40, 20, null),
   groups: [],
   history: [],
