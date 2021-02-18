@@ -12,6 +12,7 @@ function CanvasCell ({
   select,
   change,
   commit,
+  onClick,
   setStartCell,
   isDrawning,
   activeTool,
@@ -41,6 +42,7 @@ function CanvasCell ({
   return (
     <div className={classNames(className, scss._, cell.selected ? scss.is_selected : '')}
          data-selected={cell.selected ? 'true' : ''}
+         onClick={onClick}
          onMouseDown={onMouseDown}
          onMouseUp={onMouseUp}
          onMouseEnter={onMouseEnter}>

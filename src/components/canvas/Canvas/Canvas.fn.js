@@ -18,14 +18,17 @@ export const createCanvasFromSelect = canvas => {
   return group
 }
 
-export const rmSelect = canvas => {
-  const clone = [...canvas]
-
-  clone.forEach(element => element.forEach(cell => cell.selected = false))
-  return clone
+export const reset = canvas => {
+  return [...canvas].forEach(element => element.forEach(cell => cell.selected = false))
 } 
 
-export const selectSquare = (canvas, cell, start) => {
+export const select = (canvas, { uid }) => {
+  return [...canvas].forEach(element => element.forEach(cell => {
+    if (cell.uid == uid) cell.selected = true
+  }))
+}
+
+export const square = (canvas, start, cell) => {
   const clone = [...canvas]
 
   clone.forEach(element => element.forEach(c => {
