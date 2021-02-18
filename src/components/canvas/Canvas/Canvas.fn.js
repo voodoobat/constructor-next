@@ -18,51 +18,67 @@ export const createCanvasFromSelect = canvas => {
   return group
 }
 
-export const rmSelect = canvas => {
+export const reset = canvas => {
   const clone = [...canvas]
 
   clone.forEach(element => element.forEach(cell => cell.selected = false))
   return clone
 } 
 
-export const selectSquare = (canvas, cell, start) => {
-  const clone = [...canvas]
+export const select = (canvas, cell, props) => {
+  return canvas.map(y => y.map(x => {
+    return cell.uid == x.uid
+      ? { ...x, ...props }
+      : x
+  }))
+}
 
-  clone.forEach(element => element.forEach(c => {
+export const square = (canvas, cell, start, props) => {
+  const cnvs = [...canvas]
+
+  cnvs.forEach(element => element.forEach(c => {
     const { x, y } = c
 
-    if (x >= start.x && y >= start.y)
+    if (x >= start.x && y >= start.y) {
       return c.selected = (
         x >= start.x &&
         x <= cell.x &&
         y >= start.y &&
         y <= cell.y
       )
+    }
 
-    if (x <= start.x && y >= start.y)
+    if (x <= start.x && y >= start.y) {
       return c.selected = (
         x <= start.x &&
         x >= cell.x &&
         y >= start.y &&
         y <= cell.y
       )
+    }
 
-    if (x >= start.x && y <= start.y)
+    if (x >= start.x && y <= start.y) {
       return c.selected = (
         x >= start.x &&
         x <= cell.x &&
         y <= start.y &&
         y >= cell.y
       )
+    }
 
-    if (x <= start.x && y <= start.y)
+    if (x <= start.x && y <= start.y) {
       return c.selected = (
         x <= start.x &&
         x >= cell.x &&
         y <= start.y &&
         y >= cell.y
       )
+    }
   }))
 
-  return clone
+  return cnvs.map(y => y.map(x => {
+    return x.selected
+      ? { ...x, ...props }
+      : x
+  }))
 }

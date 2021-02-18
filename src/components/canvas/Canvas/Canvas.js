@@ -7,17 +7,9 @@ import classNames from 'classnames'
 import Loop from '@components/constructor/Loop/Loop'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
-import GroupCommit from '@components/canvas/GroupCommit/GroupCommit'
-import Overlay from '@components/common/Overlay/Overlay'
-
-import {
-  selectSquare,
-  setToCanvas,
-  rmSelect,
-  createCanvasFromSelect
-} from './Canvas.fn'
 
 import * as store from '@src/functions'
+import * as fn from './Canvas.fn'
 
 function Canvas ({
   className,
@@ -28,56 +20,55 @@ function Canvas ({
   activeTool
 }) {
 
-  const [startCell, setStartCell] = useState(null)
   const [cnvs, setCnvs] = useState(canvas)
-  const [activeGroup, setActiveGroup] = useState(null)
+  const [active, setActive] = useState(null)
 
-  const select = cell => setCnvs(selectSquare(cnvs, cell, startCell))
-  const change = cell => {
-    const loop = activeTool == 'Eraze' ? null : activeLoop
-    setCnvs(setToCanvas(cnvs, cell, loop))
-  }
+  const onMouseDown = cell => {
 
-  const group = {
-    save () {
-      dispatch(store.commitNewGroup(activeGroup))
-      setCnvs(rmSelect(cnvs))
-      setActiveGroup(null)
-    },
+    setActive(cell)
 
-    cansel () {
-      setCnvs(rmSelect(cnvs))
-      setActiveGroup(null)
-    }
-  }
-
-  const commit = () => {
-    if (activeTool == 'Group') {
-      setActiveGroup(createCanvasFromSelect(cnvs))
-    }
-
+    setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
     dispatch(store.commitCanvas(cnvs))
   }
 
+  const onMouseUp = cell => {
+    setActive(null)
+    setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
+    dispatch(store.commitCanvas(cnvs))
+  }
+
+  const onMouseEnter = cell => {
+    if (active) {
+
+      if (activeTool) {
+        if (activeTool == 'Eraze') return setCnvs(
+          fn.square(cnvs, cell, active, {
+            loop: null,
+            selected: false
+          })
+        )
+      }
+
+      if (activeLoop) return setCnvs(
+        fn.square(cnvs, cell, active, {
+          loop: activeLoop,
+          selected: false
+        })
+      )
+    }
+  }
+
   return <>
-    {activeGroup && (
-      <>
-        <GroupCommit save={group.save} cansel={group.cansel} />
-        <Overlay transparent={true} />
-      </>
-    )}
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
      {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
-                  setStartCell={setStartCell}
-                  commit={commit}
-                  change={change}
-                  select={select}
-                  key={x}>
-              {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
-            </CanvasCell>
+                        onMouseEnter={() => onMouseEnter(cell)}
+                        onMouseDown={() => onMouseDown(cell)}
+                        onMouseUp={() => onMouseUp(cell)}
+                        loop={cell.loop}
+                        key={x} />
           ))}
         </Row>
       ))}

@@ -1,3 +1,5 @@
+import { uid } from 'uid'
+
 export const createCanvas = (x, y, loop = null) => {
   const canvas = []
 
@@ -6,7 +8,11 @@ export const createCanvas = (x, y, loop = null) => {
 
     for (let jX = 0; jX < x; jX++) {
       canvas[jY].push({
-        y: jY, x: jX, loop, selected: false
+        uid: uid(),
+        y: jY,
+        x: jX,
+        loop,
+        selected: false
       })
     }
   }
