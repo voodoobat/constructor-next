@@ -19,6 +19,7 @@
     content: '';
     display: flex;
     border: 1px solid $medium-gray;
+    background: rgba(white, .5);
     z-index: 10;
   }
 }
