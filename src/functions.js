@@ -3,7 +3,10 @@ import { sample } from 'lodash'
 import * as actions from '@src/actions'
 
 export function commitCanvas (canvas) {
-  return dispatch => dispatch(actions.changeCanvas(canvas))
+  return dispatch => {
+    dispatch(actions.saveHistoryStep(canvas))
+    dispatch(actions.changeCanvas(canvas))
+  }
 }
 
 export function commitNewGroup (canvas) {

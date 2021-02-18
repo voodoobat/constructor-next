@@ -26,8 +26,8 @@ export const select = (canvas, cell, props) => {
   }))
 }
 
-export const square = (canvas, cell, start, props) => {
-  let cnvs = [...canvas]
+export const square = (canvas, cell, start) => {
+  const cnvs = [...canvas]
 
   cnvs.forEach(element => element.forEach(c => {
     const { x, y } = c
@@ -68,12 +68,6 @@ export const square = (canvas, cell, start, props) => {
       )
     }
   }))
-
-  if (props) return mapCanvas(cnvs, cell => {
-    return cell.selected
-      ? { ...cell, ...props }
-      : cell
-  })
 
   return cnvs
 }

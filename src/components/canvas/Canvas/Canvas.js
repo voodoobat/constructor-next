@@ -23,52 +23,40 @@ function Canvas ({
   const [cnvs, setCnvs] = useState(canvas)
   const [active, setActive] = useState(null)
 
-  // TODO: replace me with color logic
+  const commitWithNewProps = props => {
+    const temp = fn.mapCanvas(cnvs, cell => {
+      return cell.selected
+        ? { ...cell, selected: false, ...props }
+        : cell
+    })
+
+    setCnvs(temp)
+    dispatch(store.commitCanvas(temp))
+  }
+
 
   const onMouseDown = cell => {
     setActive(cell)
-    // if (activeLoop) setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
   }
 
-  const onMouseUp = cell => {
+  const onMouseUp = () => {
     setActive(null)
 
-    // if (activeLoop) setCnvs(fn.select(cnvs, cell, { loop: activeLoop }))
-    dispatch(store.commitCanvas(cnvs))
-  }
+    if (activeLoop) {
+      commitWithNewProps({ loop: activeLoop })
+    }
 
-  const onMouseLeave = cell => {
-
+    if (activeTool) {
+      switch (activeTool) {
+        case 'Eraze': return commitWithNewProps({ loop: null, background: 'transparent' })
+        case 'Color': return commitWithNewProps({ background: activeColor })
+      }
+    }
   }
 
   const onMouseEnter = cell => {
     if (active) {
-
-      if (activeTool) switch (activeTool) {
-
-        case 'Eraze':
-          return setCnvs(fn.square(cnvs, cell, active, {
-            loop: null,
-            background: 'transparent',
-            selected: false
-          }))
-
-        case 'Group':
-          return setCnvs(fn.square(cnvs, cell, active))
-
-        case 'Color':
-          return setCnvs(fn.square(cnvs, cell, active, {
-            background: activeColor,
-            selected: false
-          }))
-      }
-
-      if (activeLoop) {
-        setCnvs(fn.square(cnvs, cell, active, {
-          loop: activeLoop,
-          selected: false
-        }))
-      }
+      setCnvs(fn.square(cnvs, cell, active))
     }
   }
 
@@ -79,7 +67,6 @@ function Canvas ({
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
                         onMouseEnter={() => onMouseEnter(cell)}
-                        onMouseLeave={() => onMouseLeave(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}
                         key={x} />

@@ -7,17 +7,17 @@ export const getData = (flat = false) => {
     },
     {
       "id": "2",
-      "icon": "3.svg",
+      "icon": "2.svg",
       "hint": "лицевая"
     },
     {
       "id": "3",
-      "icon": "61.svg",
+      "icon": "3.svg",
       "hint": "изнаночная"
     },
     {
       "id": "4",
-      "icon": "2.svg",
+      "icon": "4.svg",
       "hint": "кромочная"
     },
     {
