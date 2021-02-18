@@ -23,10 +23,10 @@ function Canvas ({
   const [cnvs, setCnvs] = useState(canvas)
   const [active, setActive] = useState(null)
 
-  const commitWithNewProps = props => {
+  const commitWithNewProps = (prop, compare, props) => {
     const temp = fn.mapCanvas(cnvs, cell => {
-      return cell.selected
-        ? { ...cell, selected: false, ...props }
+      return cell[prop] == compare
+        ? { ...cell, ...props, selected: false }
         : cell
     })
 
@@ -39,17 +39,39 @@ function Canvas ({
     setActive(cell)
   }
 
-  const onMouseUp = () => {
+  const onMouseUp = cell => {
     setActive(null)
 
+    const isSingle = active?.uid == cell.uid
+
     if (activeLoop) {
-      commitWithNewProps({ loop: activeLoop })
+      const props = {
+        loop: activeLoop
+      }
+
+      if (isSingle) return commitWithNewProps('uid', cell.uid, props)
+      return commitWithNewProps('selected', true, props)
     }
 
     if (activeTool) {
-      switch (activeTool) {
-        case 'Eraze': return commitWithNewProps({ loop: null, background: 'transparent' })
-        case 'Color': return commitWithNewProps({ background: activeColor })
+
+      if (activeTool == 'Eraze') {
+        const props = {
+          loop: null,
+          background: 'transparent'
+        }
+
+        if (isSingle) return commitWithNewProps('uid', cell.uid, props)
+        return commitWithNewProps('selected', true, props)
+      }
+
+      if (activeTool == 'Color') {
+        const props = {
+          background: activeColor
+        }
+
+        if (isSingle) return commitWithNewProps('uid', cell.uid, props)
+        return commitWithNewProps('selected', true, props)
       }
     }
   }

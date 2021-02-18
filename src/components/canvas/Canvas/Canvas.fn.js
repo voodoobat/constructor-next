@@ -17,12 +17,9 @@ export const reset = canvas => {
 
 export const mapCanvas = (canvas, fn) => canvas.map(y => y.map(x => fn(x)))
 
-export const select = (canvas, cell, props) => {
+export const select = (canvas, cell) => {
   return canvas.map(y => y.map(x => {
-    if (props) return cell.uid == x.uid
-      ? { ...x, ...props }
-      : x
-    return x
+    return { ...x, selected: cell.uid == x.uid }
   }))
 }
 
