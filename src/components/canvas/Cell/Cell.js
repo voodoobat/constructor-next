@@ -2,10 +2,13 @@ import scss from './Cell.module.scss'
 
 import classNames from 'classnames'
 
-export default function Cell ({ className, children }) {
+import Loop from '@components/constructor/Loop/Loop'
+
+export default function Cell ({ className, cell }) {
   return (
-    <div className={classNames(className, scss._)}>
-      {children}
+    <div className={classNames(className, scss._)}
+         style={{ background: cell.background }}>
+      {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
     </div>
   )
 }

@@ -1,11 +1,11 @@
-export const createCanvasFromSelect = canvas => {
-  const group = []
-
-  canvas.forEach(element => group.push(
-    element.filter(({ selected }) => selected == true)
+export const filterCanvas = canvas => {
+  const temp = []
+  canvas.forEach(element => temp.push(
+    element.filter(({ selected }) => selected)
   ))
 
-  return group
+  const cnvs = temp.filter(el => Boolean(el.length))
+  return cnvs
 }
 
 export const reset = canvas => {

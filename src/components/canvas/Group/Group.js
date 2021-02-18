@@ -5,7 +5,6 @@ import classNames from 'classnames'
 
 import Row from '@components/canvas/Row/Row'
 import Cell from '@components/canvas/Cell/Cell'
-import Loop from '@components/constructor/Loop/Loop'
 
 import * as store from '@src/functions'
 
@@ -25,9 +24,7 @@ function Group ({ className, group, dispatch }) {
         {group.canvas.map((element, y) => (
           <Row key={y}>
             {element.map((cell, x) => (
-              <Cell cell={cell} key={x}>
-                {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
-              </Cell>
+              <Cell cell={cell} key={x} />
             ))}
           </Row>
         ))}

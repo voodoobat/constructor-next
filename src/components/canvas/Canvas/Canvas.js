@@ -21,6 +21,7 @@ function Canvas ({
 }) {
 
   const [cnvs, setCnvs] = useState(canvas)
+  const [group, setGroup] = useState(null)
   const [active, setActive] = useState(null)
 
   const commitWithNewProps = (prop, compare, props) => {
@@ -34,9 +35,14 @@ function Canvas ({
     dispatch(store.commitCanvas(temp))
   }
 
-
   const onMouseDown = cell => {
     setActive(cell)
+  }
+
+  const onMouseEnter = cell => {
+    if (active) {
+      setCnvs(fn.square(cnvs, cell, active))
+    }
   }
 
   const onMouseUp = cell => {
@@ -45,40 +51,32 @@ function Canvas ({
     const isSingle = active?.uid == cell.uid
 
     if (activeLoop) {
-      const props = {
-        loop: activeLoop
-      }
+      const props = { loop: activeLoop }
 
       if (isSingle) return commitWithNewProps('uid', cell.uid, props)
       return commitWithNewProps('selected', true, props)
     }
 
-    if (activeTool) {
 
-      if (activeTool == 'Eraze') {
-        const props = {
-          loop: null,
-          background: 'transparent'
-        }
+    if (!activeTool) return
 
-        if (isSingle) return commitWithNewProps('uid', cell.uid, props)
-        return commitWithNewProps('selected', true, props)
-      }
+    if (activeTool == 'Eraze') {
+      const props = { loop: null, background: 'transparent' }
 
-      if (activeTool == 'Color') {
-        const props = {
-          background: activeColor
-        }
-
-        if (isSingle) return commitWithNewProps('uid', cell.uid, props)
-        return commitWithNewProps('selected', true, props)
-      }
+      if (isSingle) return commitWithNewProps('uid', cell.uid, props)
+      return commitWithNewProps('selected', true, props)
     }
-  }
 
-  const onMouseEnter = cell => {
-    if (active) {
-      setCnvs(fn.square(cnvs, cell, active))
+    if (activeTool == 'Color') {
+      const props = { background: activeColor }
+
+      if (isSingle) commitWithNewProps('uid', cell.uid, props)
+      return commitWithNewProps('selected', true, props)
+    }
+
+    if (activeTool == 'Group') {
+      dispatch(store.commitNewGroup(fn.filterCanvas(cnvs)))
+      commitWithNewProps('selected', true, { selected: false })
     }
   }
 
