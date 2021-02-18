@@ -7,7 +7,7 @@ import Loop from '@components/constructor/Loop/Loop'
 export default function Cell ({ className, cell }) {
   return (
     <div className={classNames(className, scss._)}
-         style={{ background: cell.background }}>
+         style={{ background: cell?.background }}>
       {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
     </div>
   )

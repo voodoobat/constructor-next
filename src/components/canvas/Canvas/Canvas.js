@@ -2,10 +2,12 @@ import scss from './Canvas.module.scss'
 
 import { useState } from 'react'
 import { connect } from 'react-redux'
+import { Modal } from 'react-bootstrap'
 import classNames from 'classnames'
 
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
+import CloseButton from '@components/common/CloseButton/CloseButton'
 
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
@@ -21,7 +23,7 @@ function Canvas ({
 }) {
 
   const [cnvs, setCnvs] = useState(canvas)
-  const [group, setGroup] = useState(null)
+  const [confirm, setConfirm] = useState(false)
   const [active, setActive] = useState(null)
 
   const commitWithNewProps = (prop, compare, props) => {
@@ -75,14 +77,23 @@ function Canvas ({
     }
 
     if (activeTool == 'Group') {
-      dispatch(store.commitNewGroup(fn.filterCanvas(cnvs)))
+      // dispatch(store.commitNewGroup(fn.filterCanvas(cnvs)))
       commitWithNewProps('selected', true, { selected: false })
+      setConfirm(true)
     }
   }
 
   return <>
+
+    <Modal id="faq-modal"
+           className={scss.modal}
+           show={confirm}
+           onHide={() => setConfirm(false)}>
+      <CloseButton onClick={() => setConfirm(false)} />
+    </Modal>
+
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
-     {canvas.map((row, y) => (
+      {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
