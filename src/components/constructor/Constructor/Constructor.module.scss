@@ -40,4 +40,5 @@
 
 .content {
   flex-grow: 10;
+  max-width: calc(100% - 70px);
 }

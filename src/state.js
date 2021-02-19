@@ -5,7 +5,7 @@ export const initialState = {
   activeTool: null,
   activeColor: null,
   isDrawning: false, // ? how i use this
-  canvas: createCanvas(40, 20, null),
+  canvas: createCanvas(41, 151, null),
   groups: [],
   history: [],
 

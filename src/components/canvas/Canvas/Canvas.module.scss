@@ -2,7 +2,8 @@
 @import '@scss/mixins';
 
 ._ {
-  margin: 1em;
+  display: inline-block;
+  margin: 1em 1em 2em 1em;
   border-collapse: collapse;  
   transform-origin: 0 0;
   transition: transform .1s ease;
@@ -16,4 +17,3 @@
     transform: scale($scale);
   }
 }
-

@@ -87,7 +87,7 @@ function Canvas ({
       const temp = fn.filterCanvas(cnvs)
       commitWithNewProps('selected', true, { selected: false })
       setGroup({ canvas: temp })
-      setGroup({ canvas: temp })
+      setGroup({ canvas: temp }) // TODO: remove this hack
       setConfirm(true)
     }
   }
@@ -103,26 +103,8 @@ function Canvas ({
              dismiss={onGroupDismiss}>
       {group && <Group group={group} controls={false} />}
     </Confirm>
-
-    {/* <Modal id="group-confirm-modal"
-           className={scss.modal}
-           show={confirm}
-           onHide={() => setConfirm(false)}>
-      <div className="app-modal-content">
-        <Group group={group} controls={false} />
-        <CloseButton onClick={() => setConfirm(false)} />
-        <div className={scss.modal_buttons}>
-          <Button color="red">
-            Отмена
-          </Button>
-          <Button color="blue">
-            Добавить группу
-          </Button>
-        </div>
-      </div>
-    </Modal> */}
-
-    <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
+    <div className={classNames(className, scss._, scss[`scale_${scale}`])}
+         onMouseLeave={onMouseUp}>
       {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (
