@@ -80,3 +80,27 @@ export const squareGroup = (canvas, cell, group) => {
   cnvs = square(cnvs, corner, cell)
   return cnvs
 }
+
+export const placeGroup = (canvas, group) => {
+  const cnvs = [...canvas]
+
+  let curRow = 0
+  cnvs.forEach(row => {
+    let curCell = 0
+    if (row.find(el => el.selected)) {
+      row.forEach(e => {
+        if (e.selected) {
+          const c = group.canvas[curRow][curCell]
+          e.loop = c?.loop
+          e.background = c?.background 
+          e.selected = false
+          curCell++
+        }
+      })
+
+      curRow++
+    }
+  })
+
+  return cnvs
+}

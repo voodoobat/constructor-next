@@ -25,12 +25,12 @@ function Constructor ({ className, inactive, children }) {
       </div>
       <TopPanel className={scss.top_panel}
                 inactive={inactive} />
+      <GroupContainer />
       <div className={scss.main}>
         <div className={scss.tools}>
           <ToolBar inactive={inactive} />
         </div>
         <div className={scss.content}>
-          <GroupContainer />
           {children}
         </div>
       </div>

@@ -2,7 +2,6 @@ import scss from './Canvas.module.scss'
 
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { Modal } from 'react-bootstrap'
 import classNames from 'classnames'
 
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
@@ -40,28 +39,18 @@ function Canvas ({
     dispatch(store.commitCanvas(temp))
   }
 
+  const canvasMouseLeave = () => {
+    setCnvs(fn.reset(cnvs))
+    setActive(null)
+  }
+
   const onMouseDown = cell => {
     if (!activeGroup) setActive(cell)
 
     if (activeGroup) {
-      const temp = [...cnvs]
-
-      let curRow = 0
-      temp.forEach(row => {
-        let curCell = 0
-        if (row.find(el => el.selected)) {
-          row.forEach(e => {
-            if (e.selected) {
-              e.loop = activeGroup.canvas[curRow][curCell]?.loop
-              curCell++
-            }
-          })
-
-          curRow++
-        }
-      })
-
+      const temp = fn.placeGroup(cnvs, activeGroup)
       setCnvs(temp)
+      dispatch(store.commitCanvas(temp))
     }
   }
 
@@ -134,7 +123,8 @@ function Canvas ({
              accept={onGroupConfirm}>
       {group && <Group group={group} controls={false} />}
     </Confirm>
-    <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
+    <div className={classNames(className, scss._, scss[`scale_${scale}`])}
+         onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (
