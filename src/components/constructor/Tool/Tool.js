@@ -31,7 +31,7 @@ function Tool ({ className, type, active, dispatch, children }) {
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
-         onClick={() => dispatch(store.changeActiveTool(type))}>
+         onClick={() => dispatch(store.setActiveTool(type))}>
       <Icon className={scss.icon} />
       {children}
       {type == 'Color' && <OptionIcon className={scss.option_icon} />}

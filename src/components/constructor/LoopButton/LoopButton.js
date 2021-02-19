@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
 
-import { changeActiveLoop } from '@src/functions'
+import * as store from '@src/functions'
 
 import OptionsIcon from './svg/options_icon.svg'
 
@@ -20,7 +20,7 @@ const Hint = ({ className, hint }) => (
 function LoopButton ({ className, data, activeLoop, dispatch }) {
   const { id } = data
   const isActive = activeLoop == id
-  const clickHandle = () => dispatch(changeActiveLoop(id))
+  const clickHandle = () => dispatch(store.setActiveLoop(id))
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}

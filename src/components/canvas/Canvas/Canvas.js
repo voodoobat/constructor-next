@@ -49,6 +49,7 @@ function Canvas ({
 
     if (activeGroup) {
       const temp = fn.placeGroup(cnvs, activeGroup)
+
       setCnvs(temp)
       dispatch(store.commitCanvas(temp))
     }

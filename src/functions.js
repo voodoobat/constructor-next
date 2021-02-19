@@ -13,15 +13,16 @@ export function setActiveGroup (group) {
   return (dispatch, getState) => {
     const { groups } = getState()
 
+    dispatch(actions.setActiveLoop(null))
+    dispatch(actions.setActiveTool(null))
+
     dispatch(actions.setActiveGroup(group))
+
     dispatch(actions.changeGroups(groups.map(g => {
       return g.uid == group.uid
         ? { ...g, active: true } 
         : { ...g, active: false }
     })))
-
-    actions.setActiveLoop(null)
-    actions.setActiveTool(null)
   }
 }
 
@@ -43,11 +44,11 @@ export function removeGroup ({ uid }) {
   }
 }
 
-export function changeActiveTool (activeTool) {
-  return dispatch => {
+export function setActiveTool (activeTool) {
+  return (dispatch, getState) => {
+    const { groups } = getState()
 
     dispatch(actions.setActiveTool(activeTool))
-
     if (activeTool == 'Color') {
       dispatch(actions.setActiveColor(sample([
         '#90caf9',
@@ -60,14 +61,21 @@ export function changeActiveTool (activeTool) {
 
     dispatch(actions.setActiveLoop(null))
     dispatch(actions.setActiveGroup(null))
+    dispatch(actions.changeGroups(groups.map(g => ({
+      ...g, active: false
+    }))))
   }
 }
 
-export function changeActiveLoop (activeLoop) {
-  return dispatch => {
+export function setActiveLoop (activeLoop) {
+  return (dispatch, getState) => {
+    const { groups } = getState()
 
     dispatch(actions.setActiveLoop(activeLoop))
     dispatch(actions.setActiveTool(null))
     dispatch(actions.setActiveGroup(null))
+    dispatch(actions.changeGroups(groups.map(g => ({
+      ...g, active: false
+    }))))
   }
 }
