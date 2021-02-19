@@ -8,24 +8,24 @@ export const saveHistoryStep = canvas => ({
   payload: { canvas }
 })
 
-export const changeActiveLoop = activeLoop => ({
+export const setActiveLoop = activeLoop => ({
   type: 'CHANGE_ACTIVE_LOOP',
   payload: { activeLoop }
 })
 
-export const changeActiveTool = activeTool => ({
+export const setActiveTool = activeTool => ({
   type: 'CHANGE_ACTIVE_TOOL',
   payload: { activeTool }
-})
-
-export const setIsDrawning = isDrawning => ({
-  type: 'SET_IS_DRAWNING',
-  payload: { isDrawning }
 })
 
 export const changeGroups = groups => ({
   type: 'CHANGE_GROUPS',
   payload: { groups }
+})
+
+export const setActiveGroup = activeGroup => ({
+  type: 'SET_ACTIVE_GROUP',
+  payload: { activeGroup }
 })
 
 export const setActiveColor = activeColor => ({

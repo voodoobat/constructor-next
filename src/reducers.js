@@ -32,6 +32,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...state,
         ...payload
       }
+    
+    case 'SET_ACTIVE_GROUP':
+      return {
+        ...state,
+        ...payload
+      }
 
     case 'CHANGE_ACTIVE_TOOL':
       return {

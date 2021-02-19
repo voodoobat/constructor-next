@@ -9,12 +9,29 @@ export function commitCanvas (canvas) {
   }
 }
 
+export function setActiveGroup (group) {
+  return (dispatch, getState) => {
+    const { groups } = getState()
+
+    dispatch(actions.setActiveGroup(group))
+    dispatch(actions.changeGroups(groups.map(g => {
+      return g.uid == group.uid
+        ? { ...g, active: true } 
+        : { ...g, active: false }
+    })))
+
+    actions.setActiveLoop(null)
+    actions.setActiveTool(null)
+  }
+}
+
 export function commitNewGroup (canvas) {
   return (dispatch, getState) => {
     const { groups } = getState()
     dispatch(actions.changeGroups([ ...groups, {
       uid: uid(),
-      canvas
+      active: false,
+      canvas,
     }]))
   }
 }
@@ -27,10 +44,9 @@ export function removeGroup ({ uid }) {
 }
 
 export function changeActiveTool (activeTool) {
-  return (dispatch, getState) => {
-    const { activeLoop } = getState()
+  return dispatch => {
 
-    dispatch(actions.changeActiveTool(activeTool))
+    dispatch(actions.setActiveTool(activeTool))
 
     if (activeTool == 'Color') {
       dispatch(actions.setActiveColor(sample([
@@ -41,21 +57,17 @@ export function changeActiveTool (activeTool) {
         '#ba68c8'
       ])))
     }
-    if (activeLoop) dispatch(actions.changeActiveLoop(null))
+
+    dispatch(actions.setActiveLoop(null))
+    dispatch(actions.setActiveGroup(null))
   }
 }
 
 export function changeActiveLoop (activeLoop) {
-  return (dispatch, getState) => {
-    const { activeTool } = getState()
-
-    dispatch(actions.changeActiveLoop(activeLoop))
-    if (activeTool) dispatch(actions.changeActiveTool(null))
-  }
-}
-
-export function setDrawning (isDrawning) {
   return dispatch => {
-    dispatch(actions.setIsDrawning(isDrawning))
+
+    dispatch(actions.setActiveLoop(activeLoop))
+    dispatch(actions.setActiveTool(null))
+    dispatch(actions.setActiveGroup(null))
   }
 }

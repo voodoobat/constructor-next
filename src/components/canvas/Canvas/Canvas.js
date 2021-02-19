@@ -8,8 +8,6 @@ import classNames from 'classnames'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 import Confirm from '@components/canvas/Confirm/Confirm'
-import CloseButton from '@components/common/CloseButton/CloseButton'
-import Button from '@components/common/Button/Button'
 import Group from '@components/canvas/Group/Group'
 
 import * as store from '@src/functions'
@@ -20,6 +18,7 @@ function Canvas ({
   canvas,
   dispatch,
   scale,
+  activeGroup,
   activeColor,
   activeLoop,
   activeTool
@@ -42,16 +41,42 @@ function Canvas ({
   }
 
   const onMouseDown = cell => {
-    setActive(cell)
+    if (!activeGroup) setActive(cell)
+
+    if (activeGroup) {
+      const temp = [...cnvs]
+
+      let curRow = 0
+      temp.forEach(row => {
+        let curCell = 0
+        if (row.find(el => el.selected)) {
+          row.forEach(e => {
+            if (e.selected) {
+              e.loop = activeGroup.canvas[curRow][curCell]?.loop
+              curCell++
+            }
+          })
+
+          curRow++
+        }
+      })
+
+      setCnvs(temp)
+    }
   }
 
   const onMouseEnter = cell => {
-    if (active) {
+    if (active && !activeGroup) {
       setCnvs(fn.square(cnvs, cell, active))
+    }
+
+    if (activeGroup) {
+      setCnvs(fn.squareGroup(cnvs, cell, activeGroup.canvas))
     }
   }
 
   const onMouseUp = cell => {
+    if (activeGroup) return
     setActive(null)
 
     const isSingle = active?.uid == cell.uid
@@ -97,14 +122,19 @@ function Canvas ({
     setConfirm(false)
   }
 
+  const onGroupConfirm = () => {
+    dispatch(store.commitNewGroup(group.canvas))
+    onGroupDismiss()
+  }
+
   return <>
     <Confirm show={confirm}
              caption="Сохранить группу?"
-             dismiss={onGroupDismiss}>
+             dismiss={onGroupDismiss}
+             accept={onGroupConfirm}>
       {group && <Group group={group} controls={false} />}
     </Confirm>
-    <div className={classNames(className, scss._, scss[`scale_${scale}`])}
-         onMouseLeave={onMouseUp}>
+    <div className={classNames(className, scss._, scss[`scale_${scale}`])}>
       {canvas.map((row, y) => (
         <Row key={y}>
           {row.map((cell, x) => (

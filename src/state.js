@@ -4,8 +4,9 @@ export const initialState = {
   activeLoop: null,
   activeTool: null,
   activeColor: null,
+  activeGroup: null,
   isDrawning: false, // ? how i use this
-  canvas: createCanvas(48, 48, null),
+  canvas: createCanvas(48, 22, null),
   groups: [],
   history: [],
 

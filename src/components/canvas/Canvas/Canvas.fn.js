@@ -68,3 +68,15 @@ export const square = (canvas, cell, start) => {
 
   return cnvs
 }
+
+export const squareGroup = (canvas, cell, group) => {
+  const corner = {
+    x: cell.x + group[0].length - 1,
+    y: cell.y + group.length - 1 
+  }
+
+  let cnvs = [...canvas]
+
+  cnvs = square(cnvs, corner, cell)
+  return cnvs
+}

@@ -9,9 +9,12 @@ import Group from '@components/canvas/Group/Group'
 function GroupContainer ({ className, groups }) {
   return (
     <Masonry className={classNames(className, scss._)}>
-      {groups.map((group, key) => <Group group={group} key={key} />)}
+      {groups.map((group, key) =>
+        <Group group={group}
+               key={key} />
+      )}
     </Masonry>
   )
 }
 
-export default connect((s => ({ ...s })))(GroupContainer)
+export default connect((state => ({ ...state })))(GroupContainer)

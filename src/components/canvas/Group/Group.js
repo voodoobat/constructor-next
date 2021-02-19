@@ -12,9 +12,11 @@ import Delete from './svg/delete.svg'
 
 function Group ({ className, group, controls = true, dispatch }) {
   const remove = () => dispatch(store.removeGroup(group))
+  const setActive = () => dispatch(store.setActiveGroup(group))
 
   return (
-    <div className={classNames(className, scss._)}>
+    <div className={classNames(className, scss._, group.active ? scss.is_active : '')}
+         onClick={setActive}>
       {controls &&
         <button className={scss.delete}
                 onClick={remove}
@@ -35,4 +37,4 @@ function Group ({ className, group, controls = true, dispatch }) {
   )
 }
 
-export default connect(s => ({ ...s }))(Group)
+export default connect(store => ({ ...store }))(Group)
