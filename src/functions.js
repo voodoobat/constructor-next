@@ -1,11 +1,11 @@
 import { uid } from 'uid'
 import { sample } from 'lodash'
-import * as actions from '@src/actions'
+import * as act from '@src/actions'
 
 export function commitCanvas (canvas) {
   return dispatch => {
-    // dispatch(actions.saveHistoryStep(canvas))
-    dispatch(actions.changeCanvas(canvas))
+    // dispatch(act.saveHistoryStep(canvas))
+    dispatch(act.changeCanvas(canvas))
   }
 }
 
@@ -13,12 +13,10 @@ export function setActiveGroup (group) {
   return (dispatch, getState) => {
     const { groups } = getState()
 
-    dispatch(actions.setActiveLoop(null))
-    dispatch(actions.setActiveTool(null))
-
-    dispatch(actions.setActiveGroup(group))
-
-    dispatch(actions.changeGroups(groups.map(g => {
+    dispatch(act.setActiveLoop(null))
+    dispatch(act.setActiveTool(null))
+    dispatch(act.setActiveGroup(group))
+    dispatch(act.changeGroups(groups.map(g => {
       return g.uid == group.uid
         ? { ...g, active: true } 
         : { ...g, active: false }
@@ -29,7 +27,7 @@ export function setActiveGroup (group) {
 export function commitNewGroup (canvas) {
   return (dispatch, getState) => {
     const { groups } = getState()
-    dispatch(actions.changeGroups([ ...groups, {
+    dispatch(act.changeGroups([ ...groups, {
       uid: uid(),
       active: false,
       canvas,
@@ -39,8 +37,14 @@ export function commitNewGroup (canvas) {
 
 export function removeGroup ({ uid }) {
   return (dispatch, getState) => {
-    const { groups } = getState()
-    dispatch(actions.changeGroups(groups.filter(group => group.uid != uid)))
+    const { activeGroup, groups } = getState()
+
+    dispatch(act.changeGroups(groups.filter(g => g.uid != uid)))
+    if (activeGroup.uid == uid) {
+      dispatch(act.setActiveGroup(null))
+      dispatch(act.setActiveGroup(null))
+      dispatch(act.setActiveGroup(null))
+    }
   }
 }
 
@@ -48,9 +52,9 @@ export function setActiveTool (activeTool) {
   return (dispatch, getState) => {
     const { groups } = getState()
 
-    dispatch(actions.setActiveTool(activeTool))
+    dispatch(act.setActiveTool(activeTool))
     if (activeTool == 'Color') {
-      dispatch(actions.setActiveColor(sample([
+      dispatch(act.setActiveColor(sample([
         '#90caf9',
         '#ff80ab',
         '#81c784',
@@ -59,9 +63,9 @@ export function setActiveTool (activeTool) {
       ])))
     }
 
-    dispatch(actions.setActiveLoop(null))
-    dispatch(actions.setActiveGroup(null))
-    dispatch(actions.changeGroups(groups.map(g => ({
+    dispatch(act.setActiveLoop(null))
+    dispatch(act.setActiveGroup(null))
+    dispatch(act.changeGroups(groups.map(g => ({
       ...g, active: false
     }))))
   }
@@ -71,10 +75,10 @@ export function setActiveLoop (activeLoop) {
   return (dispatch, getState) => {
     const { groups } = getState()
 
-    dispatch(actions.setActiveLoop(activeLoop))
-    dispatch(actions.setActiveTool(null))
-    dispatch(actions.setActiveGroup(null))
-    dispatch(actions.changeGroups(groups.map(g => ({
+    dispatch(act.setActiveLoop(activeLoop))
+    dispatch(act.setActiveTool(null))
+    dispatch(act.setActiveGroup(null))
+    dispatch(act.changeGroups(groups.map(g => ({
       ...g, active: false
     }))))
   }

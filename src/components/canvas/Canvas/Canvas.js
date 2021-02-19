@@ -102,7 +102,6 @@ function Canvas ({
       const temp = fn.filterCanvas(cnvs)
       commitWithNewProps('selected', true, { selected: false })
       setGroup({ canvas: temp })
-      setGroup({ canvas: temp }) // TODO: remove this hack
       setConfirm(true)
     }
   }
