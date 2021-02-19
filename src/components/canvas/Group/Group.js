@@ -10,17 +10,19 @@ import * as store from '@src/functions'
 
 import Delete from './svg/delete.svg'
 
-function Group ({ className, group, dispatch }) {
+function Group ({ className, group, controls = true, dispatch }) {
   const remove = () => dispatch(store.removeGroup(group))
 
   return (
     <div className={classNames(className, scss._)}>
-      <button className={scss.delete}
-              onClick={remove}
-              type="button">
-        <Delete />
-      </button>
-      <div className={scss.canvas}>
+      {controls &&
+        <button className={scss.delete}
+                onClick={remove}
+                type="button">
+          <Delete />
+        </button>
+      }
+      <div className={classNames(controls ? scss.canvas : '')}>
         {group.canvas.map((element, y) => (
           <Row key={y}>
             {element.map((cell, x) => (

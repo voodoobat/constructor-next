@@ -1,0 +1,36 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  @include position(absolute, 0 0 0 0);
+  z-index: 50;
+}
+
+.caption {
+  font-weight: 500;
+  font-size: $text-sm;
+  padding-bottom: 0.5em;
+}
+
+.content {
+  @include position(absolute, 50% 50%);
+  padding: 1rem;
+  transform: translate(50%, -50%);  
+  background: $body-bg;
+  // border: 1px solid $light-gray;
+  box-shadow: 0 0 5px rgba(black, 0.35); 
+  border-radius: $radius;
+  z-index: 250;
+}
+
+.controls {
+  padding-top: 0.5em;
+}
+
+.button {
+  font-size: $text-sm;
+
+  + .button {
+    margin-left: 0.25em;
+  }
+}
