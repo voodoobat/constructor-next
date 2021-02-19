@@ -24,6 +24,7 @@ function Canvas ({
 
   const [cnvs, setCnvs] = useState(canvas)
   const [confirm, setConfirm] = useState(false)
+  const [group, setGroup] = useState(null)
   const [active, setActive] = useState(null)
 
   const commitWithNewProps = (prop, compare, props) => {
@@ -55,8 +56,9 @@ function Canvas ({
     if (activeLoop) {
       const props = { loop: activeLoop }
 
-      if (isSingle) return commitWithNewProps('uid', cell.uid, props)
-      return commitWithNewProps('selected', true, props)
+      return isSingle
+        ? commitWithNewProps('uid', cell.uid, props)
+        : commitWithNewProps('selected', true, props)
     }
 
 
@@ -65,21 +67,23 @@ function Canvas ({
     if (activeTool == 'Eraze') {
       const props = { loop: null, background: 'transparent' }
 
-      if (isSingle) return commitWithNewProps('uid', cell.uid, props)
-      return commitWithNewProps('selected', true, props)
+      return isSingle
+        ? commitWithNewProps('uid', cell.uid, props)
+        : commitWithNewProps('selected', true, props)
     }
 
     if (activeTool == 'Color') {
       const props = { background: activeColor }
 
-      if (isSingle) commitWithNewProps('uid', cell.uid, props)
-      return commitWithNewProps('selected', true, props)
+      return isSingle
+        ? commitWithNewProps('uid', cell.uid, props)
+        : commitWithNewProps('selected', true, props)
     }
 
     if (activeTool == 'Group') {
-      // dispatch(store.commitNewGroup(fn.filterCanvas(cnvs)))
       commitWithNewProps('selected', true, { selected: false })
       setConfirm(true)
+      setGroup()
     }
   }
 
