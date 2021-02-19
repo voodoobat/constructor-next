@@ -69,31 +69,27 @@ export const square = (canvas, cell, start) => {
   return cnvs
 }
 
-export const squareGroup = (canvas, cell, group) => {
-  const corner = {
-    x: cell.x + group[0].length - 1,
-    y: cell.y + group.length - 1 
-  }
-
-  let cnvs = [...canvas]
-
-  cnvs = square(cnvs, corner, cell)
-  return cnvs
-}
-
-export const placeGroup = (canvas, group) => {
+export const placeGroup = (canvas, group, preview = false) => {
   const cnvs = [...canvas]
 
   let curRow = 0
   cnvs.forEach(row => {
     let curCell = 0
+
     if (row.find(el => el.selected)) {
       row.forEach(e => {
         if (e.selected) {
           const c = group.canvas[curRow][curCell]
-          e.loop = c?.loop
+
           e.background = c?.background 
-          e.selected = false
+
+          if (preview) {
+            e.preview = c?.loop
+          } else {
+            e.loop = c?.loop
+            e.selected = false 
+          }
+
           curCell++
         }
       })
@@ -103,4 +99,19 @@ export const placeGroup = (canvas, group) => {
   })
 
   return cnvs
+}
+
+export const squareGroup = (canvas, cell, group) => {
+  const corner = {
+    x: cell.x + group.canvas[0].length - 1,
+    y: cell.y + group.canvas.length - 1 
+  }
+
+  let cnvs = [...canvas]
+  cnvs = square(cnvs, corner, cell)
+
+  let temp = mapCanvas(cnvs, cl => cl.preview = false) 
+  temp = placeGroup(cnvs, group, true)
+
+  return temp
 }

@@ -61,7 +61,7 @@ function Canvas ({
     }
 
     if (activeGroup) {
-      setCnvs(fn.squareGroup(cnvs, cell, activeGroup.canvas))
+      setCnvs(fn.squareGroup(cnvs, cell, activeGroup))
     }
   }
 
@@ -101,8 +101,11 @@ function Canvas ({
     if (activeTool == 'Group') {
       const temp = fn.filterCanvas(cnvs)
       commitWithNewProps('selected', true, { selected: false })
-      setGroup({ canvas: temp })
-      setConfirm(true)
+
+      if (temp.length) {
+        setGroup({ canvas: temp })
+        setConfirm(true)
+      }
     }
   }
 

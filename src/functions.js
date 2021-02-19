@@ -37,14 +37,10 @@ export function commitNewGroup (canvas) {
 
 export function removeGroup ({ uid }) {
   return (dispatch, getState) => {
-    const { activeGroup, groups } = getState()
+    const { groups } = getState()
 
     dispatch(act.changeGroups(groups.filter(g => g.uid != uid)))
-    if (activeGroup.uid == uid) {
-      dispatch(act.setActiveGroup(null))
-      dispatch(act.setActiveGroup(null))
-      dispatch(act.setActiveGroup(null))
-    }
+    dispatch(act.setActiveGroup(null))
   }
 }
 
