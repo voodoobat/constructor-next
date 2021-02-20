@@ -3,6 +3,7 @@ import scss from './CanvasCell.module.scss'
 import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
+import Confirm from '@components/canvas/Confirm/Confirm'
 
 export default function CanvasCell ({
   className,
@@ -10,7 +11,9 @@ export default function CanvasCell ({
   onClick,
   onMouseDown,
   onMouseEnter,
-  onMouseUp
+  onMouseUp,
+  acceptGroup,
+  rejectGroup
 }) {
 
   const classList = classNames(
@@ -28,6 +31,11 @@ export default function CanvasCell ({
          style={{background: cell.preview.background || cell.background}}>
       {cell.preview.loop && <Loop icon={`${cell.preview.loop}.svg`} />}
       {!cell.preview.loop && cell.loop && <Loop icon={`${cell.loop}.svg`} />}
+      {cell.confirm &&
+        <Confirm cell={cell}
+                 yes={acceptGroup}
+                 no={rejectGroup} />
+      }
     </div>
   )
 }

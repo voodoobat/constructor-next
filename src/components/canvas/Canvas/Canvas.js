@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
+import Overlay from '@components/common/Overlay/Overlay'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 // import Confirm from '@components/canvas/Confirm/Confirm'
@@ -42,7 +43,10 @@ function Canvas ({
   }
 
   const canvasMouseLeave = () => {
-    setCnvs(fn.reset(cnvs))
+    if (!confirm) {
+      setCnvs(fn.reset(cnvs))
+    }
+
     setActive(null)
   }
 
@@ -102,27 +106,32 @@ function Canvas ({
 
     if (activeTool == 'Group') {
       const temp = fn.getSubMatrix(cnvs, 'selected', true)
-      const withConfirm = fn.lastSelWithProp(cnvs, temp, 'loop', 10)
+      const withConfirm = fn.lastSelWithProp(cnvs, temp, 'confirm', true)
       setCnvs(withConfirm)
 
-      // commitWithNewProps('selected', true, { selected: false })
+      if (temp.length) {
+        setGroup({ canvas: temp })
+        setConfirm(true)
+      }
 
-      // if (temp.length) {
-      //   setGroup({ canvas: temp })
-      //   setConfirm(true)
-      // }
     }
   }
 
-  // const onGroupDismiss = () => {
-  //   setGroup(null)
-  //   setConfirm(false)
-  // }
+  const rejectGroup = () => {
+    setGroup(null)
+    setConfirm(false)
 
-  // const onGroupConfirm = () => {
-  //   dispatch(store.commitNewGroup(group.canvas))
-  //   onGroupDismiss()
-  // }
+    commitWithNewProps('selected', true, {
+      selected: false,
+      confirm: false
+    })
+  }
+
+  const acceptGroup = () => {
+    dispatch(store.commitNewGroup(group.canvas))
+
+    rejectGroup()
+  }
 
   return <>
     {/* <Confirm show={confirm}
@@ -140,10 +149,13 @@ function Canvas ({
                         onMouseEnter={() => onMouseEnter(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}
+                        acceptGroup={acceptGroup}
+                        rejectGroup={rejectGroup}
                         key={x} />
           ))}
         </Row>
       ))}
+      {confirm && <Overlay />}
     </div>
   </>
 }
