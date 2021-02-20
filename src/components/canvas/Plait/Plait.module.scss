@@ -1,0 +1,10 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+
+}
+
+.is_active {
+  border-color: $medium-red;
+}

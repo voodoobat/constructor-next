@@ -23,7 +23,8 @@ function Group ({ className, group, controls = true, dispatch }) {
           <Delete />
         </button>
       }
-      <div className={classNames(controls ? scss.canvas : '')} onClick={setActive}>
+      <div className={classNames(controls ? scss.canvas : '')}
+           onClick={setActive}>
         {group.canvas.map((element, y) => (
           <Row key={y}>
             {element.map((cell, x) => (
