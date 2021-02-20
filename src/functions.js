@@ -13,9 +13,7 @@ export function setActiveGroup (group) {
   return (dispatch, getState) => {
     const { groups, plaits } = getState()
 
-    const setActive = (array, inactive = false) => array.map(g => {
-      if (inactive) return { ...g, active: false }
-
+    const setActive = array => array.map(g => {
       return g.uid == group.uid
         ? { ...g, active: true } 
         : { ...g, active: false }
@@ -26,11 +24,17 @@ export function setActiveGroup (group) {
     dispatch(act.setActiveGroup(group))
 
     if (group.isPlait) {
-      dispatch(act.setGroups(setActive(groups, true)))
+      dispatch(act.setGroups(groups.map(g => ({
+        ...g, active: false
+      }))))
+
       return dispatch(act.setPlaits(setActive(plaits)))
     }
 
-    dispatch(act.setPlaits(setActive(plaits, true)))
+    dispatch(act.setPlaits(plaits.map(p => ({
+      ...p, active: false
+    }))))
+
     return dispatch(act.setGroups(setActive(groups)))
   }
 }
@@ -57,7 +61,7 @@ export function removeGroup ({ uid }) {
 
 export function setActiveTool (activeTool) {
   return (dispatch, getState) => {
-    const { groups } = getState()
+    const { groups, plaits } = getState()
 
     dispatch(act.setActiveTool(activeTool))
     if (activeTool == 'Color') {
@@ -72,6 +76,10 @@ export function setActiveTool (activeTool) {
 
     dispatch(act.setActiveLoop(null))
     dispatch(act.setActiveGroup(null))
+
+    dispatch(act.setPlaits(plaits.map(p => ({
+      ...p, active: false
+    }))))
     dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))
@@ -80,11 +88,16 @@ export function setActiveTool (activeTool) {
 
 export function setActiveLoop (activeLoop) {
   return (dispatch, getState) => {
-    const { groups } = getState()
+    const { groups, plaits } = getState()
 
     dispatch(act.setActiveLoop(activeLoop))
     dispatch(act.setActiveTool(null))
     dispatch(act.setActiveGroup(null))
+
+    dispatch(act.setPlaits(plaits.map(p => ({
+      ...p, active: false
+    }))))
+
     dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))

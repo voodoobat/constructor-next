@@ -17,7 +17,9 @@ function Plait ({ className, plait, dispatch }) {
       {plait.canvas.map((element, y) => (
         <Row key={y}>
           {element.map((cell, x) => (
-            <Cell cell={cell} key={x} />
+            <Cell className={scss.cell}
+                  cell={cell}
+                  key={x} />
           ))}
         </Row>
       ))}

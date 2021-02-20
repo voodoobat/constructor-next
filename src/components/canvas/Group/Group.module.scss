@@ -13,6 +13,12 @@
   margin: 0 .5em .5em 0;
   border: 1px solid $dark-gray;
   border-radius: $radius;
+  transition: border-color .15s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $medium-blue;
+  }
 }
 
 .delete {
@@ -24,6 +30,7 @@
 
 .is_active {
   .canvas {
-    border-color: $medium-blue;
+    border-color: $medium-red !important;
+    cursor: default !important;
   }
 }
