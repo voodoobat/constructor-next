@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "next start -p $PORT",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "prod": "next build && next start",
     "heroku-postbuild": "next build"
   },
   "dependencies": {
