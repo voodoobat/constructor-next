@@ -16,11 +16,20 @@ export function setActiveGroup (group) {
     dispatch(act.setActiveLoop(null))
     dispatch(act.setActiveTool(null))
     dispatch(act.setActiveGroup(group))
-    dispatch(act.changeGroups(groups.map(g => {
+
+    let array = groups.map(g => {
       return g.uid == group.uid
         ? { ...g, active: true } 
         : { ...g, active: false }
-    })))
+    })
+
+    array = array.sort((x, y) => {
+      if (x.length > y.length) return -1
+      if (x.length < y.length) return 1
+      return 0
+    })
+
+    dispatch(act.changeGroups(array))
   }
 }
 
