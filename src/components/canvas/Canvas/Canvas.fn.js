@@ -125,3 +125,14 @@ export const squareGroup = (canvas, cell, group) => {
   temp = placeGroup(cnvs, group, true)
   return temp
 }
+
+export const lastSelWithProp = (canvas, sub, prop, value) => {
+  const cnvs = [...canvas]
+
+  const last = sub[sub.length - 1]
+  const { x, y } = last[last.length - 1]
+
+  cnvs[y][x][prop] = value
+  
+  return cnvs
+}

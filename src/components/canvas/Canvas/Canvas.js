@@ -6,8 +6,8 @@ import classNames from 'classnames'
 
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
-import Confirm from '@components/canvas/Confirm/Confirm'
-import Group from '@components/canvas/Group/Group'
+// import Confirm from '@components/canvas/Confirm/Confirm'
+// import Group from '@components/canvas/Group/Group'
 
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
@@ -102,33 +102,35 @@ function Canvas ({
 
     if (activeTool == 'Group') {
       const temp = fn.getSubMatrix(cnvs, 'selected', true)
-      console.log(temp)
-      commitWithNewProps('selected', true, { selected: false })
+      const withConfirm = fn.lastSelWithProp(cnvs, temp, 'loop', 10)
+      setCnvs(withConfirm)
 
-      if (temp.length) {
-        setGroup({ canvas: temp })
-        setConfirm(true)
-      }
+      // commitWithNewProps('selected', true, { selected: false })
+
+      // if (temp.length) {
+      //   setGroup({ canvas: temp })
+      //   setConfirm(true)
+      // }
     }
   }
 
-  const onGroupDismiss = () => {
-    setGroup(null)
-    setConfirm(false)
-  }
+  // const onGroupDismiss = () => {
+  //   setGroup(null)
+  //   setConfirm(false)
+  // }
 
-  const onGroupConfirm = () => {
-    dispatch(store.commitNewGroup(group.canvas))
-    onGroupDismiss()
-  }
+  // const onGroupConfirm = () => {
+  //   dispatch(store.commitNewGroup(group.canvas))
+  //   onGroupDismiss()
+  // }
 
   return <>
-    <Confirm show={confirm}
+    {/* <Confirm show={confirm}
              caption="Сохранить группу?"
              dismiss={onGroupDismiss}
              accept={onGroupConfirm}>
       {group && <Group group={group} controls={false} />}
-    </Confirm>
+    </Confirm> */}
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}
          onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, y) => (
