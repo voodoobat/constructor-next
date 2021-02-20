@@ -29,10 +29,12 @@ function Canvas ({
   const [active, setActive] = useState(null)
 
   const commitWithNewProps = (prop, compare, props) => {
-    const temp = fn.mapCanvas(cnvs, cell => {
+    const temp = fn.mapMatrix(cnvs, cell => {
+      const preview = { background: null, loop: null }
+
       return cell[prop] == compare
-        ? { ...cell, ...props, selected: false }
-        : cell
+        ? { ...cell, ...props, preview, selected: false }
+        : { ...cell, preview }
     })
 
     setCnvs(temp)
@@ -99,7 +101,8 @@ function Canvas ({
     }
 
     if (activeTool == 'Group') {
-      const temp = fn.filterCanvas(cnvs)
+      const temp = fn.getSubMatrix(cnvs, 'selected', true)
+      console.log(temp)
       commitWithNewProps('selected', true, { selected: false })
 
       if (temp.length) {

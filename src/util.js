@@ -12,7 +12,12 @@ export const createCanvas = (x, y, loop = null) => {
         y: jY,
         x: jX,
         loop,
-        selected: false
+        background: 'transparent',
+        selected: false,
+        preview: {
+          background: null,
+          loop: null
+        }
       })
     }
   }

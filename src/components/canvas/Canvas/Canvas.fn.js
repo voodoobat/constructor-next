@@ -1,7 +1,9 @@
-export const filterCanvas = canvas => {
+export const mapMatrix = (canvas, fn) => canvas.map(y => y.map(x => fn(x)))
+
+export const getSubMatrix = (canvas, prop, compare) => {
   const temp = []
-  canvas.forEach(element => temp.push(
-    element.filter(({ selected }) => selected)
+  canvas.forEach(y => temp.push(
+    y.filter(cell => cell[prop] == compare)
   ))
 
   const cnvs = temp.filter(el => Boolean(el.length))
@@ -9,13 +11,16 @@ export const filterCanvas = canvas => {
 }
 
 export const reset = canvas => {
-  const clone = [...canvas]
+  const cnvs = [...canvas]
 
-  clone.forEach(element => element.forEach(cell => cell.selected = false))
-  return clone
+  cnvs.forEach(y => y.forEach(x => {
+    x.selected = false
+    x.preview.background = null
+    x.preview.loop = null
+  }))
+
+  return cnvs
 } 
-
-export const mapCanvas = (canvas, fn) => canvas.map(y => y.map(x => fn(x)))
 
 export const select = (canvas, cell) => {
   return canvas.map(y => y.map(x => {
@@ -81,12 +86,14 @@ export const placeGroup = (canvas, group, preview = false) => {
         if (e.selected) {
           const c = group.canvas[curRow][curCell]
 
-          e.background = c?.background 
-
           if (preview) {
-            e.preview = c?.loop
-          } else {
+            e.preview.loop = c?.loop
+            e.preview.background = c?.background
+          }
+          
+          else {
             e.loop = c?.loop
+            e.background = c?.background 
             e.selected = false 
           }
 
@@ -110,8 +117,11 @@ export const squareGroup = (canvas, cell, group) => {
   let cnvs = [...canvas]
   cnvs = square(cnvs, corner, cell)
 
-  let temp = mapCanvas(cnvs, cl => cl.preview = false) 
-  temp = placeGroup(cnvs, group, true)
+  let temp = mapMatrix(cnvs, cl => {
+    cl.preview.loop = null
+    cl.preview.background = null
+  }) 
 
+  temp = placeGroup(cnvs, group, true)
   return temp
 }
