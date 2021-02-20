@@ -26,8 +26,8 @@ function GroupContainer ({ className, groups, plaits }) {
           <div className={scss.content}>
             {groups.map((group, key) =>
               <Group className={scss.group}
-                    group={group}
-                    key={key} />
+                     group={group}
+                     key={key} />
             )}
           </div>
         </Dropdown>

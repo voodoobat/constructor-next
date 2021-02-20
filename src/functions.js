@@ -11,27 +11,34 @@ export function commitCanvas (canvas) {
 
 export function setActiveGroup (group) {
   return (dispatch, getState) => {
-    const { groups } = getState()
+    const { groups, plaits } = getState()
 
-    dispatch(act.setActiveLoop(null))
-    dispatch(act.setActiveTool(null))
-    dispatch(act.setActiveGroup(group))
+    const setActive = (array, inactive = false) => array.map(g => {
+      if (inactive) return { ...g, active: false }
 
-    let array = groups.map(g => {
       return g.uid == group.uid
         ? { ...g, active: true } 
         : { ...g, active: false }
     })
 
-    dispatch(act.changeGroups(array))
-    // dispatch()
+    dispatch(act.setActiveLoop(null))
+    dispatch(act.setActiveTool(null))
+    dispatch(act.setActiveGroup(group))
+
+    if (group.isPlait) {
+      dispatch(act.setGroups(setActive(groups, true)))
+      return dispatch(act.setPlaits(setActive(plaits)))
+    }
+
+    dispatch(act.setPlaits(setActive(plaits, true)))
+    return dispatch(act.setGroups(setActive(groups)))
   }
 }
 
 export function commitNewGroup (canvas) {
   return (dispatch, getState) => {
     const { groups } = getState()
-    dispatch(act.changeGroups([ ...groups, {
+    dispatch(act.setGroups([ ...groups, {
       uid: uid(),
       active: false,
       canvas,
@@ -43,7 +50,7 @@ export function removeGroup ({ uid }) {
   return (dispatch, getState) => {
     const { groups } = getState()
 
-    dispatch(act.changeGroups(groups.filter(g => g.uid != uid)))
+    dispatch(act.setGroups(groups.filter(g => g.uid != uid)))
     dispatch(act.setActiveGroup(null))
   }
 }
@@ -65,7 +72,7 @@ export function setActiveTool (activeTool) {
 
     dispatch(act.setActiveLoop(null))
     dispatch(act.setActiveGroup(null))
-    dispatch(act.changeGroups(groups.map(g => ({
+    dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))
   }
@@ -78,7 +85,7 @@ export function setActiveLoop (activeLoop) {
     dispatch(act.setActiveLoop(activeLoop))
     dispatch(act.setActiveTool(null))
     dispatch(act.setActiveGroup(null))
-    dispatch(act.changeGroups(groups.map(g => ({
+    dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))
   }

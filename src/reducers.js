@@ -27,7 +27,13 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
-    case 'CHANGE_GROUPS':
+    case 'SET_GROUPS':
+      return {
+        ...state,
+        ...payload
+      }
+    
+    case 'SET_PLAITS':
       return {
         ...state,
         ...payload

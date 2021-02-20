@@ -18,9 +18,14 @@ export const setActiveTool = activeTool => ({
   payload: { activeTool }
 })
 
-export const changeGroups = groups => ({
-  type: 'CHANGE_GROUPS',
+export const setGroups = groups => ({
+  type: 'SET_GROUPS',
   payload: { groups }
+})
+
+export const setPlaits = plaits => ({
+  type: 'SET_PLAITS',
+  payload: { plaits }
 })
 
 export const setActiveGroup = activeGroup => ({
