@@ -25,7 +25,7 @@ export default function CanvasCell ({
          onMouseDown={onMouseDown}
          onMouseUp={onMouseUp}
          onMouseEnter={onMouseEnter}
-         style={{ background: cell.preview.backgroud || cell.background }}>
+         style={{background: cell.preview.background || cell.background}}>
       {cell.preview.loop && <Loop icon={`${cell.preview.loop}.svg`} />}
       {!cell.preview.loop && cell.loop && <Loop icon={`${cell.loop}.svg`} />}
     </div>
