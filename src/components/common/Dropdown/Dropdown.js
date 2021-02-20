@@ -22,9 +22,16 @@ export default function Dropdown ({
   const Icon = chevron[size]
   const [isActive, setActive] = useState(active)
 
+  const classes = classNames(
+    className,
+    scss._,
+    size ? scss[`size_${size}`] : '',
+    isActive ? scss.is_active : ''
+  )
+
   return (
-    <div className={classNames(className, scss._, isActive ? scss.is_active : null)}>
-      <button className={classNames(scss.caption, size ? scss[`caption_${size}`] : '')}
+    <div className={classes}>
+      <button className={scss.caption}
               onClick={() => setActive(!isActive)}>
         <span className={scss.caption_text}>
           {caption}

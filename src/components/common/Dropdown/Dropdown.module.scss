@@ -5,12 +5,16 @@
   padding: 1em 0;
 }
 
-.caption {
-  font-size: 1.7em;
+.size_sm {
+  padding: 0.5em 0;
+
+  .caption {
+    font-size: 1.15em;
+  }
 }
 
-.caption_sm {
-  font-size: 1.15em;
+.caption {
+  font-size: 1.7em;
 }
 
 .caption_text {
