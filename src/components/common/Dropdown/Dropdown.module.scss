@@ -1,9 +1,16 @@
-.dropdown {
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
   padding: 1em 0;
 }
 
 .caption {
   font-size: 1.7em;
+}
+
+.caption_sm {
+  font-size: 1.2em;
 }
 
 .caption_text {
@@ -12,20 +19,20 @@
 }
 
 .content {
-  display: flex;
+  display: none;
 }
 
 .chevron {
+  transform: none;
   transition: transform .15s ease-in;
-  transform: rotate(-180deg);
 }
 
-.is_collapsed {
+.is_active {
   .content {
-    display: none;
+    display: flex;
   }
 
   .chevron {
-    transform: none;
+    transform: rotate(-180deg);
   }
 }

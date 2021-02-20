@@ -1,14 +1,14 @@
 import scss from './Schemes.module.scss'
 
 import Container from '@components/layout/Container/Container'
-import SchemesDropdown from '@components/schemes/SchemesDropdown/SchemesDropdown'
+import Dropdown from '@components/common/Dropdown/Dropdown'
 import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/SchemeButton/SchemeButton'
 
 export default function Schemes () {
   return (
     <div className={scss.schemes}>
       <Container>
-        <SchemesDropdown caption="Схемы для вязания спицами">
+        <Dropdown caption="Схемы для вязания спицами">
           <SchemeButtonCreate href="/constructor/create"
                               className={scss.scheme} />
           <SchemeButton className={scss.scheme}
@@ -21,11 +21,11 @@ export default function Schemes () {
                         name="Моя первая схема в этом онлайн-конструкторе"
                         date="30.09.2020"
                         href="/constructor" />
-        </SchemesDropdown>
-        <SchemesDropdown caption="Схемы для вязания крючком">
+        </Dropdown>
+        <Dropdown caption="Схемы для вязания крючком">
           <SchemeButtonCreate href="/constructor"
                               className={scss.scheme} />
-        </SchemesDropdown>
+        </Dropdown>
       </Container>
     </div>
   )
