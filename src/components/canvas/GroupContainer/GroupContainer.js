@@ -20,16 +20,18 @@ function GroupContainer ({ className, groups, plaits }) {
           )}
         </div>
       </Dropdown>
-      <Dropdown caption="Мои группы элементов"
-                size="sm">
-        <div className={scss.content}>
-          {groups.map((group, key) =>
-            <Group className={scss.group}
-                   group={group}
-                   key={key} />
-          )}
-        </div>
-      </Dropdown>
+      {Boolean(groups.length) &&
+        <Dropdown caption="Мои группы элементов"
+                  size="sm">
+          <div className={scss.content}>
+            {groups.map((group, key) =>
+              <Group className={scss.group}
+                    group={group}
+                    key={key} />
+            )}
+          </div>
+        </Dropdown>
+      }
     </div>
   )
 }
