@@ -8,7 +8,7 @@ export default function Cell ({ className, cell }) {
   return (
     <div className={classNames(className, scss._)}
          style={{ background: cell?.background }}>
-      {cell.loop && <Loop icon={`${cell.loop}.svg`} />}
+      {cell.icon && <Loop icon={`${cell.icon}`} />}
     </div>
   )
 }
