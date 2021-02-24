@@ -1,5 +1,6 @@
 import scss from './Legend.module.scss'
 
+import striptags from 'striptags'
 import classNames from 'classnames'
 
 import RemoveIcon from './svg/remove.svg'
@@ -15,7 +16,7 @@ export default function Legend ({ className, hint, children }) {
           {children}
         </div>
         <div className={scss.caption}>
-          {hint || 'Мой элемент'}
+          {striptags(hint) || 'Мой элемент'}
         </div>
       </div>
     </div>

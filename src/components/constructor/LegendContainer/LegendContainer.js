@@ -13,7 +13,11 @@ function LegendContainer ({ className, canvasLegends }) {
 
   const withLegends = src => src.map(loop => {
     const { hint } = data.find(el => el.id == loop.loop)
-    return { ...loop, hint }
+    return {
+      ...loop,
+      background: 'transparent',
+      hint
+    }
   })
 
   return <>
