@@ -18,16 +18,24 @@ function Colorpicker ({ className, dispatch, activeColor, swatches }) {
   }
 
   const save = color => {
-    console.log(color)
     dispatch(store.saveColorToSwatches(color))
   }
 
   return (
     <div className={classNames(className, scss._)}>
       <SketchPicker color={color}
-                    disableAlpha={true}
-                    onChangeComplete={onChange}
-                    presetColors={swatches} />
+                     disableAlpha={true}
+                     onChangeComplete={onChange}
+                     presetColors={[]} />
+      <div className={scss.swatches}>
+        {swatches.map(swatch => (
+          <div className={classNames(scss.swatch, color == swatch ? scss.is_active : '')}
+               onClick={() => onChange({ hex: swatch })}
+               style={{background: swatch}}
+               key={swatch}>
+          </div>
+        ))}
+      </div>
       <Button color="blue" onClick={() => save(color)}>
         Сохранить цвет
       </Button>

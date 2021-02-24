@@ -39,7 +39,7 @@ export const setActiveColor = activeColor => ({
 })
 
 export const saveColorToSwatches = color => ({
-  type: 'SET_ACTIVE_COLOR',
+  type: 'SAVE_COLOR_TO_SWATCHES',
   payload: { color }
 })
 

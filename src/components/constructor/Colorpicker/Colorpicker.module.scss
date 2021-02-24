@@ -7,3 +7,20 @@
   border-radius: $radius;
   box-shadow: 1px 1px 4px rgba(black, .5);
 }
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.15em 1em;
+}
+
+.swatch {
+  @include size(2rem);
+  margin: 0.15em;
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  &.is_active {
+    border-color: $light-gray;
+  }
+}
