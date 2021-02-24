@@ -39,8 +39,4 @@ function Tool ({ className, type, active, dispatch, children }) {
   )
 }
 
-const mapState = state => ({
-  active: state.activeTool
-})
-
-export default connect(mapState)(Tool)
+export default connect(state => ({ ...state }))(Tool)

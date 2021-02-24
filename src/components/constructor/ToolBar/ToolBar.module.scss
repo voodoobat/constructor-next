@@ -25,3 +25,8 @@
   min-width: 18.5rem;
   margin-left: 0.2rem;
 }
+
+.colorpicker {
+  @include position(absolute, null null null 5rem);
+  z-index: 10;
+}

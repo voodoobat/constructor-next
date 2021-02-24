@@ -1,11 +1,14 @@
 import scss from './ToolBar.module.scss'
 
+import { connect } from 'react-redux'
+import { SketchPicker } from 'react-color'
 import classNames from 'classnames'
+
 import Tool from '@components/constructor/Tool/Tool'
 import Hint from '@src/components/common/Hint/Hint'
 import Overlay from '@components/common/Overlay/Overlay'
 
-export default function ToolBar ({ className, inactive }) {
+function ToolBar ({ className, inactive, activeTool }) {
   return (
     <nav className={classNames(className, scss._)}>
       <Tool className={scss.tool}
@@ -38,6 +41,7 @@ export default function ToolBar ({ className, inactive }) {
       </Tool>
       <Tool className={scss.tool}
             type="Color">
+        {activeTool == 'Color' && <SketchPicker className={scss.colorpicker} />}
         <Hint className={scss.hint}
               caption="Заливка цветом">
           Окрашивает цветом необходимые областисхемы
@@ -61,3 +65,5 @@ export default function ToolBar ({ className, inactive }) {
     </nav>
   )
 }
+
+export default connect(state => ({ ...state }))(ToolBar)
