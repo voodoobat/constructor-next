@@ -87,7 +87,7 @@ function Canvas ({
     if (!activeTool) return
 
     if (activeTool == 'Eraze') {
-      const props = { loop: null, background: 'transparent' }
+      const props = { loop: null, background: '#ffffff' }
 
       return isSingle
         ? commitWithNewProps('uid', cell.uid, props)

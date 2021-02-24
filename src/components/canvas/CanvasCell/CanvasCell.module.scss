@@ -23,3 +23,9 @@
     z-index: 10;
   }
 }
+
+.is_dark_bg {
+  svg * {
+    fill: white;
+  }
+}

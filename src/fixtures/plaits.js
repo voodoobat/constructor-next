@@ -10,7 +10,7 @@ export const plaits = [
     canvas: [[{
       loop: 54,
       icon: '54.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -18,7 +18,7 @@ export const plaits = [
     }, {
       loop: 55,
       icon: '55.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -32,7 +32,7 @@ export const plaits = [
     canvas: [[{
       loop: 49,
       icon: '49.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -40,7 +40,7 @@ export const plaits = [
     }, {
       loop: 50,
       icon: '50.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -54,7 +54,7 @@ export const plaits = [
     canvas: [[{
       loop: 54,
       icon: '54.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -62,7 +62,7 @@ export const plaits = [
     }, {
       loop: 55,
       icon: '55.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -76,7 +76,7 @@ export const plaits = [
     canvas: [[{
       loop: 54,
       icon: '54.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -84,7 +84,7 @@ export const plaits = [
     }, {
       loop: 55,
       icon: '55.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -98,7 +98,7 @@ export const plaits = [
     canvas: [[{
       loop: 49,
       icon: '49.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -106,7 +106,7 @@ export const plaits = [
     }, {
       loop: 50,
       icon: '50.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -120,7 +120,7 @@ export const plaits = [
     canvas: [[{
       loop: 54,
       icon: '54.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null
@@ -128,7 +128,7 @@ export const plaits = [
     }, {
       loop: 55,
       icon: '55.svg',
-      background: 'transparent',
+      background: '#ffffff',
       preview: {
         background: null,
         loop: null

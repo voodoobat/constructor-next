@@ -6,7 +6,8 @@ export const initialState = {
   activeTool: null,
   activeGroup: null,
   activeColor: null,
-  swatches: ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
+  defaultSwatches: ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
+  swatches: [],
   canvasLegends: [],
   canvas: createCanvas(40, 20, null),
 

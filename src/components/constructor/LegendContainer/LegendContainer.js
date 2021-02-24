@@ -15,7 +15,7 @@ function LegendContainer ({ className, canvasLegends }) {
     const { hint } = data.find(el => el.id == loop.loop)
     return {
       ...loop,
-      background: 'transparent',
+      background: '#ffffff',
       hint
     }
   })

@@ -1,5 +1,6 @@
 import scss from './CanvasCell.module.scss'
 
+import isDarkColor from 'is-dark-color'
 import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
@@ -15,10 +16,10 @@ export default function CanvasCell ({
   acceptGroup,
   rejectGroup
 }) {
-
   const classList = classNames(
     className,
     scss._,
+    isDarkColor(cell.preview.background || cell.background) ? scss.is_dark_bg : '',
     cell.selected ? scss.is_selected : ''
   )
 
@@ -39,4 +40,3 @@ export default function CanvasCell ({
     </div>
   )
 }
-
