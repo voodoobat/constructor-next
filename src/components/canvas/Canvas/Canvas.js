@@ -133,13 +133,7 @@ function Canvas ({
     rejectGroup()
   }
 
-  return <>
-    {/* <Confirm show={confirm}
-             caption="Сохранить группу?"
-             dismiss={onGroupDismiss}
-             accept={onGroupConfirm}>
-      {group && <Group group={group} controls={false} />}
-    </Confirm> */}
+  return (
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}
          onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, y) => (
@@ -157,7 +151,7 @@ function Canvas ({
       ))}
       {confirm && <Overlay />}
     </div>
-  </>
+  )
 }
 
 export default connect((state => ({ ...state })))(Canvas)

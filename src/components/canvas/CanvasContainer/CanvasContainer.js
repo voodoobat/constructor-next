@@ -21,4 +21,4 @@ function CanvasContainer ({ className  }) {
   )
 }
 
-export default connect(s => ({ ...s }))(CanvasContainer)
+export default connect(state => ({ ...state }))(CanvasContainer)

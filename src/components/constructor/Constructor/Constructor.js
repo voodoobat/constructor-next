@@ -38,4 +38,4 @@ function Constructor ({ className, inactive, children }) {
   )
 }
 
-export default connect((s => ({ ...s })))(Constructor)
+export default connect((state => ({ ...state })))(Constructor)
