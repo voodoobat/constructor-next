@@ -15,7 +15,7 @@
 }
 
 .swatch {
-  @include size(2rem);
+  @include size(2.45rem);
   margin: 0.15em;
   border: 2px solid transparent;
   border-radius: 50%;
@@ -23,4 +23,9 @@
   &.is_active {
     border-color: $light-gray;
   }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }

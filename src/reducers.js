@@ -51,10 +51,10 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
-    case 'SAVE_COLOR_TO_SWATCHES':
+    case 'SET_SWATCHES':
       return {
         ...state,
-        swatches: [...state.swatches, payload.color]
+        ...payload
       }
     
     case 'SET_CANVAS_LEGENDS':

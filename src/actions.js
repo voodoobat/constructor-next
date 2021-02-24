@@ -38,9 +38,9 @@ export const setActiveColor = activeColor => ({
   payload: { activeColor }
 })
 
-export const saveColorToSwatches = color => ({
-  type: 'SAVE_COLOR_TO_SWATCHES',
-  payload: { color }
+export const setSwatches = swatches => ({
+  type: 'SET_SWATCHES',
+  payload: { swatches }
 })
 
 export const setCanvasLegend = canvasLegends => ({
