@@ -1,10 +1,16 @@
 import { uid } from 'uid'
-import { sample } from 'lodash'
+import _ from 'lodash'
 import * as act from '@src/actions'
 
 export function commitCanvas (canvas) {
   return dispatch => {
+    const uniq = _.uniqBy(
+      _.flatten(canvas).filter(({ loop }) => loop != null),
+      'loop'
+    )
+
     dispatch(act.setCanvas(canvas))
+    dispatch(act.setCanvasLegend(uniq))
   }
 }
 
@@ -64,7 +70,7 @@ export function setActiveTool (activeTool) {
 
     dispatch(act.setActiveTool(activeTool))
     if (activeTool == 'Color') {
-      dispatch(act.setActiveColor(sample([
+      dispatch(act.setActiveColor(_.sample([
         '#90caf9',
         '#ff80ab',
         '#81c784',

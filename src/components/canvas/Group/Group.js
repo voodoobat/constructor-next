@@ -14,8 +14,6 @@ function Group ({ className, group, controls = true, dispatch }) {
   const setActive = () => dispatch(store.setActiveGroup(group))
   const remove = () => dispatch(store.removeGroup(group))
 
-  console.log(group)
-
   return (
     <div className={classNames(className, scss._, group.active ? scss.is_active : '')}>
       {controls &&

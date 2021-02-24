@@ -3,9 +3,8 @@ import scss from './Legend.module.scss'
 import classNames from 'classnames'
 
 import RemoveIcon from './svg/remove.svg'
-// import RestoreIcon from './svg/restore.svg'
 
-export default function Legend ({ className, legend, children }) {
+export default function Legend ({ className, hint, children }) {
   return (
     <div className={classNames(className, scss._)}>
       <div className={scss.legend}>
@@ -16,7 +15,7 @@ export default function Legend ({ className, legend, children }) {
           {children}
         </div>
         <div className={scss.caption}>
-          {legend || 'Мой элемент'}
+          {hint || 'Мой элемент'}
         </div>
       </div>
     </div>
