@@ -28,5 +28,5 @@
 
 .colorpicker {
   @include position(absolute, null null null 5rem);
-  z-index: 10;
+  z-index: 45;
 }

@@ -2,16 +2,36 @@
 @import '@scss/mixins';
 
 ._ {
-  padding: 1em;
+  padding: 1.5em 2em;
   background: $body-bg;
   border-radius: $radius;
   box-shadow: 1px 1px 4px rgba(black, .5);
 }
 
+.close {
+  top: 0.1rem;
+  right: 0.1rem;
+  z-index: 10;
+}
+
 .swatches {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -0.15em 1em;
+  margin: 0 -0.15em 0;
+  padding: 0.25em 0;
+}
+
+.swatches_box {
+  + .swatches_box {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    border-top: 1px solid $light-gray;
+  }
+}
+
+.swatches_title {
+  font-size: $text-sm;
+  color: red;
 }
 
 .swatch {
@@ -28,4 +48,5 @@
 .buttons {
   display: flex;
   justify-content: space-between;
+  padding-top: 0.5em;
 }
