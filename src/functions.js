@@ -69,16 +69,6 @@ export function setActiveTool (activeTool) {
     const { groups, plaits } = getState()
 
     dispatch(act.setActiveTool(activeTool))
-    if (activeTool == 'Color') {
-      dispatch(act.setActiveColor(_.sample([
-        '#90caf9',
-        '#ff80ab',
-        '#81c784',
-        '#dce775',
-        '#ba68c8'
-      ])))
-    }
-
     dispatch(act.setActiveLoop(null))
     dispatch(act.setActiveGroup(null))
 
@@ -88,6 +78,12 @@ export function setActiveTool (activeTool) {
     dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))
+  }
+}
+
+export function setActiveColor (activeColor) {
+  return dispatch => {
+    dispatch(act.setActiveColor(activeColor))
   }
 }
 
