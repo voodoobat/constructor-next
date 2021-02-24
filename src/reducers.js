@@ -9,13 +9,13 @@ export default function reducers (state = initialState, { type, payload }) {
         history: [...state.history, payload.canvas]
       }
 
-    case 'CHANGE_CANVAS':
+    case 'SET_CANVAS':
       return {
         ...state,
         ...payload
       }
     
-    case 'CHANGE_ACTIVE_LOOP':
+    case 'SET_ACTIVE_LOOP':
       return {
         ...state,
         ...payload
@@ -45,13 +45,19 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
 
-    case 'CHANGE_ACTIVE_TOOL':
+    case 'SET_ACTIVE_TOOL':
       return {
         ...state,
         ...payload
       }
     
     case 'SET_ACTIVE_COLOR':
+      return {
+        ...state,
+        ...payload
+      }
+    
+    case 'SET_CANVAS_LEGENDS':
       return {
         ...state,
         ...payload

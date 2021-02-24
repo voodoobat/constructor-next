@@ -7,7 +7,7 @@ import Container from '@components/layout/Container/Container'
 
 export default function Footer () {
   return (
-    <footer className={scss.footer}>
+    <footer className={scss._}>
       <Container className={scss.container}>
         <Link href="https://вязаный.рф">
           <a className={scss.logo} target="_blank">

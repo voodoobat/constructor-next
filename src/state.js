@@ -7,6 +7,7 @@ export const initialState = {
   activeColor: null,
   activeGroup: null,
   isDrawning: false, // ? how i use this
+  canvasLegends: [],
   canvas: createCanvas(40, 20, null),
 
   groups: [],

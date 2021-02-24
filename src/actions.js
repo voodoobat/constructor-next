@@ -1,5 +1,5 @@
-export const changeCanvas = canvas => ({
-  type: 'CHANGE_CANVAS',
+export const setCanvas = canvas => ({
+  type: 'SET_CANVAS',
   payload: { canvas }
 })
 
@@ -9,12 +9,12 @@ export const saveHistoryStep = canvas => ({
 })
 
 export const setActiveLoop = activeLoop => ({
-  type: 'CHANGE_ACTIVE_LOOP',
+  type: 'SET_ACTIVE_LOOP',
   payload: { activeLoop }
 })
 
 export const setActiveTool = activeTool => ({
-  type: 'CHANGE_ACTIVE_TOOL',
+  type: 'SET_ACTIVE_TOOL',
   payload: { activeTool }
 })
 
@@ -36,4 +36,9 @@ export const setActiveGroup = activeGroup => ({
 export const setActiveColor = activeColor => ({
   type: 'SET_ACTIVE_COLOR',
   payload: { activeColor }
+})
+
+export const setCanvasLegend = canvasLegends => ({
+  type: 'SET_CANVAS_LEGENDS',
+  payload: { canvasLegends }
 })

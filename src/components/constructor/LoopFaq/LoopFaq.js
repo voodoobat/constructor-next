@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import Cell from '@components/canvas/Cell/Cell'
 
-// TODO: replace this shit with api 
+// !: replace this shit with api 
 import { getData } from '@src/fixtures/loops'
 
 export default function LoopFaq ({ className }) {

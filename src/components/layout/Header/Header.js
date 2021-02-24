@@ -7,7 +7,7 @@ import Container from '@src/components/layout/Container/Container'
 
 export default function Header () {
   return (
-    <header className={scss.header}>
+    <header className={scss._}>
       <Container className={scss.container}>
         <Link href="/">
           <a className={scss.logo}>

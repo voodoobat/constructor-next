@@ -4,8 +4,7 @@ import * as act from '@src/actions'
 
 export function commitCanvas (canvas) {
   return dispatch => {
-    // dispatch(act.saveHistoryStep(canvas))
-    dispatch(act.changeCanvas(canvas))
+    dispatch(act.setCanvas(canvas))
   }
 }
 

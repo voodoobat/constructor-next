@@ -5,7 +5,7 @@ import Footer from '@components/layout/Footer/Footer'
 
 export default function Layout ({ children }) {
   return (
-    <div className={scss.layout}>
+    <div className={scss._}>
       <Header />
       <main className={scss.main}>
         {children}

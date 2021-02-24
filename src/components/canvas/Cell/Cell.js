@@ -5,10 +5,13 @@ import classNames from 'classnames'
 import Loop from '@components/constructor/Loop/Loop'
 
 export default function Cell ({ className, cell }) {
+  // !: use single way to set loop icon
+  const icon = cell.icon || `${cell.loop}.svg`
+
   return (
     <div className={classNames(className, scss._)}
          style={{ background: cell?.background }}>
-      {cell.icon && <Loop icon={`${cell.icon}`} />}
+      {icon && <Loop icon={`${cell.icon}`} />}
     </div>
   )
 }
