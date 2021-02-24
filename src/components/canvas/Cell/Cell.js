@@ -4,14 +4,22 @@ import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
 
-export default function Cell ({ className, cell }) {
-  // !: use single way to set loop icon
-  const icon = cell.icon || `${cell.loop}.svg`
+// !: use single way to set loop icon
+const LoopIcon = ({ cell }) => {
+  if (cell.loop) {
+    return <Loop icon={`${cell.loop}.svg`} />
+  } else if (cell.icon) {
+    return <Loop icon={cell.icon} />
+  } else {
+    return ''
+  }
+}
 
+export default function Cell ({ className, cell }) {
   return (
     <div className={classNames(className, scss._)}
          style={{ background: cell?.background }}>
-      {icon && <Loop icon={`${cell.icon}`} />}
+      <LoopIcon cell={cell} />
     </div>
   )
 }
