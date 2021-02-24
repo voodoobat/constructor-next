@@ -9,6 +9,23 @@
   height: 100%;
 }
 
+// react-color overrites
+
+.sketch-picker {
+  box-shadow: none !important;
+  padding: 0 !important;
+
+  .flexbox-fix {
+    &:nth-child(3) { // disable rgb/hex panel
+      display: none !important;
+    }
+
+    &:nth-child(4) {
+      border-top: none !important;
+    }
+  }
+}
+
 // bootstrap overrites
 
 .modal-content {

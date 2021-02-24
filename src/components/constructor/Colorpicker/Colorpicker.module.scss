@@ -2,5 +2,8 @@
 @import '@scss/mixins';
 
 ._ {
-
+  padding: 1em;
+  background: $body-bg;
+  border-radius: $radius;
+  box-shadow: 1px 1px 4px rgba(black, .5);
 }

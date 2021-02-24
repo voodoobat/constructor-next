@@ -21,12 +21,6 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
-    case 'SET_IS_DRAWNING':
-      return {
-        ...state,
-        ...payload
-      }
-    
     case 'SET_GROUPS':
       return {
         ...state,
@@ -55,6 +49,12 @@ export default function reducers (state = initialState, { type, payload }) {
       return {
         ...state,
         ...payload
+      }
+    
+    case 'SAVE_COLOR_TO_SWATCHES':
+      return {
+        ...state,
+        swatches: [...state.swatches, payload.color]
       }
     
     case 'SET_CANVAS_LEGENDS':

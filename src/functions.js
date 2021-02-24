@@ -87,6 +87,12 @@ export function setActiveColor (activeColor) {
   }
 }
 
+export function saveColorToSwatches (color) {
+  return dispatch => {
+    dispatch(act.saveColorToSwatches(color))
+  }
+}
+
 export function setActiveLoop (activeLoop) {
   return (dispatch, getState) => {
     const { groups, plaits } = getState()

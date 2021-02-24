@@ -38,6 +38,11 @@ export const setActiveColor = activeColor => ({
   payload: { activeColor }
 })
 
+export const saveColorToSwatches = color => ({
+  type: 'SET_ACTIVE_COLOR',
+  payload: { color }
+})
+
 export const setCanvasLegend = canvasLegends => ({
   type: 'SET_CANVAS_LEGENDS',
   payload: { canvasLegends }
