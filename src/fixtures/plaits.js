@@ -9,6 +9,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 54,
+      icon: '54.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -16,6 +17,7 @@ export const plaits = [
       }
     }, {
       loop: 55,
+      icon: '55.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -29,6 +31,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 49,
+      icon: '49.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -36,6 +39,7 @@ export const plaits = [
       }
     }, {
       loop: 50,
+      icon: '50.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -49,6 +53,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 54,
+      icon: '54.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -56,6 +61,7 @@ export const plaits = [
       }
     }, {
       loop: 55,
+      icon: '55.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -69,6 +75,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 54,
+      icon: '54.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -76,6 +83,7 @@ export const plaits = [
       }
     }, {
       loop: 55,
+      icon: '55.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -89,6 +97,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 49,
+      icon: '49.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -96,6 +105,7 @@ export const plaits = [
       }
     }, {
       loop: 50,
+      icon: '50.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -109,6 +119,7 @@ export const plaits = [
     isPlait: true,
     canvas: [[{
       loop: 54,
+      icon: '54.svg',
       background: 'transparent',
       preview: {
         background: null,
@@ -116,6 +127,7 @@ export const plaits = [
       }
     }, {
       loop: 55,
+      icon: '55.svg',
       background: 'transparent',
       preview: {
         background: null,
