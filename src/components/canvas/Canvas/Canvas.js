@@ -7,8 +7,6 @@ import classNames from 'classnames'
 import Overlay from '@components/common/Overlay/Overlay'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
-// import Confirm from '@components/canvas/Confirm/Confirm'
-// import Group from '@components/canvas/Group/Group'
 
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
