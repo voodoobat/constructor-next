@@ -15,7 +15,18 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
   const undo = () => {
     const index = history.findIndex(({ uid }) => uid == currentStep) - 1
 
-    if (index > -1) {
+    if (history[index]) {
+      const { canvas, uid } = history[index]
+
+      dispatch(store.commitCanvas(reselect(canvas), false))
+      dispatch(store.setCurrentStep(uid))
+    }
+  }
+
+  const redo = () => {
+    const index = history.findIndex(({ uid }) => uid == currentStep) + 1
+
+    if (history[index]) {
       const { canvas, uid } = history[index]
 
       dispatch(store.commitCanvas(reselect(canvas), false))
@@ -31,6 +42,7 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
         <Undo />
       </button>
       <button className={scss.button}
+              onClick={redo}
               type="button">
         <Redo />
       </button>
