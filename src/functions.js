@@ -11,6 +11,8 @@ export function commitCanvas (canvas) {
 
     dispatch(act.setCanvas(canvas))
     dispatch(act.setCanvasLegend(uniq))
+
+    console.log(canvas)
   }
 }
 

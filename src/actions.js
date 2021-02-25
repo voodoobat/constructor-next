@@ -3,11 +3,6 @@ export const setCanvas = canvas => ({
   payload: { canvas }
 })
 
-export const saveHistoryStep = canvas => ({
-  type: 'SAVE_HISTORY_STEP',
-  payload: { canvas }
-})
-
 export const setActiveLoop = activeLoop => ({
   type: 'SET_ACTIVE_LOOP',
   payload: { activeLoop }

@@ -1,25 +1,33 @@
 import { uid } from 'uid'
 
-export const createCanvas = (x, y, loop = null) => {
+export const createCell = (x, y, loop = null) => ({
+  x,
+  y,
+  loop,
+  uid: uid(),
+  background: '#ffffff',
+  selected: false,
+  preview: {
+    background: null,
+    loop: null
+  }
+})
+
+export const createEmptyRow = (size, y = 0) => {
+  const temp = []
+
+  for (let j = 0; j <= size; j++) {
+    temp.push(createCell(j, y))
+  }
+
+  return temp
+}
+
+export const createEmptyCanvas = (x, y) => {
   const canvas = []
 
-  for (let jY = 0; jY < y; jY++) {
-    canvas.push([])
-
-    for (let jX = 0; jX < x; jX++) {
-      canvas[jY].push({
-        uid: uid(),
-        y: jY,
-        x: jX,
-        loop,
-        background: '#ffffff',
-        selected: false,
-        preview: {
-          background: null,
-          loop: null
-        }
-      })
-    }
+  for (let j = 0; j < y; j++) {
+    canvas.push(createEmptyRow(x, j))
   }
 
   return canvas

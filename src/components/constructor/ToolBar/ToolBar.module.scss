@@ -1,8 +1,6 @@
 @import '@scss/config';
 @import '@scss/mixins';
 
-$popup-tool-move: 5rem;
-
 ._ {
   position: relative;
   display: flex;
@@ -26,12 +24,4 @@ $popup-tool-move: 5rem;
   display: none;
   min-width: 18.5rem;
   margin-left: 0.2rem;
-}
-
-.popup_tool {
-  @include position(absolute, null null null $popup-tool-move);
-}
-
-.colorpicker {
-  z-index: 45;
 }

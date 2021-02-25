@@ -1,6 +1,6 @@
 import scss from './Canvas.module.scss'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
@@ -26,6 +26,8 @@ function Canvas ({
   const [confirm, setConfirm] = useState(false)
   const [group, setGroup] = useState(null)
   const [active, setActive] = useState(null)
+
+  useEffect(() => setCnvs(canvas))
 
   const commitWithNewProps = (prop, compare, props) => {
     const temp = fn.mapMatrix(cnvs, cell => {

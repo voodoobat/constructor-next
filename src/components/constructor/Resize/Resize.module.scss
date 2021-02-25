@@ -2,5 +2,23 @@
 @import '@scss/mixins';
 
 ._ {
+  display: flex;
+  flex-wrap: wrap;
+  width: 37rem;
+  padding: 0.35em;
+}
 
+.button {
+  min-width: 17rem;
+  padding: 0.35em 0.5em;
+  margin: 0.35em;
+  font-size: 0.85em;
+  white-space: nowrap;
+  border: 1px solid $text-color;
+  border-radius: $radius;
+
+  &:hover {
+    background: $text-color;
+    color: $body-bg;
+  }
 }

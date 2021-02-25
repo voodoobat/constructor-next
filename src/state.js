@@ -1,4 +1,4 @@
-import { createCanvas } from '@src/util'
+import { createEmptyCanvas } from '@src/util'
 import { plaits } from '@src/fixtures/plaits'
 
 export const initialState = {
@@ -9,7 +9,7 @@ export const initialState = {
   defaultSwatches: ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
   swatches: [],
   canvasLegends: [],
-  canvas: createCanvas(40, 20, null),
+  canvas: createEmptyCanvas(40, 20, null),
 
   groups: [],
   plaits,
@@ -25,3 +25,7 @@ export const initialState = {
     { type: 'Size' },
   ]
 }
+
+// setTimeout(() => {
+//   initialState.canvas = createEmptyCanvas(5, 5)
+// }, 1000)
