@@ -5,7 +5,7 @@ import * as act from '@src/actions'
 
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
-    const { history } = getState()
+    const { history, currentStep } = getState()
 
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
@@ -17,8 +17,14 @@ export function commitCanvas (canvas, save = true) {
 
     if (save) {
       const id = uid()
+      const index = history.findIndex(({ uid }) => uid == currentStep)
+      const temp = [...history]
 
-      dispatch(act.setHistory([...history, { uid: id, canvas }]))
+      if (index > -1) {
+        temp.length = index + 1
+      } 
+
+      dispatch(act.setHistory([...temp, { uid: id, canvas }]))
       dispatch(act.setCurrentStep(id))
     }
   }
