@@ -18,7 +18,7 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
     if (index > -1) {
       const { canvas, uid } = history[index]
 
-      dispatch(store.commitCanvas(reselect(canvas)))
+      dispatch(store.commitCanvas(reselect(canvas), false))
       dispatch(store.setCurrentStep(uid))
     }
   }
