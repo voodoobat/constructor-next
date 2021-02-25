@@ -3,12 +3,17 @@ import scss from './UndoRedo.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import { reselect } from '@components/canvas/Canvas/Canvas.fn'
+import { mapMatrix } from '@components/canvas/Canvas/Canvas.fn'
 
 import Undo from './svg/undo.svg'
 import Redo from './svg/redo.svg'
 
 import * as store from '@src/functions'
+
+const reset = {
+  selected: false,
+  confirm: false
+}
 
 function UndoRedo ({ className, dispatch, history, currentStep }) {
 
@@ -17,8 +22,12 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
 
     if (history[index]) {
       const { canvas, uid } = history[index]
+      const cnvs = mapMatrix(canvas, cell => ({
+        ...cell,
+        ...reset
+      })) 
 
-      dispatch(store.commitCanvas(reselect(canvas), false))
+      dispatch(store.commitCanvas(cnvs, false))
       dispatch(store.setCurrentStep(uid))
     }
   }
@@ -28,8 +37,12 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
 
     if (history[index]) {
       const { canvas, uid } = history[index]
+      const cnvs = mapMatrix(canvas, cell => ({
+        ...cell,
+        ...reset
+      })) 
 
-      dispatch(store.commitCanvas(reselect(canvas), false))
+      dispatch(store.commitCanvas(cnvs, false))
       dispatch(store.setCurrentStep(uid))
     }
   }
