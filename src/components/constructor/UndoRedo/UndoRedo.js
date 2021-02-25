@@ -10,10 +10,17 @@ import Redo from './svg/redo.svg'
 
 import * as store from '@src/functions'
 
-function UndoRedo ({ className, dispatch, history }) {
+function UndoRedo ({ className, dispatch, history, currentStep }) {
 
   const undo = () => {
-    dispatch(store.commitCanvas(reselect(history[history.length - 2].canvas)))
+    const index = history.findIndex(({ uid }) => uid == currentStep) - 1
+
+    if (index > -1) {
+      const { canvas, uid } = history[index]
+
+      dispatch(store.commitCanvas(reselect(canvas)))
+      dispatch(store.setCurrentStep(uid))
+    }
   }
 
   return (

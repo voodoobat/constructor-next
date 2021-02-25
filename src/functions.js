@@ -19,16 +19,16 @@ export function commitCanvas (canvas, save = true) {
       const id = uid()
 
       dispatch(act.setHistory([...history, { uid: id, canvas }]))
-      // dispatch(act.setCurrentStep(uid))
+      dispatch(act.setCurrentStep(id))
     }
   }
 }
 
-// export function setCurrentStep () {
-  // return dispatch => {
-  //   // dispatch(act.setCurrentStep(uid))
-  // }
-// }
+export function setCurrentStep (uid) {
+  return dispatch => {
+    dispatch(act.setCurrentStep(uid))
+  }
+}
 
 export function setActiveGroup (group) {
   return (dispatch, getState) => {
