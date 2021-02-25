@@ -25,19 +25,24 @@ const icon  = {
   Size
 }
 
-function Tool ({ className, type, dispatch, children, activeTool }) {
+function Tool ({ className, type, dispatch, children, content, activeTool }) {
   const Icon = icon[type]
   const isActive = activeTool == type
 
-  const onClick = () => {
-    dispatch(store.setActiveTool(type))
-  }
-
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_active : '')}
-         onClick={onClick}>
+         onClick={() => dispatch(store.setActiveTool(type))}>
       <Icon className={scss.icon} />
-      {children}
+      <div className={scss.popup}>
+        <div className={scss.hint}>
+          {children}
+        </div>
+        {isActive &&
+          <div className={scss.tool}>
+            {content}
+          </div>
+        }
+      </div>
       {type == 'Color' && <OptionIcon className={scss.option_icon} />}
     </div>
   )

@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import Tool from '@components/constructor/Tool/Tool'
 import Hint from '@components/common/Hint/Hint'
 import Colorpicker from '@components/constructor/Colorpicker/Colorpicker'
+import Resize from '@components/constructor/Resize/Resize'
 import Overlay from '@components/common/Overlay/Overlay'
 
 function ToolBar ({ className, inactive, activeTool }) {
@@ -40,12 +41,12 @@ function ToolBar ({ className, inactive, activeTool }) {
         </Hint>
       </Tool>
       <Tool className={scss.tool}
-            type="Color">
-        {activeTool == 'Color' && <Colorpicker className={scss.colorpicker} />}
-        {/* <Hint className={scss.hint}
+            type="Color"
+            content={<Colorpicker className={classNames(scss.popup_tool, scss.colorpicker)} />}>
+        <Hint className={scss.hint}
               caption="Заливка цветом">
           Окрашивает цветом необходимые областисхемы
-        </Hint> */}
+        </Hint>
       </Tool>
       <Tool className={scss.tool}
             type="Group">
@@ -56,6 +57,7 @@ function ToolBar ({ className, inactive, activeTool }) {
       </Tool>
       <Tool className={scss.tool}
             type="Size">
+        {activeTool == 'Color' && <Resize className={classNames(scss.popup_tool, scss.resize)} />}
         <Hint className={scss.hint}
               caption="Редактировать размеры схемы">
           Добавляйте и удаляйте необходимое количестворядов или строк в схеме
