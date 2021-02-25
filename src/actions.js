@@ -42,3 +42,13 @@ export const setCanvasLegend = canvasLegends => ({
   type: 'SET_CANVAS_LEGENDS',
   payload: { canvasLegends }
 })
+
+export const setHistory = history => ({
+  type: 'SET_HISTORY',
+  payload: { history }
+})
+
+export const setCurrentStep = currentStep => ({
+  type: 'SET_CURRENT_STEP',
+  payload: { currentStep }
+})

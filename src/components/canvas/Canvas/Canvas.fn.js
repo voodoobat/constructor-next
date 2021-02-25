@@ -1,4 +1,4 @@
-export const mapMatrix = (canvas, fn) => canvas.map(y => y.map(x => fn(x)))
+export const mapMatrix = (matrix, fn) => matrix.map(y => y.map(x => fn(x)))
 
 export const getSubMatrix = (canvas, prop, compare) => {
   const temp = []
@@ -9,6 +9,11 @@ export const getSubMatrix = (canvas, prop, compare) => {
   const cnvs = temp.filter(el => Boolean(el.length))
   return cnvs
 }
+
+export const reselect = canvas => mapMatrix(canvas, cell => ({
+  ...cell,
+  selected: false
+}))
 
 export const reset = canvas => {
   const cnvs = [...canvas]

@@ -3,13 +3,19 @@ import { initialState } from '@src/state'
 export default function reducers (state = initialState, { type, payload }) {
 
   switch (type) {
-    case 'SAVE_HISTORY_STEP':
+    case 'SET_CANVAS':
       return {
         ...state,
-        history: [...state.history, payload.canvas]
+        ...payload
       }
 
-    case 'SET_CANVAS':
+    case 'SET_HISTORY':
+      return {
+        ...state,
+        ...payload
+      }
+    
+    case 'SET_CURRENT_STEP':
       return {
         ...state,
         ...payload

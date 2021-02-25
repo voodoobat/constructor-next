@@ -1,9 +1,12 @@
 import { uid } from 'uid'
 import _ from 'lodash'
+
 import * as act from '@src/actions'
 
-export function commitCanvas (canvas) {
-  return dispatch => {
+export function commitCanvas (canvas, save = true) {
+  return (dispatch, getState) => {
+    const { history } = getState()
+
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
       'loop'
@@ -12,9 +15,20 @@ export function commitCanvas (canvas) {
     dispatch(act.setCanvas(canvas))
     dispatch(act.setCanvasLegend(uniq))
 
-    console.log(canvas)
+    if (save) {
+      const id = uid()
+
+      dispatch(act.setHistory([...history, { uid: id, canvas }]))
+      // dispatch(act.setCurrentStep(uid))
+    }
   }
 }
+
+// export function setCurrentStep () {
+  // return dispatch => {
+  //   // dispatch(act.setCurrentStep(uid))
+  // }
+// }
 
 export function setActiveGroup (group) {
   return (dispatch, getState) => {

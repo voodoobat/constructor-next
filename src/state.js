@@ -10,9 +10,10 @@ export const initialState = {
   swatches: [],
   canvasLegends: [],
   canvas: createEmptyCanvas(30, 15, null),
-
   groups: [],
   plaits,
+
+  currentStep: '',
   history: [],
 
   tools: [
@@ -25,7 +26,3 @@ export const initialState = {
     { type: 'Size' },
   ]
 }
-
-// setTimeout(() => {
-//   initialState.canvas = createEmptyCanvas(5, 5)
-// }, 1000)
