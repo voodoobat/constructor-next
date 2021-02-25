@@ -9,7 +9,7 @@ export const initialState = {
   defaultSwatches: ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
   swatches: [],
   canvasLegends: [],
-  canvas: createEmptyCanvas(40, 20, null),
+  canvas: createEmptyCanvas(30, 15, null),
 
   groups: [],
   plaits,
