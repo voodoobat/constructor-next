@@ -15,3 +15,30 @@
 .plait {
   margin-right: 0.5em;
 }
+
+.no_group {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+.no_group_text {
+  margin-right: 0.25em;
+  font-size: 1.15em;
+  opacity: 0.5;
+}
+
+.question {
+  @include position(relative, 0.45rem);
+
+  &:hover {
+    .question_hint {
+      display: block;
+    }
+  }
+}
+
+.question_hint {
+  width: 14rem;
+  display: none;
+}
