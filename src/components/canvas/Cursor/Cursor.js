@@ -3,11 +3,30 @@ import scss from './Cursor.module.scss'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
 
-import Move from '@components/constructor/Tool/svg/move.svg'
+import { useMousePosition } from '@src/hooks'
 
-function Cursor ({ className, position }) {
+import Move from './svg/move.svg'
+import Eraze from './svg/eraze.svg'
+import ReportRow from './svg/report_row.svg'
+import ReportLoop from './svg/report_loop.svg'
+import Color from './svg/color.svg'
+import Group from './svg/group.svg'
+import Size from './svg/size.svg'
 
-  const { x, y } = position
+const icon  = {
+  Move,
+  Eraze,
+  ReportRow,
+  ReportLoop,
+  Color,
+  Group,
+  Size
+}
+
+function Cursor ({ className, activeTool }) {
+  const Icon = icon[activeTool]
+
+  const { x, y } = useMousePosition()
 
   return (
     <div className={classNames(className, scss._)}
@@ -18,7 +37,7 @@ function Cursor ({ className, position }) {
            pointerEvents: 'none',
            zIndex: 10
          }}>
-      <Move />      
+      <Icon />      
     </div>
   )
 }
