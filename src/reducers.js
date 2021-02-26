@@ -27,6 +27,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_ACTIVE_LOOP_ICON':
+      return {
+        ...state,
+        ...payload
+      }
+    
     case 'SET_GROUPS':
       return {
         ...state,
@@ -64,6 +70,12 @@ export default function reducers (state = initialState, { type, payload }) {
       }
     
     case 'SET_CANVAS_LEGENDS':
+      return {
+        ...state,
+        ...payload
+      }
+
+    case 'SET_CUSTOM_CURSOR':
       return {
         ...state,
         ...payload

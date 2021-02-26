@@ -20,11 +20,14 @@ const Hint = ({ className, hint }) => (
 function LoopButton ({ className, data, activeLoop, dispatch }) {
   const { id } = data
   const isActive = activeLoop == id
-  const clickHandle = () => dispatch(store.setActiveLoop(id))
+
+  const onClick = () => {
+    dispatch(store.setActiveLoop(id, data.icon))
+  }
 
   return (
     <div className={classNames(className, scss._, isActive ? scss.is_selected : '')}
-         onClick={clickHandle}>
+         onClick={onClick}>
       <div className={classNames(scss.button, scss.button_main)}>
         <Loop icon={data.icon} />
         {data.options && <OptionsIcon className={scss.options_icon} />}

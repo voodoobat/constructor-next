@@ -1,7 +1,8 @@
 import scss from './Cursor.module.scss'
 
-import classNames from 'classnames'
 import { connect } from 'react-redux'
+import { ReactSVG } from 'react-svg'
+import classNames from 'classnames'
 
 import { useMousePosition } from '@src/hooks'
 
@@ -13,6 +14,7 @@ import Color from './svg/color.svg'
 import Group from './svg/group.svg'
 import Size from './svg/size.svg'
 
+
 const icon  = {
   Move,
   Eraze,
@@ -23,23 +25,31 @@ const icon  = {
   Size
 }
 
-function Cursor ({ className, activeTool }) {
-  const Icon = icon[activeTool]
-
+function Cursor ({ className, activeLoopIcon, activeTool }) {
   const { x, y } = useMousePosition()
 
-  return (
-    <div className={classNames(className, scss._)}
-         style={{
-           position: 'fixed',
-           top: y,
-           left: x,
-           pointerEvents: 'none',
-           zIndex: 10
-         }}>
-      <Icon />      
-    </div>
-  )
+  let ToolIcon
+
+  if (activeTool && activeTool != 'Size') {
+    ToolIcon = icon[activeTool]
+    console.log(ToolIcon)
+  }
+
+  return <>
+    {ToolIcon || activeLoopIcon &&
+      <div className={classNames(className, scss._)}
+           style={{
+            position: 'fixed',
+            top: y,
+            left: x,
+            pointerEvents: 'none',
+            zIndex: 10
+          }}>
+        {activeLoopIcon && <ReactSVG src={`/svg/loop/${activeLoopIcon}`} />}
+        {ToolIcon && <ToolIcon />}
+      </div>
+    }
+  </>
 }
 
 export default connect(state => ({ ...state }))(Cursor)

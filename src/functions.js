@@ -92,6 +92,7 @@ export function setActiveTool (activeTool) {
 
     dispatch(act.setActiveTool(activeTool))
     dispatch(act.setActiveLoop(null))
+    dispatch(act.setActiveLoopIcon(''))
     dispatch(act.setActiveGroup(null))
 
     dispatch(act.setPlaits(plaits.map(p => ({
@@ -119,11 +120,12 @@ export function saveColorToSwatches (color) {
   }
 }
 
-export function setActiveLoop (activeLoop) {
+export function setActiveLoop (activeLoop, icon = '') {
   return (dispatch, getState) => {
     const { groups, plaits } = getState()
 
     dispatch(act.setActiveLoop(activeLoop))
+    dispatch(act.setActiveLoopIcon(icon))
     dispatch(act.setActiveTool(null))
     dispatch(act.setActiveGroup(null))
 
@@ -134,5 +136,11 @@ export function setActiveLoop (activeLoop) {
     dispatch(act.setGroups(groups.map(g => ({
       ...g, active: false
     }))))
+  }
+}
+
+export function setCustomCursor (cursor) {
+  return dispatch => {
+    dispatch(act.setCustomCursor(cursor))
   }
 }

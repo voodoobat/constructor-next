@@ -8,6 +8,12 @@ export const setActiveLoop = activeLoop => ({
   payload: { activeLoop }
 })
 
+export const setActiveLoopIcon = activeLoopIcon => ({
+  type: 'SET_ACTIVE_LOOP',
+  payload: { activeLoopIcon }
+})
+
+
 export const setActiveTool = activeTool => ({
   type: 'SET_ACTIVE_TOOL',
   payload: { activeTool }
@@ -51,4 +57,9 @@ export const setHistory = history => ({
 export const setCurrentStep = currentStep => ({
   type: 'SET_CURRENT_STEP',
   payload: { currentStep }
+})
+
+export const setCustomCursor = customCursor => ({
+  type: 'SET_CUSTOM_CURSOR',
+  payload: { customCursor }
 })

@@ -5,10 +5,11 @@ import { plaits } from '@src/fixtures/plaits'
 const canvas = createEmptyCanvas(47, 27, null)
 
 export const initialState = {
-  activeLoop: null,
-  activeTool: null,
+  activeLoop: NaN,
+  activeLoopIcon: '', 
+  activeTool: '',
   activeGroup: null,
-  activeColor: null,
+  activeColor: '#FFFFFF',
   defaultSwatches: ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
   swatches: [],
   canvasLegends: [],
@@ -16,6 +17,7 @@ export const initialState = {
   canvas,
   plaits,
 
+  customCursor: false,
   currentStep: '',
   history: [{
     uid: uid(),
