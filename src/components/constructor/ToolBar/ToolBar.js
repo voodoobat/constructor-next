@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Tool from '@components/constructor/Tool/Tool'
 import Hint from '@components/common/Hint/Hint'
-import Colorpicker from '@components/constructor/Colorpicker/Colorpicker'
+import Swatches from '@components/constructor/Swatches/Swatches'
 import Resize from '@components/constructor/Resize/Resize'
 import Overlay from '@components/common/Overlay/Overlay'
 
@@ -42,7 +42,7 @@ function ToolBar ({ className, inactive }) {
       </Tool>
       <Tool className={scss.tool}
             type="Color"
-            tool={<Colorpicker />}>
+            tool={<Swatches />}>
         <Hint className={scss.hint}
               caption="Заливка цветом">
           Окрашивает цветом необходимые областисхемы
