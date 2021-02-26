@@ -32,9 +32,9 @@ function Cursor ({ className, activeLoopIcon, activeTool }) {
 
   if (activeTool && activeTool != 'Size') {
     ToolIcon = icon[activeTool]
-    console.log(ToolIcon)
   }
 
+  // TODO: refactor this shit
   return <>
     {(ToolIcon || activeLoopIcon) &&
       <div className={classNames(className, scss._)}
