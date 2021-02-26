@@ -5,14 +5,20 @@ import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Canvas from '@components/canvas/Canvas/Canvas'
+import Cursor from '@components/canvas/Cursor/Cursor'
 import Zoom from '@components/canvas/Zoom/Zoom'
+
+import { useMousePosition } from '@src/hooks'
 
 function CanvasContainer ({ className  }) {
   const [scale, setScale] = useState(100)
 
+  const cursor = useMousePosition()
+
   return (
     <div className={classNames(className, scss._)}>
       <Canvas scale={scale} />
+      <Cursor position={cursor} />
       <div className={classNames(scss.bottom)}>
         <Zoom scale={scale}
               setScale={setScale} />

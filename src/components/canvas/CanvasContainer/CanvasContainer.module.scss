@@ -9,6 +9,7 @@ $panel-size: 2.8rem;
   border: 1px solid lighten($dark-gray, 20%); 
   border-radius: $radius;
   overflow: hidden;
+  cursor: none;
 }
 
 .bottom {
