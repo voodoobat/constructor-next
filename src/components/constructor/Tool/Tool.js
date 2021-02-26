@@ -7,6 +7,7 @@ import * as store from '@src/functions'
 
 import Move from './svg/move.svg'
 import Eraze from './svg/eraze.svg'
+import Report from './svg/report.svg'
 import ReportRow from './svg/report_row.svg'
 import ReportLoop from './svg/report_loop.svg'
 import Color from './svg/color.svg'
@@ -18,6 +19,7 @@ import OptionIcon from './svg/option_icon.svg'
 const icon  = {
   Move,
   Eraze,
+  Report,
   ReportRow,
   ReportLoop,
   Color,

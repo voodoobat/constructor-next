@@ -8,6 +8,7 @@ import Overlay from '@components/common/Overlay/Overlay'
 import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 
+import { is, or } from '@src/util'
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
 
@@ -25,6 +26,7 @@ function Canvas ({
   const [cnvs, setCnvs] = useState(canvas)
   const [confirm, setConfirm] = useState(false)
   const [group, setGroup] = useState(null)
+  const [report, setReport] = useState(null)
   const [active, setActive] = useState(null)
 
   useEffect(() => setCnvs(canvas))
@@ -108,21 +110,29 @@ function Canvas ({
         : commitWithNewProps('selected', true, props)
     }
 
-    if (activeTool == 'Group') {
+    if (or(activeTool, 'Group', 'Report')) {
       const temp = fn.getSubMatrix(cnvs, 'selected', true)
       const withConfirm = fn.lastSelWithProp(cnvs, temp, 'confirm', true)
       setCnvs(withConfirm)
 
       if (temp.length) {
-        setGroup({ canvas: temp })
-        setConfirm(true)
-      }
 
+        if (is(activeTool, 'Group')) {
+          setGroup({ canvas: temp })
+          setConfirm(true)
+        }
+
+        if (is(activeTool, 'Report')) {
+          setReport({ canvas: temp })
+          setConfirm(true)
+        }
+      }
     }
   }
 
-  const rejectGroup = () => {
+  const rejectSelection = () => {
     setGroup(null)
+    setReport(null)
     setConfirm(false)
 
     commitWithNewProps('selected', true, {
@@ -131,10 +141,17 @@ function Canvas ({
     })
   }
 
-  const acceptGroup = () => {
-    dispatch(store.commitNewGroup(group.canvas))
+  const acceptSelection = () => {
 
-    rejectGroup()
+    if (is(activeTool, 'Group')) {
+      dispatch(store.commitNewGroup(group.canvas))
+    }
+
+    if (is(activeTool, 'Report')) {
+      dispatch(store.setReport(report))
+    }
+
+    rejectSelection()
   }
 
   return (
@@ -147,8 +164,8 @@ function Canvas ({
                         onMouseEnter={() => onMouseEnter(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}
-                        acceptGroup={acceptGroup}
-                        rejectGroup={rejectGroup}
+                        acceptGroup={acceptSelection}
+                        rejectGroup={rejectSelection}
                         key={x} />
           ))}
         </Row>

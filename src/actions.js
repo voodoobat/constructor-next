@@ -63,3 +63,8 @@ export const setCustomCursor = customCursor => ({
   type: 'SET_CUSTOM_CURSOR',
   payload: { customCursor }
 })
+
+export const setReport = reports => ({
+  type: 'SET_REPORT',
+  payload: { reports }
+})

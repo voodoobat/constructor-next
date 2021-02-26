@@ -16,6 +16,7 @@ export const initialState = {
   swatches: [],
   canvasLegends: [],
   groups: [],
+  reports: [],
   canvas,
   plaits,
 

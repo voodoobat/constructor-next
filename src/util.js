@@ -32,3 +32,23 @@ export const createEmptyCanvas = (x, y) => {
 
   return canvas
 }
+
+export const is = (x, ...args) => {
+  let bool = false
+
+  args.forEach(y => {
+    bool = x == y
+  })
+
+  return bool
+}
+
+export const or = (x, ...args) => {
+  let bool = false
+
+  args.forEach(y => {
+    if (x == y) bool = true
+  })
+
+  return bool
+}

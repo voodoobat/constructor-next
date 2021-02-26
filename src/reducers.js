@@ -81,6 +81,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_REPORT':
+      return {
+        ...state,
+        ...payload
+      }
+    
     default:
       return state
   }

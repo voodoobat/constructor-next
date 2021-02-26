@@ -144,3 +144,11 @@ export function setCustomCursor (cursor) {
     dispatch(act.setCustomCursor(cursor))
   }
 }
+
+export function setReport (report) {
+  return (dispatch, getState) => {
+    const { reports } = getState()
+
+    dispatch(act.setReport([...reports, report]))
+  }
+}

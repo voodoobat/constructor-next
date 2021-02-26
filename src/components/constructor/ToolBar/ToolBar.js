@@ -27,19 +27,26 @@ function ToolBar ({ className, inactive }) {
         </Hint>
       </Tool>
       <Tool className={scss.tool}
+            type="Report">
+        <Hint className={scss.hint}
+              caption="Раппорт">
+          Определяет раппорт
+        </Hint>
+      </Tool>
+      {/* <Tool className={scss.tool}
             type="ReportRow">
         <Hint className={scss.hint}
               caption="Раппорт рядов">
           Определяет раппорт исходя из количества выбранных рядов
         </Hint>
-      </Tool>
-      <Tool className={scss.tool}
+      </Tool> */}
+      {/* <Tool className={scss.tool}
             type="ReportLoop">
         <Hint className={scss.hint}
               caption="Раппорт петель">
           Определяет раппорт исходя из количества выбранных рядов
         </Hint>
-      </Tool>
+      </Tool> */}
       <Tool className={scss.tool}
             type="Color"
             tool={<Swatches />}>
