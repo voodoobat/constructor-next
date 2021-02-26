@@ -1,5 +1,7 @@
 import scss from './SchemeButton.module.scss'
 
+import ClampLines from 'react-clamp-lines'
+
 import Link from 'next/link'
 import classNames from 'classnames'
 
@@ -12,7 +14,7 @@ export function SchemeButton ({ image, name, date, href, className }) {
         </div>
         <div className={scss.text}>
           <span className={scss.name}>
-            {name}
+            <ClampLines text={name} lines={2} buttons={false} />
           </span>
           <span className={scss.date}>
             Изменено: {date}

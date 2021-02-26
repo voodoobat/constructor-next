@@ -2,10 +2,12 @@
   padding: 2em 0;
 }
 
-.scheme {
-  margin-top: 1em;
+.container {
+  display: flex;
+  margin: 0 -0.5em; 
+  flex-wrap: wrap;
+}
 
-  + .scheme {
-    margin-left: 1em;
-  }
+.scheme {
+  margin: 0.5em 0.3em;
 }
