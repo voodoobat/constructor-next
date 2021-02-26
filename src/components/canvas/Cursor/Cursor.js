@@ -36,7 +36,7 @@ function Cursor ({ className, activeLoopIcon, activeTool }) {
   }
 
   return <>
-    {ToolIcon || activeLoopIcon &&
+    {(ToolIcon || activeLoopIcon) &&
       <div className={classNames(className, scss._)}
            style={{
             position: 'fixed',
@@ -45,8 +45,8 @@ function Cursor ({ className, activeLoopIcon, activeTool }) {
             pointerEvents: 'none',
             zIndex: 10
           }}>
-        {activeLoopIcon && <ReactSVG src={`/svg/loop/${activeLoopIcon}`} />}
         {ToolIcon && <ToolIcon />}
+        {activeLoopIcon && <ReactSVG src={`/svg/loop/${activeLoopIcon}`} />}
       </div>
     }
   </>
