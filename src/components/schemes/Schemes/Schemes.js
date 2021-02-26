@@ -21,8 +21,6 @@ for (let j = 0; j < 10; j++) {
   })
 }
 
-s.forEach(e => console.log(e))
-
 export default function Schemes () {
   return (
     <div className={scss.schemes}>
