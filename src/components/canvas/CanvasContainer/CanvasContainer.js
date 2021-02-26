@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
+import CanvasBox from '@components/canvas/CanvasBox/CanvasBox'
 import Canvas from '@components/canvas/Canvas/Canvas'
 import Cursor from '@components/canvas/Cursor/Cursor'
 import Zoom from '@components/canvas/Zoom/Zoom'
@@ -17,7 +18,9 @@ function CanvasContainer ({ className  }) {
     <div className={classNames(className, scss._)}
          onMouseEnter={() => setCursor(true)}
          onMouseLeave={() => setCursor(false)}>
-      <Canvas scale={scale} />
+      <CanvasBox>
+        <Canvas scale={scale} />
+      </CanvasBox>
       {cursor && <Cursor />}
       <div className={classNames(scss.bottom)}>
         <Zoom scale={scale}

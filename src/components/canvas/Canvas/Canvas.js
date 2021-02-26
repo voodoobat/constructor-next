@@ -53,6 +53,10 @@ function Canvas ({
   const onMouseDown = cell => {
     if (!activeGroup) setActive(cell)
 
+    if (activeTool == 'Move') {
+      setActive(null)
+    }
+
     if (activeGroup) {
       const temp = fn.placeGroup(cnvs, activeGroup)
 
