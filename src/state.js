@@ -2,7 +2,7 @@ import { uid } from 'uid'
 
 import { createEmptyCanvas } from '@src/util'
 import { plaits } from '@src/fixtures/plaits'
-const canvas = createEmptyCanvas(30, 15, null)
+const canvas = createEmptyCanvas(47, 27, null)
 
 export const initialState = {
   activeLoop: null,
