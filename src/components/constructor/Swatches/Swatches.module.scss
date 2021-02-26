@@ -17,7 +17,7 @@
   transition: border-color .15s ease;
 
   &.is_active {
-    border-color: $dark-gray;
+    border-color: $medium-red;
   }
 
   &:not(.is_active):hover {
