@@ -8,7 +8,6 @@ import TopPanel from '@components/constructor/TopPanel/TopPanel'
 import ToolBar from '@components/constructor/ToolBar/ToolBar'
 import GroupContainer from '@components/canvas/GroupContainer/GroupContainer'
 import Download from '@components/constructor/Download/Download'
-import Overlay from '@components/common/Overlay/Overlay'
 
 function Constructor ({ className, inactive, children }) {
   return (
