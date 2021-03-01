@@ -3,12 +3,22 @@
 
 ._ {
   padding: 2em 0 3em;
+
+  &.is_small {
+    padding: 1em 0;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 1em;
+  }
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+
+  .is_small & {
+    align-items: center;
+  }
 }
 
 .logo {
@@ -44,13 +54,28 @@
   color: $text-color;
   font-weight: 500;
 
+  .is_small & {
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2.5em;
+
+    svg {
+      @include size(2.4rem);
+      @include position(relative, 0.15em);
+      margin-right: 0.5em;
+    }
+  }
+
   path {
+    fill: $text-color;
     transition: fill .15s ease-in;
   }
 
   &:hover {
+    color: $medium-blue;
+
     path {
-      fill: $medium-red;
+      fill: $medium-blue;
     }
   }
 }
