@@ -11,6 +11,7 @@ import Row from '@components/canvas/Row/Row'
 import { is, or } from '@src/util'
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
+import { map } from 'lodash'
 
 function Canvas ({
   className,
@@ -157,8 +158,10 @@ function Canvas ({
   return (
     <div className={classNames(className, scss._, scss[`scale_${scale}`])}
          onMouseLeave={canvasMouseLeave}>
-      {canvas.map((row, y) => (
-        <Row key={y}>
+      {canvas.map((row, index) => (
+        <Row className={scss.row}
+             number={canvas.length - index}
+             key={index}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
                         onMouseEnter={() => onMouseEnter(cell)}

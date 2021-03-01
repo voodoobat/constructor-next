@@ -4,7 +4,7 @@ import { createEmptyCanvas } from '@src/util'
 import { plaits } from '@src/fixtures/plaits'
 import { colors } from '@src/fixtures/colors'
 
-const canvas = createEmptyCanvas(47, 27, null)
+const canvas = createEmptyCanvas(20, 10, null)
 
 export const initialState = {
   activeLoop: NaN,

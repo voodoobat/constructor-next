@@ -17,3 +17,29 @@
     transform: scale($scale);
   }
 }
+
+.row {
+  &::before, &::after {
+    @include position(relative, 0.2rem);
+    display: block;
+    margin: 0 0.5em;
+    content: attr(data-number);
+    font-size: $text-xs;
+  }
+
+  &::before {
+    text-align: right;
+  }
+
+  &:nth-child(odd) {
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &:nth-child(even) {
+    &::after {
+      opacity: 0;
+    }
+  }
+}
