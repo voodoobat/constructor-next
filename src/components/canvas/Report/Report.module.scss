@@ -2,10 +2,10 @@
 @import '@scss/mixins';
 
 ._ {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  margin-top: 1em;
-  font-size: 0.9em;
+  margin: 0.5em 1em;
+  font-size: $text-sm;
 }
 
 .icon {

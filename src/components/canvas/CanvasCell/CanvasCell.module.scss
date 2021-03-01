@@ -35,6 +35,8 @@
 }
 
 .report {
-  @include size(100%);
-  @include position(absolute, 0 0);
+  @include size(80%);
+  @include position(absolute, 50% 50%);
+  transform: translate(50%, -50%);
+  opacity: 0.75;
 }

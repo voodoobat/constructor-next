@@ -153,6 +153,13 @@ function Canvas ({
 
     if (is(activeTool, 'Group')) {
       dispatch(store.commitNewGroup(group.canvas))
+
+      commitWithNewProps('selected', true, {
+        selected: false,
+        confirm: false
+      })
+
+      cleanExtra()
     }
 
     if (is(activeTool, 'Report')) {
