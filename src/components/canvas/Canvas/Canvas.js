@@ -11,7 +11,6 @@ import Row from '@components/canvas/Row/Row'
 import { is, or } from '@src/util'
 import * as store from '@src/functions'
 import * as fn from './Canvas.fn'
-import { map } from 'lodash'
 
 function Canvas ({
   className,
