@@ -32,13 +32,13 @@
   }
 
   &:nth-child(odd) {
-    &::before {
+    &::after {
       opacity: 0;
     }
   }
 
   &:nth-child(even) {
-    &::after {
+    &::before {
       opacity: 0;
     }
   }
