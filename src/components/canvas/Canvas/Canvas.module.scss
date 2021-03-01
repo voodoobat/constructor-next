@@ -9,11 +9,29 @@
   cursor: none;
 }
 
-@for $j from 0 through 10 {
-  $scale: 1 + $j * 0.1;
-  $size: 100 + $j * 10;
+.row {
+  &::before, &::after {
+    @include position(relative, 0.2rem);
+    display: block;
+    padding: 0 0.35em;
+    width: $canvas-cell-width;
+    content: attr(data-number);
+    font-size: $text-xs;
+  }
 
-  .scale_#{$size} {
-    transform: scale($scale);
+  &::before {
+    text-align: right;
+  }
+
+  &:nth-child(odd) {
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  &:nth-child(even) {
+    &::before {
+      opacity: 0;
+    }
   }
 }

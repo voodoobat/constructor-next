@@ -11,7 +11,7 @@ export default function index () {
     <Head>
       <title>Создание холста</title>
     </Head>
-    <Layout>
+    <Layout smallHeader>
       <Constructor>
         <CanvasContainer />
         <LegendContainer />

@@ -14,14 +14,17 @@ export default function CanvasCell ({
   onMouseEnter,
   onMouseUp,
   acceptGroup,
-  rejectGroup
+  rejectGroup,
 }) {
+
   const classList = classNames(
     className,
     scss._,
     isDarkColor(cell.preview.background || cell.background) ? scss.is_dark_bg : '',
     cell.selected ? scss.is_selected : ''
   )
+
+  if (cell.report) console.log(cell)
 
   return (
     <div className={classList}

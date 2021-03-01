@@ -7,6 +7,8 @@ export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
     const { history, currentStep } = getState()
 
+    console.log('canvas', canvas)
+
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
       'loop'

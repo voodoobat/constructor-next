@@ -18,8 +18,8 @@ function CanvasContainer ({ className  }) {
     <div className={classNames(className, scss._)}
          onMouseEnter={() => setCursor(true)}
          onMouseLeave={() => setCursor(false)}>
-      <CanvasBox>
-        <Canvas scale={scale} />
+      <CanvasBox scale={scale}>
+        <Canvas />
       </CanvasBox>
       {cursor && <Cursor />}
       <div className={classNames(scss.bottom)}>

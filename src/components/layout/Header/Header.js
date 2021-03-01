@@ -2,16 +2,19 @@ import scss from './Header.module.scss'
 
 import Link from 'next/link'
 import { ReactSVG } from 'react-svg'
+import classNames from 'classnames'
 
 import Container from '@src/components/layout/Container/Container'
 
-export default function Header () {
+export default function Header ({ small }) {
+  const logo = small ? '/svg/logo-sm.svg' : '/svg/logo.svg'
+
   return (
-    <header className={scss._}>
+    <header className={classNames(scss._, small ? scss.is_small : '')}>
       <Container className={scss.container}>
         <Link href="/">
           <a className={scss.logo}>
-            <ReactSVG className={scss.logo_svg} src="/svg/logo.svg" />
+            <ReactSVG className={scss.logo_svg} src={logo} />
             {/* <span className={scss.logo_note}>
               Конструктор схем
             </span> */}

@@ -16,7 +16,6 @@ function Canvas ({
   className,
   canvas,
   dispatch,
-  scale,
   activeGroup,
   activeColor,
   activeLoop,
@@ -79,6 +78,8 @@ function Canvas ({
 
   const onMouseUp = cell => {
     if (activeGroup) return
+    if (report) return
+
     setActive(null)
 
     const isSingle = active?.uid == cell.uid
@@ -131,17 +132,21 @@ function Canvas ({
     }
   }
 
-  const rejectSelection = () => {
+  const cleanExtra = () => {
     setGroup(null)
     setReport(null)
     setConfirm(false)
 
     dispatch(store.setConfirm(false))
+  }
 
+  const rejectSelection = () => {
     commitWithNewProps('selected', true, {
       selected: false,
       confirm: false
     })
+
+    cleanExtra()
   }
 
   const acceptSelection = () => {
@@ -151,31 +156,32 @@ function Canvas ({
     }
 
     if (is(activeTool, 'Report')) {
+      const commonProps = {
+        selected: false,
+        confirm: false
+      }
+
       const withReport = fn.mapMatrix(cnvs, (cell => {
         return cell.selected
-          ? { ...cell, report: report }
-          : { ...cell }
+          ? { ...cell, ...commonProps, report }
+          : { ...cell, ...commonProps }
       }))
 
-      setTimeout(() => {
-        setCnvs(withReport)
-        dispatch(store.setReport(report))
-        dispatch(store.commitCanvas(withReport))
-        console.log('WR', withReport)
-        console.log('CNVS', cnvs)
-      }, 0)
+      dispatch(store.commitCanvas(withReport))
+      cleanExtra()
     }
-
-    rejectSelection()
   }
 
   return (
-    <div className={classNames(className, scss._, scss[`scale_${scale}`])}
+    <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
-      {canvas.map((row, y) => (
-        <Row key={y}>
+      {canvas.map((row, index) => (
+        <Row className={scss.row}
+             number={canvas.length - index}
+             key={index}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
+                        className={scss.cell}
                         onMouseEnter={() => onMouseEnter(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}
