@@ -24,8 +24,6 @@ export default function CanvasCell ({
     cell.selected ? scss.is_selected : ''
   )
 
-  if (cell.report) console.log(cell)
-
   return (
     <div className={classList}
          onClick={onClick}
@@ -33,14 +31,14 @@ export default function CanvasCell ({
          onMouseUp={onMouseUp}
          onMouseEnter={onMouseEnter}
          style={{background: cell.preview.background || cell.background}}>
-      {cell.preview.loop && <Loop icon={`${cell.preview.loop}.svg`} />}
-      {!cell.preview.loop && cell.loop && <Loop icon={`${cell.loop}.svg`} />}
+      {cell.report && <div className={scss.report} style={{background: cell.report.color}} />}
+      {cell.preview.loop && <Loop className={scss.loop} icon={`${cell.preview.loop}.svg`} />}
+      {!cell.preview.loop && cell.loop && <Loop className={scss.loop} icon={`${cell.loop}.svg`} />}
       {cell.confirm &&
         <Confirm cell={cell}
                  yes={acceptGroup}
                  no={rejectGroup} />
       }
-      {cell.report && <div className={scss.report} style={{background: cell.report.color}} />}
     </div>
   )
 }

@@ -168,6 +168,7 @@ function Canvas ({
       }))
 
       dispatch(store.commitCanvas(withReport))
+      dispatch(store.setReport(report))
       cleanExtra()
     }
   }
