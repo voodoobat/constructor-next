@@ -12,6 +12,7 @@ export const initialState = {
   activeTool: '',
   activeGroup: null,
   activeColor: '#ffffff',
+  isConfirm: false,
   defaultSwatches: colors, // ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
   swatches: [],
   canvasLegends: [],

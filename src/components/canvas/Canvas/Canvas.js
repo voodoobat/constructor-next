@@ -114,6 +114,7 @@ function Canvas ({
       const temp = fn.getSubMatrix(cnvs, 'selected', true)
       const withConfirm = fn.lastSelWithProp(cnvs, temp, 'confirm', true)
       setCnvs(withConfirm)
+      dispatch(store.setConfirm(true))
 
       if (temp.length) {
 
@@ -134,6 +135,7 @@ function Canvas ({
     setGroup(null)
     setReport(null)
     setConfirm(false)
+    dispatch(store.setConfirm(false))
 
     commitWithNewProps('selected', true, {
       selected: false,

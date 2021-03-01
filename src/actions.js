@@ -68,3 +68,9 @@ export const setReport = reports => ({
   type: 'SET_REPORT',
   payload: { reports }
 })
+
+export const setConfirm = isConfirm => ({
+  type: 'SET_REPORT',
+  payload: { isConfirm }
+})
+

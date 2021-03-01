@@ -87,6 +87,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_IS_CONFIRM':
+      return {
+        ...state,
+        ...payload
+      }
+    
     default:
       return state
   }

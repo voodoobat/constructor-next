@@ -145,10 +145,21 @@ export function setCustomCursor (cursor) {
   }
 }
 
-export function setReport (report) {
+export function setReport ({ canvas }) {
   return (dispatch, getState) => {
     const { reports } = getState()
+    const report = {
+      uid: uid(),
+      color: '#eceff1',
+      canvas
+    }
 
     dispatch(act.setReport([...reports, report]))
+  }
+}
+
+export function setConfirm (isConfirm) {
+  return (dispatch) => {
+    dispatch(act.setConfirm(isConfirm))
   }
 }

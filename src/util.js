@@ -52,3 +52,31 @@ export const or = (x, ...args) => {
 
   return bool
 }
+
+export const formatPlural = (number, text1, text2, text5, returnNumber = true) => {
+  let numberAbs = Math.abs(number)
+  let mod10 = numberAbs % 10
+  let text = text1
+
+  switch (true) {
+    case mod10 === 0:
+    case mod10 >= 5 && mod10 <= 9:
+    case numberAbs >= 11 && numberAbs <= 14:
+      text = text5;
+      break
+
+    case mod10 === 1:
+      text = text1;
+      break
+
+    case mod10 >= 2 && mod10 <= 4:
+      text = text2;
+      break
+  }
+
+  if (returnNumber) {
+    return number + ' ' + text
+  }
+
+  return text
+}
