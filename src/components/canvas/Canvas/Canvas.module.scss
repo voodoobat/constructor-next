@@ -6,7 +6,7 @@
   border-collapse: collapse;  
   transform-origin: 0 0;
   transition: transform .1s ease;
-  cursor: none;
+  cursor: inline('./png/cursor.png'), auto;
 }
 
 @for $j from 0 through 10 {

@@ -15,7 +15,6 @@ import Color from './svg/color.svg'
 import Group from './svg/group.svg'
 import Size from './svg/size.svg'
 
-
 const icon  = {
   Move,
   Eraze,
@@ -29,6 +28,7 @@ const icon  = {
 
 function Cursor ({ className, activeLoopIcon, activeTool }) {
   const { x, y } = useMousePosition()
+  const offset = activeTool == 'Move' ? 0 : 10
 
   let ToolIcon
 
@@ -42,8 +42,8 @@ function Cursor ({ className, activeLoopIcon, activeTool }) {
       <div className={classNames(className, scss._)}
            style={{
             position: 'fixed',
-            top: y,
-            left: x,
+            top: y + offset,
+            left: x + offset,
             pointerEvents: 'none',
             zIndex: 10
           }}>
