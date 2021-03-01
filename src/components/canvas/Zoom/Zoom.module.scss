@@ -17,14 +17,22 @@ $icon-size: 1.8rem;
 
 .button {
   @include size($icon-size);
+  transition: opacity .25s ease;
 
   > svg > path {
     transition: fill .15s ease-in;
   }
 
-  &:hover {
-    > svg > path {
-      fill: $medium-blue;
+  &.disabled {
+    cursor: default;
+    opacity: 0.25;
+  }
+
+  &:not(.disabled) {
+    &:hover {
+      > svg > path {
+        fill: $medium-blue;
+      }
     }
   }
 }

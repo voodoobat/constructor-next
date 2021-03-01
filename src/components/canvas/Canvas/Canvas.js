@@ -16,7 +16,6 @@ function Canvas ({
   className,
   canvas,
   dispatch,
-  scale,
   activeGroup,
   activeColor,
   activeLoop,
@@ -155,7 +154,7 @@ function Canvas ({
   }
 
   return (
-    <div className={classNames(className, scss._, scss[`scale_${scale}`])}
+    <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, index) => (
         <Row className={scss.row}
