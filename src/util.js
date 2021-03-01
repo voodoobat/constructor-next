@@ -1,5 +1,7 @@
 import { uid } from 'uid'
 
+export const isClient = typeof window == 'object'
+
 export const createCell = (x, y, loop = null) => ({
   x,
   y,
