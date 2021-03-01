@@ -4,13 +4,16 @@ import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
 import classNames from 'classnames'
 
-function CanvasBox ({ className, activeTool, children }) {
+import CellNumbers from '@components/canvas/CellNumbers/CellNumbers'
+
+function CanvasBox ({ className, activeTool, canvas, children }) {
   const disabled = activeTool != 'Move'
 
   return (
     <Draggable disabled={disabled}>
       <div className={classNames(className, scss._)}>
-          {children}
+        {children}
+        <CellNumbers cells={canvas[0]} />
       </div>
     </Draggable>
   )

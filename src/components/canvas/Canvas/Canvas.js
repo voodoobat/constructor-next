@@ -164,6 +164,7 @@ function Canvas ({
              key={index}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
+                        className={scss.cell}
                         onMouseEnter={() => onMouseEnter(cell)}
                         onMouseDown={() => onMouseDown(cell)}
                         onMouseUp={() => onMouseUp(cell)}

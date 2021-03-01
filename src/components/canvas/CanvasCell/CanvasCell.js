@@ -14,7 +14,7 @@ export default function CanvasCell ({
   onMouseEnter,
   onMouseUp,
   acceptGroup,
-  rejectGroup
+  rejectGroup,
 }) {
   const classList = classNames(
     className,
