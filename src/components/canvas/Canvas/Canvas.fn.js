@@ -1,3 +1,6 @@
+import { uid } from 'uid'
+import { sample } from 'lodash'
+
 export const mapMatrix = (matrix, fn) => matrix.map(y => y.map(x => fn(x)))
 
 export const getSubMatrix = (canvas, prop, compare) => {
@@ -140,4 +143,22 @@ export const lastSelWithProp = (canvas, sub, prop, value) => {
   cnvs[y][x][prop] = value
   
   return cnvs
+}
+
+export const createReport = canvas => {
+
+  const color = sample([
+    '#eceff1',
+    '#cfd8dc',
+    '#b0bec5',
+    '#90a4ae',
+    '#78909c',
+    '#607d8b' 
+  ])
+
+  return {
+    uid: uid(),
+    color,
+    canvas
+  }
 }

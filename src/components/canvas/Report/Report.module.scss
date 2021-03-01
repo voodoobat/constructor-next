@@ -2,5 +2,21 @@
 @import '@scss/mixins';
 
 ._ {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+  font-size: 0.9em;
+}
 
+.icon {
+  @include size($canvas-cell-width $canvas-cell-height);
+  margin-right: 0.5em;
+}
+
+.label {
+  margin-right: 1em;
+}
+
+.unit {
+  margin-right: 0.5em;
 }

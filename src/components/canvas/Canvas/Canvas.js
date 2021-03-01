@@ -124,7 +124,7 @@ function Canvas ({
         }
 
         if (is(activeTool, 'Report')) {
-          setReport({ canvas: temp })
+          setReport(fn.createReport(temp))
           setConfirm(true)
         }
       }
@@ -135,6 +135,7 @@ function Canvas ({
     setGroup(null)
     setReport(null)
     setConfirm(false)
+
     dispatch(store.setConfirm(false))
 
     commitWithNewProps('selected', true, {
@@ -150,7 +151,19 @@ function Canvas ({
     }
 
     if (is(activeTool, 'Report')) {
-      dispatch(store.setReport(report))
+      const withReport = fn.mapMatrix(cnvs, (cell => {
+        return cell.selected
+          ? { ...cell, report: report }
+          : { ...cell }
+      }))
+
+      setTimeout(() => {
+        setCnvs(withReport)
+        dispatch(store.setReport(report))
+        dispatch(store.commitCanvas(withReport))
+        console.log('WR', withReport)
+        console.log('CNVS', cnvs)
+      }, 0)
     }
 
     rejectSelection()

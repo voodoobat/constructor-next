@@ -7,6 +7,7 @@ export const createCell = (x, y, loop = null) => ({
   uid: uid(),
   background: '#ffffff',
   selected: false,
+  report: null,
   preview: {
     background: null,
     loop: null

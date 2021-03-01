@@ -37,6 +37,7 @@ export default function CanvasCell ({
                  yes={acceptGroup}
                  no={rejectGroup} />
       }
+      {cell.report && <div className={scss.report} style={{background: cell.report.color}} />}
     </div>
   )
 }
