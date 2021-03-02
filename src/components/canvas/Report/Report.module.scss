@@ -4,12 +4,17 @@
 ._ {
   display: inline-flex;
   align-items: center;
-  margin: 0.5em 1em;
+  margin: 0.25em 0.25em;
+  padding: 0.35em;
+  border: 1px solid $light-gray;
   font-size: $text-sm;
 }
 
 .icon {
-  @include size($canvas-cell-width $canvas-cell-height);
+  $width: get-persent-of-size($canvas-cell-width, 75);
+  $height: get-persent-of-size($canvas-cell-height, 75);
+
+  @include size($width $height);
   margin-right: 0.5em;
 }
 

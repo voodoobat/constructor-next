@@ -21,3 +21,7 @@
     #{nth($sides, $j)}: nth($values, $j);
   }
 }
+
+@function get-persent-of-size($sz, $persent: 100) {
+  @return ($sz / 100 * $persent);
+}

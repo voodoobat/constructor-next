@@ -31,7 +31,7 @@ function Canvas ({
 
   useEffect(() => setCnvs(canvas))
 
-  const commitWithNewProps = (prop, compare, props) => {
+  const commitWithNewProps = (prop, compare, props, save = true) => {
     const temp = fn.mapMatrix(cnvs, cell => {
       const preview = { background: null, loop: null }
 
@@ -41,7 +41,7 @@ function Canvas ({
     })
 
     setCnvs(temp)
-    dispatch(store.commitCanvas(temp))
+    dispatch(store.commitCanvas(temp, save))
   }
 
   const canvasMouseLeave = () => {
@@ -79,7 +79,6 @@ function Canvas ({
 
   const onMouseUp = cell => {
     if (activeGroup) return
-    if (report) return
 
     setActive(null)
 
@@ -158,7 +157,7 @@ function Canvas ({
       commitWithNewProps('selected', true, {
         selected: false,
         confirm: false
-      })
+      }, false)
 
       cleanExtra()
     }
@@ -174,6 +173,11 @@ function Canvas ({
           ? { ...cell, ...commonProps, report }
           : { ...cell, ...commonProps }
       }))
+
+      commitWithNewProps('selected', true, {
+        selected: false,
+        confirm: false
+      })
 
       setCnvs(withReport)
       dispatch(store.commitCanvas(withReport))
