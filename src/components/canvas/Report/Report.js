@@ -3,6 +3,8 @@ import scss from './Report.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
+import CircleButton from '@components/common/CircleButton/CircleButton'
+
 import { formatPlural } from '@src/util'
 import * as store from '@src/functions'
 
@@ -22,9 +24,7 @@ function Report ({ className, report, dispatch }) {
       <span className={scss.unit}>
         {formatPlural(cell, 'петля', 'петли', 'петель')} 
       </span>
-      <button onClick={remove}>
-        удалить
-      </button>
+      <CircleButton icon="Close" onClick={remove} />
     </div>
   )
 }
