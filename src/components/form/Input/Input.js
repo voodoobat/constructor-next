@@ -17,7 +17,7 @@ export function Input ({ className, value, setter = () => {}, type, id }) {
 import Inc from './svg/inc_icon.svg'
 import Dec from './svg/dec_icon.svg'
 
-export function Number ({ className, id, value = 0, setter = () => {}, min = 0, max = 10000 }) {
+export function Number ({ className, id, value = 0, setter = () => {}, min = -10000, max = 10000 }) {
   const [val, setVal] = useState(value)
 
   const setNewVal = v => {

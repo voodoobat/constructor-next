@@ -1,14 +1,20 @@
 import { uid } from 'uid'
 import _ from 'lodash'
 
+import { createEmptyCanvas } from '@src/util'
 import * as act from '@src/actions'
-import Cell from '@components/canvas/Cell/Cell'
+
+export function createScheme ({ uid, name, rows, cols }) {
+  return dispatch => {
+    dispatch(act.setCanvas(createEmptyCanvas(cols, rows)))
+    dispatch(act.setSchemeName(name))
+    dispatch(act.setSchemeUid(uid))
+  }
+}
 
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
     const { history, currentStep } = getState()
-
-    console.log('canvas', canvas)
 
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),

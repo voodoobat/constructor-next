@@ -26,7 +26,7 @@ export const createEmptyRow = (size, y = 0) => {
   return temp
 }
 
-export const createEmptyCanvas = (x, y) => {
+export const createEmptyCanvas = (x = 0, y = 0) => {
   const canvas = []
 
   for (let j = 0; j < y; j++) {

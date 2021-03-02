@@ -93,6 +93,18 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_SCHEME_NAME':
+      return {
+        ...state,
+        ...payload
+      }
+    
+    case 'SET_SCHEME_UID':
+      return {
+        ...state,
+        ...payload
+      }
+    
     default:
       return state
   }

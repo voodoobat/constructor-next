@@ -1,22 +1,34 @@
 import scss from './CreateForm.module.scss'
 
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { connect } from 'react-redux'
+import { uid } from 'uid'
 
 import Field from '@components/form/Field/Field'
 import { Input, Number } from '@components/form/Input/Input'
 import { Checkbox } from '@components/form/Checkbox/Checkbox'
 import Button from '@components/common/Button/Button'
 
-function CreateForm ({ dispatch }) {
+import * as store from '@src/functions'
 
-  const [name, setName] = useState('')
-  const [rows, setRows] = useState(0)
-  const [cols, setCols] = useState(10)
+function CreateForm ({ dispatch }) {
+  const router = useRouter()
+
+  const [name, setName] = useState('Моя схема')
+  const [rows, setRows] = useState(2)
+  const [cols, setCols] = useState(2)
 
   const createScheme = ev => {
+    const schemeUid = uid()
+
     ev.preventDefault()
-    console.log(name, rows, cols)
+    dispatch(store.createScheme({
+      uid: schemeUid,
+      name, rows, cols
+    }))
+
+    router.push(`/constructor/${schemeUid}`)
   }
 
   return (
@@ -38,6 +50,8 @@ function CreateForm ({ dispatch }) {
              id={2}>
         <Number className={scss.number}
                 id={2}
+                min="2"
+                max="100"
                 setter={setRows}
                 value={rows} />
       </Field>
@@ -45,6 +59,8 @@ function CreateForm ({ dispatch }) {
              labelClassName={scss.label}
              id={3}>
         <Number id={3}
+                min="2"
+                max="100"
                 className={scss.number}
                 setter={setCols}
                 value={cols} />

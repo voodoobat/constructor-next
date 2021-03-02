@@ -74,3 +74,12 @@ export const setConfirm = isConfirm => ({
   payload: { isConfirm }
 })
 
+export const setSchemeName = schemeName => ({
+  type: 'SET_SCHEME_NAME',
+  payload: { schemeName }
+})
+
+export const setSchemeUid = schemeUid => ({
+  type: 'SET_SCHEME_UID',
+  payload: { schemeUid }
+})

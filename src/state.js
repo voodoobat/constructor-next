@@ -31,7 +31,8 @@ export const initialState = {
 
 
   // data
-  name: '',
+  schemeUid: '',
+  schemeName: '',
   canvasUid: '',
   canvas: [],
   canvasLegends: [],
