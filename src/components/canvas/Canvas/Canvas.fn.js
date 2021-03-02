@@ -145,20 +145,26 @@ export const lastSelWithProp = (canvas, sub, prop, value) => {
   return cnvs
 }
 
-export const createReport = canvas => {
-
-  const color = sample([
-    '#eceff1',
+export const createReport = (canvas, reports) => {
+  const len = reports.length
+  const lastReport = len ? reports[len - 1] : null
+  const sampleColors = [
     '#cfd8dc',
     '#b0bec5',
     '#90a4ae',
-    '#78909c',
-    '#607d8b' 
-  ])
+  ]
 
+  let colorIndex = NaN
+
+  len && sampleColors.forEach((color, index) => {
+    if (lastReport.color == color) {
+      colorIndex = index + 1
+    }
+  })
+  
   return {
     uid: uid(),
-    color,
+    color: sampleColors[colorIndex] || sampleColors[0],
     canvas
   }
 }

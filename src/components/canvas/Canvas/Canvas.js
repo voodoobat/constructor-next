@@ -15,6 +15,7 @@ import * as fn from './Canvas.fn'
 function Canvas ({
   className,
   canvas,
+  reports,
   dispatch,
   activeGroup,
   activeColor,
@@ -125,7 +126,7 @@ function Canvas ({
         }
 
         if (is(activeTool, 'Report')) {
-          setReport(fn.createReport(temp))
+          setReport(fn.createReport(temp, reports))
           setConfirm(true)
         }
       }
