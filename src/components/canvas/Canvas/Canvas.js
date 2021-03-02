@@ -175,6 +175,7 @@ function Canvas ({
           : { ...cell, ...commonProps }
       }))
 
+      setCnvs(withReport)
       dispatch(store.commitCanvas(withReport))
       dispatch(store.setReport(report))
       cleanExtra()

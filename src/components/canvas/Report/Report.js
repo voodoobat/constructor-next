@@ -1,12 +1,16 @@
 import scss from './Report.module.scss'
 
+import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import { formatPlural } from '@src/util'
+import * as store from '@src/functions'
 
-export default function Report ({ className, report }) {
+function Report ({ className, report, dispatch }) {
   const rows = report.canvas.length
   const cell = report.canvas[0].length
+
+  const remove = () => dispatch(store.removeReport(report))
 
   return (
     <div className={classNames(className, scss._)}>
@@ -18,6 +22,11 @@ export default function Report ({ className, report }) {
       <span className={scss.unit}>
         {formatPlural(cell, 'петля', 'петли', 'петель')} 
       </span>
+      <button onClick={remove}>
+        удалить
+      </button>
     </div>
   )
 }
+
+export default connect(state => ({ ...state }))(Report)

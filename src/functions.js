@@ -2,6 +2,7 @@ import { uid } from 'uid'
 import _ from 'lodash'
 
 import * as act from '@src/actions'
+import Cell from '@components/canvas/Cell/Cell'
 
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
@@ -152,6 +153,19 @@ export function setReport (report) {
     const { reports } = getState()
 
     dispatch(act.setReport([...reports, report]))
+  }
+}
+
+export function removeReport ({ uid }) {
+  return (dispatch, getState) => {
+    const { reports, canvas } = getState()
+
+    dispatch(act.setReport(reports.filter(report => report.uid != uid)))
+    dispatch(act.setCanvas(canvas.map(y => y.map(cell => {
+      return cell.report?.uid == uid
+        ? { ...cell, report: null }
+        : { ...cell }
+    }))))
   }
 }
 
