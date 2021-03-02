@@ -174,13 +174,8 @@ function Canvas ({
           : { ...cell, ...commonProps }
       }))
 
-      commitWithNewProps('selected', true, {
-        selected: false,
-        confirm: false
-      })
-
       setCnvs(withReport)
-      dispatch(store.commitCanvas(withReport))
+      dispatch(store.commitCanvas(withReport), false)
       dispatch(store.setReport(report))
       cleanExtra()
     }
