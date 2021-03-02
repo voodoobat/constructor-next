@@ -184,7 +184,7 @@ function Canvas ({
   return (
     <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
-      {canvas.map((row, index) => (
+      {cnvs.map((row, index) => (
         <Row className={scss.row}
              number={canvas.length - index}
              key={index}>
