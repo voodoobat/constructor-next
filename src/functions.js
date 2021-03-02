@@ -14,7 +14,6 @@ export function createScheme ({ uid, name, rows, cols }) {
 
 export function setSchemeName (name) {
   return dispatch => {
-    console.log(name)
     dispatch(act.setSchemeName(name))
   }
 }
