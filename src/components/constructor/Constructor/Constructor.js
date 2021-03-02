@@ -1,22 +1,20 @@
 import scss from './Constructor.module.scss'
 
-import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 import Container from '@components/layout/Container/Container'
 import TopPanel from '@components/constructor/TopPanel/TopPanel'
 import ToolBar from '@components/constructor/ToolBar/ToolBar'
 import GroupContainer from '@components/canvas/GroupContainer/GroupContainer'
+import SchemeName from '@components/constructor/SchemeName/SchemeName'
 import Download from '@components/constructor/Download/Download'
 
-function Constructor ({ className, schemeName, inactive, children }) {
+export default function Constructor ({ className, inactive, children }) {
   return (
     <Container className={classNames(className, scss._)}>
       {!inactive &&
         <div className={scss.header}>
-          <div className={scss.name}>
-            {schemeName}
-          </div>
+          <SchemeName className={scss.name} />
           <div className={scss.note}>
             Все изменения сохранены автоматически в личном кабинете/ в этом браузере
           </div>
@@ -39,5 +37,3 @@ function Constructor ({ className, schemeName, inactive, children }) {
     </Container>
   )
 }
-
-export default connect((state => ({ ...state })))(Constructor)

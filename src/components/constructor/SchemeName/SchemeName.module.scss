@@ -1,0 +1,13 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  padding: 0.25em 0.5em;
+  margin: -0.25em -0.5em;
+  border-radius: $radius;
+
+  &:focus {
+    box-shadow: 1px 1px 5px rgba(black, 0.25);
+    outline: none;
+  }
+}

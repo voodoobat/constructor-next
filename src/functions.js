@@ -12,6 +12,13 @@ export function createScheme ({ uid, name, rows, cols }) {
   }
 }
 
+export function setSchemeName (name) {
+  return dispatch => {
+    console.log(name)
+    dispatch(act.setSchemeName(name))
+  }
+}
+
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
     const { history, currentStep } = getState()
