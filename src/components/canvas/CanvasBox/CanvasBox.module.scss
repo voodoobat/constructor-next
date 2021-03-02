@@ -2,7 +2,11 @@
 @import '@scss/mixins';
 
 ._ {
-  padding: 2rem;
+  padding: 3rem 1rem;
+}
+
+.scale_box {
+  transform-origin: 0 0;
 }
 
 .report {

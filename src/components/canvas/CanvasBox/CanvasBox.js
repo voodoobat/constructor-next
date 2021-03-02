@@ -17,7 +17,8 @@ function CanvasBox ({ className, activeTool, reports, canvas, scale, children })
   return (
     <Draggable disabled={disabled}>
       <div className={classNames(className, scss._)}>
-        <div style={style}>
+        <div className={scss.scale_box}
+             style={style}>
           {children}
           <CellNumbers cells={canvas[0]} />
           <div className={scss.report}>
