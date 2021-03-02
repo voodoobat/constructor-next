@@ -7,26 +7,17 @@ import { colors } from '@src/fixtures/colors'
 const canvas = createEmptyCanvas(20, 10, null)
 
 export const initialState = {
+
+  // app static state
   activeLoop: NaN,
   activeLoopIcon: '', 
   activeTool: '',
   activeGroup: null,
   activeColor: '#ffffff',
   isConfirm: false,
-  defaultSwatches: colors, // ['#C83F51', '#006DF1', '#000000', '#1483B6', '#2A95C7', '#639262'],
-  swatches: [],
-  canvasLegends: [],
-  groups: [],
-  reports: [],
-  canvas,
-  plaits,
-
+  defaultSwatches: colors,
   customCursor: false,
-  currentStep: '',
-  history: [{
-    uid: uid(),
-    canvas
-  }],
+  plaits,
 
   tools: [
     { type: 'Move' },
@@ -36,5 +27,20 @@ export const initialState = {
     { type: 'Color' },
     { type: 'Group' },
     { type: 'Size' },
-  ]
+  ],
+
+
+  // data
+  name: '',
+  canvasUid: '',
+  canvas: [],
+  canvasLegends: [],
+  groups: [],
+  reports: [],
+
+  currentStep: '',
+  history: [{
+    uid: uid(),
+    canvas
+  }]
 }
