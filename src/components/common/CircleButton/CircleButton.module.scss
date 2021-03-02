@@ -1,0 +1,14 @@
+@import '@scss/config';
+@import '@scss/mixins';
+
+._ {
+  @include size(1.6rem);
+  position: relative;
+  background: $dark-gray;
+  border-radius: 50%;
+
+  > svg {
+    @include position(absolute, 50% 50%);
+    transform: translate(50%, -50%);
+  }
+}
