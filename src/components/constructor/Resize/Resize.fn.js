@@ -3,7 +3,7 @@ import { createCell, createEmptyRow } from '@src/util'
 export const addTopRow = canvas => {
   const cnvs = []
 
-  cnvs.push(createEmptyRow(canvas[0].length - 1))
+  cnvs.push(createEmptyRow(canvas[0].length))
   canvas.forEach((row, index) => {
     cnvs.push(row.map(cell => ({...cell, y: index + 1})))
   })
@@ -26,7 +26,7 @@ export const removeTopRow = canvas => {
 export const addRowBottom = canvas => {
   const cnvs = [...canvas]
 
-  cnvs.push(createEmptyRow(canvas[0].length - 1, canvas.length))
+  cnvs.push(createEmptyRow(canvas[0].length, canvas.length))
   return cnvs
 }
 

@@ -1,6 +1,6 @@
 import thunk from 'redux-thunk'
 import { compose, createStore, applyMiddleware } from 'redux'
-import persistState from 'redux-localstorage'
+// import persistState from 'redux-localstorage'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { isClient } from '@src/util'
@@ -13,7 +13,7 @@ enhancer = compose(applyMiddleware(thunk))
 if (isClient) {
   enhancer = compose(
     applyMiddleware(thunk),
-    persistState()
+    // persistState()
   )
 }
 
