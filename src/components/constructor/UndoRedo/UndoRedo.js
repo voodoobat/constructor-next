@@ -28,7 +28,7 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
       })) 
 
       dispatch(store.commitCanvas(cnvs, false))
-      dispatch(store.setCurrentStep(uid))
+      dispatch(store.setSchemeHistorytStep(uid))
     }
   }
 
@@ -43,7 +43,7 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
       })) 
 
       dispatch(store.commitCanvas(cnvs, false))
-      dispatch(store.setCurrentStep(uid))
+      dispatch(store.setSchemeHistorytStep(uid))
     }
   }
 

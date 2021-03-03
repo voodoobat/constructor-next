@@ -30,17 +30,17 @@ export const initialState = {
   ],
 
 
-  // data
+  // scheme
   schemeUid: '',
   schemeName: '',
-  canvasUid: '',
-  canvas: [],
-  canvasLegends: [],
-  groups: [],
-  reports: [],
+  schemeCanvasUid: '',
+  schemeCanvas: [],
+  schemeLegends: [],
+  schemeGroups: [],
+  schemeReports: [],
 
-  currentStep: '',
-  history: [{
+  schemeHistoryStep: '',
+  schemeHistory: [{
     uid: uid(),
     canvas
   }]

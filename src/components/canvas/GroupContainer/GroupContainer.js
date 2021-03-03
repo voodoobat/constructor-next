@@ -11,7 +11,7 @@ import Overlay from '@components/common/Overlay/Overlay'
 import QuestionIcon from './svg/question.svg'
 import Hint from '@components/common/Hint/Hint'
 
-function GroupContainer ({ className, groups, plaits, inactive }) {
+function GroupContainer ({ className, schemeGroups, plaits, inactive }) {
 
   return (
     <div className={classNames(className, scss._)}>
@@ -26,11 +26,11 @@ function GroupContainer ({ className, groups, plaits, inactive }) {
           )}
         </div>
       </Dropdown>
-      {groups.length ? (
+      {schemeGroups.length ? (
         <Dropdown caption="Мои группы элементов"
                   size="sm">
           <div className={scss.content}>
-            {groups.map((group, key) =>
+            {schemeGroups.map((group, key) =>
               <Group className={scss.group}
                     group={group}
                     key={key} />

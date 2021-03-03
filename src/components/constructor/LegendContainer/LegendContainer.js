@@ -9,7 +9,7 @@ import Cell from '@components/canvas/Cell/Cell'
 import { getData } from '@src/fixtures/loops'
 const data = getData(true)
 
-function LegendContainer ({ className, canvasLegends }) {
+function LegendContainer ({ className, schemeLegends }) {
 
   const withLegends = src => src.map(loop => {
     const { hint } = data.find(el => el.id == loop.loop)
@@ -21,13 +21,13 @@ function LegendContainer ({ className, canvasLegends }) {
   })
 
   return <>
-    {Boolean(canvasLegends.length) &&
+    {!!schemeLegends.length &&
       <div className={classNames(className, scss._)}>
         <div className={scss.caption}>
           Условные обозначения:
         </div>
         <div className={scss.content}>
-          {withLegends(canvasLegends).map((cell, key) => (
+          {withLegends(schemeLegends).map((cell, key) => (
             <Legend className={scss.legend}
                     hint={cell.hint} key={key}>
               <Cell cell={cell} />
