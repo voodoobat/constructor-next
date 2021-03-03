@@ -74,7 +74,7 @@ export function removeReport ({ uid }) {
 
 export function setActiveGroup (group) {
   return (dispatch, getState) => {
-    const { schemeGroups, plaits } = getState()
+    const { schemeGroups, activePlaits } = getState()
 
     const setActive = array => array.map(g => {
       return g.uid == group.uid
@@ -91,10 +91,10 @@ export function setActiveGroup (group) {
         ...g, active: false
       }))))
 
-      return dispatch(act.setPlaits(setActive(plaits)))
+      return dispatch(act.setPlaits(setActive(activePlaits)))
     }
 
-    dispatch(act.setPlaits(plaits.map(p => ({
+    dispatch(act.setPlaits(activePlaits.map(p => ({
       ...p, active: false
     }))))
 
@@ -124,14 +124,14 @@ export function removeGroup ({ uid }) {
 
 export function setActiveTool (activeTool) {
   return (dispatch, getState) => {
-    const { schemeGroups, plaits } = getState()
+    const { schemeGroups, activePlaits } = getState()
 
     dispatch(act.setActiveTool(activeTool))
     dispatch(act.setActiveLoop(null))
     dispatch(act.setActiveLoopIcon(''))
     dispatch(act.setActiveGroup(null))
 
-    dispatch(act.setPlaits(plaits.map(p => ({
+    dispatch(act.setPlaits(activePlaits.map(p => ({
       ...p, active: false
     }))))
     dispatch(act.setGroups(schemeGroups.map(g => ({
@@ -158,14 +158,14 @@ export function saveColorToSwatches (color) {
 
 export function setActiveLoop (activeLoop, icon = '') {
   return (dispatch, getState) => {
-    const { schemeGroups, plaits } = getState()
+    const { schemeGroups, activePlaits } = getState()
 
     dispatch(act.setActiveLoop(activeLoop))
     dispatch(act.setActiveLoopIcon(icon))
     dispatch(act.setActiveTool(null))
     dispatch(act.setActiveGroup(null))
 
-    dispatch(act.setPlaits(plaits.map(p => ({
+    dispatch(act.setPlaits(activePlaits.map(p => ({
       ...p, active: false
     }))))
 
