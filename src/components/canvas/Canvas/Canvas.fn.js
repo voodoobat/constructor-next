@@ -1,16 +1,29 @@
 import { uid } from 'uid'
+import _ from 'lodash'
 
 export const mapMatrix = (matrix, fn) => matrix.map(y => y.map(x => fn(x)))
+// export const mapMatrix = (matrix, fn) => _.map(matrix, y => _.map(y, x => fn(x)))
 
 export const getSubMatrix = (canvas, prop, compare) => {
   const temp = []
-  canvas.forEach(y => temp.push(
+  canvas.foreach(y => temp.push(
     y.filter(cell => cell[prop] == compare)
   ))
 
   const cnvs = temp.filter(el => Boolean(el.length))
   return cnvs
 }
+
+// export const getSubMatrix = (canvas, prop, compare) => {
+//   const temp = []
+
+//   _.each(canvas, y => temp.push(
+//     _.filter(y, cell => cell[prop] == compare)
+//   ))
+
+//   const cnvs = _.filter(temp, el => Boolean(el.length))
+//   return cnvs
+// }
 
 export const reselect = canvas => mapMatrix(canvas, cell => ({
   ...cell,
@@ -38,7 +51,7 @@ export const select = (canvas, cell) => {
 export const square = (canvas, cell, start) => {
   const cnvs = [...canvas]
 
-  cnvs.forEach(element => element.forEach(c => {
+  _.each(cnvs, element => element.forEach(c => {
     const { x, y } = c
 
     if (x >= start.x && y >= start.y) {

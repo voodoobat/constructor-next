@@ -13,7 +13,7 @@ enhancer = compose(applyMiddleware(thunk))
 if (isClient) {
   enhancer = compose(
     applyMiddleware(thunk),
-    persistState()
+    // persistState()
   )
 }
 

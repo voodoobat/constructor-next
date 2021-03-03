@@ -198,7 +198,7 @@ function Canvas ({
                         onMouseUp={() => onMouseUp(cell)}
                         acceptGroup={acceptSelection}
                         rejectGroup={rejectSelection}
-                        key={x} />
+                        key={cell.uid} />
           ))}
         </Row>
       ))}
