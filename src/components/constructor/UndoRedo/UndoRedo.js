@@ -23,23 +23,8 @@ function UndoRedo ({
   schemeHistoryStep
 }) {
 
-  const undo = () => {
-    const step = fn.getStep(schemeHistory, schemeHistoryStep).prev
-
-    if (step) {
-      const { canvas, uid } = step
-      const cnvs = mapMatrix(canvas, cell => ({
-        ...cell,
-        ...reset
-      })) 
-
-      dispatch(store.commitCanvas(cnvs, false))
-      dispatch(store.setSchemeHistorytStep(uid))
-    }
-  }
-
-  const redo = () => {
-    const step = fn.getStep(schemeHistory, schemeHistoryStep).next
+  const jump = location => {
+    const step = fn.getStep(schemeHistory, schemeHistoryStep)[location]
 
     if (step) {
       const { canvas, uid } = step
@@ -56,12 +41,12 @@ function UndoRedo ({
   return (
     <div className={classNames(className, scss._)}>
       <button className={scss.button}
-              onClick={undo}
+              onClick={() => jump('prev')}
               type="button">
         <Undo />
       </button>
       <button className={scss.button}
-              onClick={redo}
+              onClick={() => jump('next')}
               type="button">
         <Redo />
       </button>
