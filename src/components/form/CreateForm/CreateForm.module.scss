@@ -15,11 +15,13 @@
 
 .label {
   padding-right: 1em;
+  user-select: none;
   min-width: 15rem;
 }
 
 .number {
   max-width: 10rem;
+  user-select: none;
 }
 
 .checkbox {
