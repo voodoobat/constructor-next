@@ -169,8 +169,10 @@ function Canvas ({
       }
 
       const withReport = fn.mapMatrix(cnvs, (cell => {
+        const { uid, color } = report
+
         return cell.selected
-          ? { ...cell, ...commonProps, report }
+          ? { ...cell, ...commonProps, report: { uid, color }}
           : { ...cell, ...commonProps }
       }))
 

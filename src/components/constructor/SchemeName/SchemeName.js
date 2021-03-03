@@ -10,8 +10,14 @@ import * as store from '@src/functions'
 
 function SchemeName ({ className, schemeName, dispatch }) {
   const editable = useRef(null)
-  const change = ev => {
-    dispatch(store.setSchemeName(striptags(ev.target.value) || 'Моя схема'))
+  const change = ({ target }) => {
+    const { value } = target
+    const name = value.length > 50 ? schemeName : value
+
+    dispatch(store.setSchemeName(
+      striptags(name) ||
+      'Моя схема'
+    ))
   }
 
   return (
