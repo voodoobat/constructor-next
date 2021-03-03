@@ -11,7 +11,7 @@ import Overlay from '@components/common/Overlay/Overlay'
 import QuestionIcon from './svg/question.svg'
 import Hint from '@components/common/Hint/Hint'
 
-function GroupContainer ({ className, schemeGroups, plaits, inactive }) {
+function GroupContainer ({ className, schemeGroups, activePlaits, inactive }) {
 
   return (
     <div className={classNames(className, scss._)}>
@@ -19,7 +19,7 @@ function GroupContainer ({ className, schemeGroups, plaits, inactive }) {
                 active={false}
                 size="sm">
         <div className={classNames(scss.content)}>
-          {plaits.map((plait, key) =>
+          {activePlaits.map((plait, key) =>
             <Plait className={scss.plait}
                    plait={plait}
                    key={key} />

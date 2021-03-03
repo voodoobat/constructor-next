@@ -9,15 +9,16 @@ const canvas = createEmptyCanvas(20, 10, null)
 export const initialState = {
 
   // app static state
+  activeTool: '',
   activeLoop: NaN,
   activeLoopIcon: '', 
-  activeTool: '',
   activeGroup: null,
   activeColor: '#ffffff',
+  activeSwatches: colors,
+  activePlaits: plaits,
+
   isConfirm: false,
-  defaultSwatches: colors,
-  customCursor: false,
-  plaits,
+  isCustomCursor: false,
 
   tools: [
     { type: 'Move' },
