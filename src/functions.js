@@ -149,10 +149,7 @@ export function setActiveColor (activeColor) {
 export function saveColorToSwatches (color) {
   return (dispatch, getState) => {
     const { swatches } = getState()
-
     dispatch(act.setSwatches(_.uniq([...swatches, color])))
-
-    console.log(swatches)
   }
 }
 

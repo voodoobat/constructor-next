@@ -8,6 +8,7 @@ import { mapMatrix } from '@components/canvas/Canvas/Canvas.fn'
 import Undo from './svg/undo.svg'
 import Redo from './svg/redo.svg'
 
+import * as fn from './UndoRedo.fn'
 import * as store from '@src/functions'
 
 const reset = {
@@ -15,13 +16,18 @@ const reset = {
   confirm: false
 }
 
-function UndoRedo ({ className, dispatch, history, currentStep }) {
+function UndoRedo ({
+  className,
+  dispatch,
+  schemeHistory,
+  schemeHistoryStep
+}) {
 
   const undo = () => {
-    const index = history.findIndex(({ uid }) => uid == currentStep) - 1
+    const step = fn.getStep(schemeHistory, schemeHistoryStep).prev
 
-    if (history[index]) {
-      const { canvas, uid } = history[index]
+    if (step) {
+      const { canvas, uid } = step
       const cnvs = mapMatrix(canvas, cell => ({
         ...cell,
         ...reset
@@ -33,10 +39,10 @@ function UndoRedo ({ className, dispatch, history, currentStep }) {
   }
 
   const redo = () => {
-    const index = history.findIndex(({ uid }) => uid == currentStep) + 1
+    const step = fn.getStep(schemeHistory, schemeHistoryStep).next
 
-    if (history[index]) {
-      const { canvas, uid } = history[index]
+    if (step) {
+      const { canvas, uid } = step
       const cnvs = mapMatrix(canvas, cell => ({
         ...cell,
         ...reset
