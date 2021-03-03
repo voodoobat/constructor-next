@@ -6,7 +6,7 @@ import * as act from '@src/actions'
 
 export function createScheme ({ uid, name, rows, cols }) {
   return dispatch => {
-    dispatch(act.setCanvas(createEmptyCanvas(cols, rows)))
+    dispatch(act.setSchemeCanvas(createEmptyCanvas(cols, rows)))
     dispatch(act.setSchemeName(name))
     dispatch(act.setSchemeUid(uid))
   }
@@ -18,42 +18,63 @@ export function setSchemeName (name) {
   }
 }
 
+export function setSchemeHistorytStep (uid) {
+  return dispatch => {
+    dispatch(act.setSchemeHistorytStep(uid))
+  }
+}
+
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
-    const { history, currentStep } = getState()
+    const { schemeHistory, schemeCurrentStep } = getState()
 
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
       'loop'
     )
 
-    dispatch(act.setCanvas(canvas))
+    dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setCanvasLegend(uniq))
 
     if (save) {
-      const id = uid()
-      const index = history.findIndex(({ uid }) => uid == currentStep)
-      const temp = [...history]
+      const stepUid = uid()
+      const index = schemeHistory.findIndex(({ uid }) => uid == schemeCurrentStep)
+      const temp = [...schemeHistory]
 
       if (index > -1) {
         temp.length = index + 1
       } 
 
-      dispatch(act.setHistory([...temp, { uid: id, canvas }]))
-      dispatch(act.setCurrentStep(id))
+      dispatch(act.setSchemeHistory([...temp, { uid: stepUid, canvas }]))
+      dispatch(act.setSchemeHistorytStep(stepUid))
     }
   }
 }
 
-export function setCurrentStep (uid) {
-  return dispatch => {
-    dispatch(act.setCurrentStep(uid))
+export function setReport (report) {
+  return (dispatch, getState) => {
+    const { schemeReports } = getState()
+
+    dispatch(act.setReport([...schemeReports, report]))
+  }
+}
+
+export function removeReport ({ uid }) {
+  return (dispatch, getState) => {
+    const { schemeReports, schemeCanvas } = getState()
+
+    dispatch(act.setReport(schemeReports.filter(report => report.uid != uid)))
+    dispatch(act.setSchemeCanvas(schemeCanvas.map(y => y.map(cell => {
+      return cell.report?.uid == uid
+        ? { ...cell, report: null }
+        : { ...cell }
+    }))))
   }
 }
 
 export function setActiveGroup (group) {
   return (dispatch, getState) => {
-    const { groups, plaits } = getState()
+    const { schemeGroups, plaits } = getState()
 
     const setActive = array => array.map(g => {
       return g.uid == group.uid
@@ -66,7 +87,7 @@ export function setActiveGroup (group) {
     dispatch(act.setActiveGroup(group))
 
     if (group.isPlait) {
-      dispatch(act.setGroups(groups.map(g => ({
+      dispatch(act.setGroups(schemeGroups.map(g => ({
         ...g, active: false
       }))))
 
@@ -77,14 +98,14 @@ export function setActiveGroup (group) {
       ...p, active: false
     }))))
 
-    return dispatch(act.setGroups(setActive(groups)))
+    return dispatch(act.setGroups(setActive(schemeGroups)))
   }
 }
 
 export function commitNewGroup (canvas) {
   return (dispatch, getState) => {
-    const { groups } = getState()
-    dispatch(act.setGroups([ ...groups, {
+    const { schemeGroups } = getState()
+    dispatch(act.setGroups([ ...schemeGroups, {
       uid: uid(),
       active: false,
       canvas,
@@ -94,16 +115,16 @@ export function commitNewGroup (canvas) {
 
 export function removeGroup ({ uid }) {
   return (dispatch, getState) => {
-    const { groups } = getState()
+    const { schemeGroups } = getState()
 
-    dispatch(act.setGroups(groups.filter(g => g.uid != uid)))
+    dispatch(act.setGroups(schemeGroups.filter(g => g.uid != uid)))
     dispatch(act.setActiveGroup(null))
   }
 }
 
 export function setActiveTool (activeTool) {
   return (dispatch, getState) => {
-    const { groups, plaits } = getState()
+    const { schemeGroups, plaits } = getState()
 
     dispatch(act.setActiveTool(activeTool))
     dispatch(act.setActiveLoop(null))
@@ -113,7 +134,7 @@ export function setActiveTool (activeTool) {
     dispatch(act.setPlaits(plaits.map(p => ({
       ...p, active: false
     }))))
-    dispatch(act.setGroups(groups.map(g => ({
+    dispatch(act.setGroups(schemeGroups.map(g => ({
       ...g, active: false
     }))))
   }
@@ -137,7 +158,7 @@ export function saveColorToSwatches (color) {
 
 export function setActiveLoop (activeLoop, icon = '') {
   return (dispatch, getState) => {
-    const { groups, plaits } = getState()
+    const { schemeGroups, plaits } = getState()
 
     dispatch(act.setActiveLoop(activeLoop))
     dispatch(act.setActiveLoopIcon(icon))
@@ -148,7 +169,7 @@ export function setActiveLoop (activeLoop, icon = '') {
       ...p, active: false
     }))))
 
-    dispatch(act.setGroups(groups.map(g => ({
+    dispatch(act.setGroups(schemeGroups.map(g => ({
       ...g, active: false
     }))))
   }
@@ -160,29 +181,9 @@ export function setCustomCursor (cursor) {
   }
 }
 
-export function setReport (report) {
-  return (dispatch, getState) => {
-    const { reports } = getState()
-
-    dispatch(act.setReport([...reports, report]))
-  }
-}
-
-export function removeReport ({ uid }) {
-  return (dispatch, getState) => {
-    const { reports, canvas } = getState()
-
-    dispatch(act.setReport(reports.filter(report => report.uid != uid)))
-    dispatch(act.setCanvas(canvas.map(y => y.map(cell => {
-      return cell.report?.uid == uid
-        ? { ...cell, report: null }
-        : { ...cell }
-    }))))
-  }
-}
 
 export function setConfirm (isConfirm) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(act.setConfirm(isConfirm))
   }
 }

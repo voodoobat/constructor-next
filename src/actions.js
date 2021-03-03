@@ -1,8 +1,3 @@
-export const setCanvas = canvas => ({
-  type: 'SET_CANVAS',
-  payload: { canvas }
-})
-
 export const setActiveLoop = activeLoop => ({
   type: 'SET_ACTIVE_LOOP',
   payload: { activeLoop }
@@ -13,15 +8,9 @@ export const setActiveLoopIcon = activeLoopIcon => ({
   payload: { activeLoopIcon }
 })
 
-
 export const setActiveTool = activeTool => ({
   type: 'SET_ACTIVE_TOOL',
   payload: { activeTool }
-})
-
-export const setGroups = groups => ({
-  type: 'SET_GROUPS',
-  payload: { groups }
 })
 
 export const setPlaits = plaits => ({
@@ -44,29 +33,9 @@ export const setSwatches = swatches => ({
   payload: { swatches }
 })
 
-export const setCanvasLegend = canvasLegends => ({
-  type: 'SET_CANVAS_LEGENDS',
-  payload: { canvasLegends }
-})
-
-export const setHistory = history => ({
-  type: 'SET_HISTORY',
-  payload: { history }
-})
-
-export const setCurrentStep = currentStep => ({
-  type: 'SET_CURRENT_STEP',
-  payload: { currentStep }
-})
-
 export const setCustomCursor = customCursor => ({
   type: 'SET_CUSTOM_CURSOR',
   payload: { customCursor }
-})
-
-export const setReport = reports => ({
-  type: 'SET_REPORT',
-  payload: { reports }
 })
 
 export const setConfirm = isConfirm => ({
@@ -74,12 +43,44 @@ export const setConfirm = isConfirm => ({
   payload: { isConfirm }
 })
 
+
+
+export const setSchemeUid = schemeUid => ({
+  type: 'SET_SCHEME_UID',
+  payload: { schemeUid }
+})
+
 export const setSchemeName = schemeName => ({
   type: 'SET_SCHEME_NAME',
   payload: { schemeName }
 })
 
-export const setSchemeUid = schemeUid => ({
-  type: 'SET_SCHEME_UID',
-  payload: { schemeUid }
+export const setSchemeCanvas = schemeCanvas => ({
+  type: 'SET_CANVAS',
+  payload: { schemeCanvas }
+})
+
+export const setGroups = schemeGroups => ({
+  type: 'SET_GROUPS',
+  payload: { schemeGroups }
+})
+
+export const setCanvasLegend = schemeLegends => ({
+  type: 'SET_CANVAS_LEGENDS',
+  payload: { schemeLegends }
+})
+
+export const setReport = schemeReports => ({
+  type: 'SET_REPORT',
+  payload: { schemeReports }
+})
+
+export const setSchemeHistory = schemeHistory => ({
+  type: 'SET_HISTORY',
+  payload: { schemeHistory }
+})
+
+export const setSchemeHistorytStep = schemeHistoryStep => ({
+  type: 'SET_CURRENT_STEP',
+  payload: { schemeHistoryStep }
 })

@@ -14,25 +14,25 @@ import * as fn from './Canvas.fn'
 
 function Canvas ({
   className,
-  canvas,
-  reports,
-  dispatch,
   activeGroup,
   activeColor,
   activeLoop,
-  activeTool
+  activeTool,
+  schemeCanvas,
+  schemeReports,
+  dispatch
 }) {
 
-  const [cnvs, setCnvs] = useState(canvas)
+  const [canvas, setCanvas] = useState(schemeCanvas)
   const [confirm, setConfirm] = useState(false)
   const [group, setGroup] = useState(null)
   const [report, setReport] = useState(null)
   const [active, setActive] = useState(null)
 
-  useEffect(() => setCnvs(canvas))
+  useEffect(() => setCanvas(schemeCanvas))
 
   const commitWithNewProps = (prop, compare, props, save = true) => {
-    const temp = fn.mapMatrix(cnvs, cell => {
+    const temp = fn.mapMatrix(canvas, cell => {
       const preview = { background: null, loop: null }
 
       return cell[prop] == compare
@@ -40,13 +40,13 @@ function Canvas ({
         : { ...cell, preview }
     })
 
-    setCnvs(temp)
+    setCanvas(temp)
     dispatch(store.commitCanvas(temp, save))
   }
 
   const canvasMouseLeave = () => {
     if (!confirm) {
-      setCnvs(fn.reset(cnvs))
+      setCanvas(fn.reset(canvas))
     }
 
     setActive(null)
@@ -60,20 +60,20 @@ function Canvas ({
     }
 
     if (activeGroup) {
-      const temp = fn.placeGroup(cnvs, activeGroup)
+      const temp = fn.placeGroup(canvas, activeGroup)
 
-      setCnvs(temp)
+      setCanvas(temp)
       dispatch(store.commitCanvas(temp))
     }
   }
 
   const onMouseEnter = cell => {
     if (active && !activeGroup) {
-      setCnvs(fn.square(cnvs, cell, active))
+      setCanvas(fn.square(canvas, cell, active))
     }
 
     if (activeGroup) {
-      setCnvs(fn.squareGroup(cnvs, cell, activeGroup))
+      setCanvas(fn.squareGroup(canvas, cell, activeGroup))
     }
   }
 
@@ -112,9 +112,9 @@ function Canvas ({
     }
 
     if (or(activeTool, 'Group', 'Report')) {
-      const temp = fn.getSubMatrix(cnvs, 'selected', true)
-      const withConfirm = fn.lastCellWithProp(cnvs, temp, 'confirm', true)
-      setCnvs(withConfirm)
+      const temp = fn.getSubMatrix(canvas, 'selected', true)
+      const withConfirm = fn.lastCellWithProp(canvas, temp, 'confirm', true)
+      setCanvas(withConfirm)
       dispatch(store.setConfirm(true))
 
       if (temp.length) {
@@ -125,7 +125,7 @@ function Canvas ({
         }
 
         if (is(activeTool, 'Report')) {
-          setReport(fn.createReport(temp, reports))
+          setReport(fn.createReport(temp, schemeReports))
           setConfirm(true)
         }
       }
@@ -168,7 +168,7 @@ function Canvas ({
         confirm: false
       }
 
-      const withReport = fn.mapMatrix(cnvs, (cell => {
+      const withReport = fn.mapMatrix(canvas, (cell => {
         const { uid, color } = report
 
         return cell.selected
@@ -176,7 +176,7 @@ function Canvas ({
           : { ...cell, ...commonProps }
       }))
 
-      setCnvs(withReport)
+      setCanvas(withReport)
       dispatch(store.commitCanvas(withReport), false)
       dispatch(store.setReport(report))
       cleanExtra()
@@ -186,7 +186,7 @@ function Canvas ({
   return (
     <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
-      {cnvs.map((row, index) => (
+      {canvas.map((row, index) => (
         <Row className={scss.row}
              number={canvas.length - index}
              key={index}>
