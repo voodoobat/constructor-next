@@ -19,7 +19,7 @@ export const createCell = (x, y, loop = null) => ({
 export const createEmptyRow = (size, y = 0) => {
   const temp = []
 
-  for (let j = 0; j <= size; j++) {
+  for (let j = 0; j < size; j++) {
     temp.push(createCell(j, y))
   }
 
