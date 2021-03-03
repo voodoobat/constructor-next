@@ -61,10 +61,10 @@ export function setReport (report) {
 
 export function removeReport ({ uid }) {
   return (dispatch, getState) => {
-    const { schemeReports, canvas } = getState()
+    const { schemeReports, schemeCanvas } = getState()
 
     dispatch(act.setReport(schemeReports.filter(report => report.uid != uid)))
-    dispatch(act.setSchemeCanvas(canvas.map(y => y.map(cell => {
+    dispatch(act.setSchemeCanvas(schemeCanvas.map(y => y.map(cell => {
       return cell.report?.uid == uid
         ? { ...cell, report: null }
         : { ...cell }
