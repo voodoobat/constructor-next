@@ -1,5 +1,4 @@
 import { uid } from 'uid'
-import { sample } from 'lodash'
 
 export const mapMatrix = (matrix, fn) => matrix.map(y => y.map(x => fn(x)))
 
@@ -134,14 +133,17 @@ export const squareGroup = (canvas, cell, group) => {
   return temp
 }
 
-export const lastSelWithProp = (canvas, sub, prop, value) => {
+export const lastCellWithProp = (canvas, sub, prop, value) => {
   const cnvs = [...canvas]
-
   const last = sub[sub.length - 1]
-  const { x, y } = last[last.length - 1]
 
-  cnvs[y][x][prop] = value
-  
+  if (last != null) {
+    const { x, y } = last[last.length - 1]
+
+    cnvs[y][x][prop] = value
+    return cnvs
+  }
+
   return cnvs
 }
 

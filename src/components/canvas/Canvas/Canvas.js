@@ -113,7 +113,7 @@ function Canvas ({
 
     if (or(activeTool, 'Group', 'Report')) {
       const temp = fn.getSubMatrix(cnvs, 'selected', true)
-      const withConfirm = fn.lastSelWithProp(cnvs, temp, 'confirm', true)
+      const withConfirm = fn.lastCellWithProp(cnvs, temp, 'confirm', true)
       setCnvs(withConfirm)
       dispatch(store.setConfirm(true))
 
