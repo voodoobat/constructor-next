@@ -7,7 +7,8 @@
   min-width: $canvas-cell-width;
   min-height: $canvas-cell-height;
   height: $canvas-cell-height;
-  border: 1px solid $light-gray;
+  border: solid $light-gray;
+  border-width: 1px 1px 0 0;
   text-align: center;
   -webkit-user-drag: none;
   user-select: none;

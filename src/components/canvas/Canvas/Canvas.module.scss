@@ -3,24 +3,34 @@
 
 ._ {
   display: inline-block;
-  border-collapse: collapse;  
+  border: solid $light-gray;
+  border-width: 0 0 1px 1px;
   transform-origin: 0 0;
-  transition: transform .1s ease;
   cursor: none;
 }
 
 .row {
+  display: flex;
+  position: relative;
+
   &::before, &::after {
-    @include position(relative, 0.2rem);
     display: block;
     padding: 0 0.35em;
     width: $canvas-cell-width;
     content: attr(data-number);
     font-size: $text-xs;
+    z-index: 10;
   }
 
   &::before {
+    @include position(absolute, 0.2rem null null 0);
+    transform: translateX(-100%);
     text-align: right;
+  }
+
+  &::after {
+    @include position(absolute, 0.2rem 0);
+    transform: translateX(100%);
   }
 
   &:nth-child(odd) {
