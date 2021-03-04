@@ -5,7 +5,7 @@ import Hero from '@components/common/Hero/Hero'
 import Schemes from '@components/schemes/Schemes/Schemes'
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/schemes/')
+  const res = await fetch(`${process.env.API_URL}schemes/`)
   const schemes = await res.json()
 
   return {
