@@ -5,9 +5,9 @@ import { createEmptyCanvas } from '@src/util'
 import * as local from '@store/localstorage'
 import * as act from '@src/store/actions'
 
+
 export function localSave () {
   return (dispatch, getState) => {
-    console.log(local.fetch())
     local.save(getState())
   }
 }

@@ -1,10 +1,13 @@
 import { uid } from 'uid'
 
-import { createEmptyCanvas } from '@src/util'
+import * as util from '@src/util'
+import * as local from '@store/localstorage'
+
 import { plaits } from '@src/fixtures/plaits'
 import { colors } from '@src/fixtures/colors'
 
-const canvas = createEmptyCanvas(20, 10, null)
+const canvas = util.createEmptyCanvas(20, 10, null)
+const localState = (() => util.isClient ? local.fetch() : {})()
 
 export const initialState = {
 
@@ -42,5 +45,7 @@ export const initialState = {
   schemeHistory: [{
     uid: uid(),
     canvas
-  }]
+  }],
+
+  ...localState
 }
