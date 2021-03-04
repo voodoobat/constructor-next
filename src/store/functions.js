@@ -1,12 +1,14 @@
 import { uid } from 'uid'
 import _ from 'lodash'
 
-import { createEmptyCanvas, getSchemeData } from '@src/util'
+import { createEmptyCanvas } from '@src/util'
+import * as local from '@store/localstorage'
 import * as act from '@src/store/actions'
 
 export function localSave () {
   return (dispatch, getState) => {
-    console.log(getSchemeData(getState()))
+    console.log(local.fetch())
+    local.save(getState())
   }
 }
 
