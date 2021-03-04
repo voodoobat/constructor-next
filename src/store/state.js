@@ -42,10 +42,7 @@ export const initialState = {
   schemeReports: [],
 
   schemeHistoryStep: '',
-  schemeHistory: [{
-    uid: uid(),
-    canvas
-  }],
+  schemeHistory: [],
 
   ...getLocalState()
 }

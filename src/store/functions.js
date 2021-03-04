@@ -14,9 +14,14 @@ export function localSave () {
 
 export function createScheme ({ uid, name, rows, cols }) {
   return dispatch => {
-    dispatch(act.setSchemeCanvas(createEmptyCanvas(cols, rows)))
+    const canvas = createEmptyCanvas(cols, rows)
+
+    dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setSchemeName(name))
     dispatch(act.setSchemeUid(uid))
+
+    dispatch(act.setSchemeHistorytStep('zero-step'))
+    dispatch(act.setSchemeHistory([{ uid: 'zero-step', canvas }]))
   }
 }
 
