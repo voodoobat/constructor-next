@@ -41,6 +41,8 @@ export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
     const { schemeHistory, schemeCurrentStep } = getState()
 
+    console.log(getState())
+
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
       'loop'

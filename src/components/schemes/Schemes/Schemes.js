@@ -4,24 +4,7 @@ import Container from '@components/layout/Container/Container'
 import Dropdown from '@components/common/Dropdown/Dropdown'
 import { SchemeButton, SchemeButtonCreate } from '@src/components/schemes/SchemeButton/SchemeButton'
 
-const s = []
-for (let j = 0; j < 10; j++) {
-  let name = 'Моя первая схема в этом онлайн-конструкторе'
-
-  if (j == 1) {
-    name = 'Моя первая схема'
-  }
-
-  if (j == 2) {
-    name = 'Моя первая схема с длинным названием в этом онлайн-конструкторе'
-  }
-
-  s.push({
-    uid: j, name 
-  })
-}
-
-export default function Schemes () {
+export default function Schemes ({ schemes }) {
   return (
     <div className={scss.schemes}>
       <Container>
@@ -29,13 +12,13 @@ export default function Schemes () {
           <div className={scss.container}>
             <SchemeButtonCreate href="/constructor/create"
                                 className={scss.scheme} /> 
-            {s.map(({ uid, name }) => (
+            {schemes.map(({ schemeUid, schemeName }) => (
               <SchemeButton className={scss.scheme}
-                            key={uid}
+                            key={schemeUid}
                             image="images/scheme_1.png"
-                            name={name}
+                            name={schemeName}
                             date="30.09.2020"
-                            href="/constructor" />
+                            href={`/constructor/${schemeUid}`} />
             ))}
           </div>
         </Dropdown>
