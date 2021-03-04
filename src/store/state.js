@@ -7,7 +7,7 @@ import { plaits } from '@src/fixtures/plaits'
 import { colors } from '@src/fixtures/colors'
 
 const canvas = util.createEmptyCanvas(20, 10, null)
-const localState = (() => util.isClient ? local.fetch() : {})()
+const getLocalState = () => util.isClient ? local.fetch() : {}
 
 export const initialState = {
 
@@ -47,5 +47,5 @@ export const initialState = {
     canvas
   }],
 
-  ...localState
+  ...getLocalState()
 }
