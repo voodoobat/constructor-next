@@ -8,37 +8,3 @@
   transform-origin: 0 0;
   cursor: none;
 }
-
-.row {
-  &::before, &::after {
-    display: block;
-    padding: 0 0.35em;
-    width: $canvas-cell-width;
-    content: attr(data-number);
-    font-size: $text-xs;
-    z-index: 10;
-  }
-
-  &::before {
-    @include position(absolute, 0.2rem null null 0);
-    transform: translateX(-100%);
-    text-align: right;
-  }
-
-  &::after {
-    @include position(absolute, 0.2rem 0);
-    transform: translateX(100%);
-  }
-
-  &:nth-child(odd) {
-    &::after {
-      opacity: 0;
-    }
-  }
-
-  &:nth-child(even) {
-    &::before {
-      opacity: 0;
-    }
-  }
-}

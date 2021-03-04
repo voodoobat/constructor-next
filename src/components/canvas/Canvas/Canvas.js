@@ -187,8 +187,7 @@ function Canvas ({
     <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, index) => (
-        <Row className={scss.row}
-             number={canvas.length - index}
+        <Row number={canvas.length - index}
              key={index}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}
