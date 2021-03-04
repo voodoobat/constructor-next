@@ -9,7 +9,7 @@ import Undo from './svg/undo.svg'
 import Redo from './svg/redo.svg'
 
 import * as fn from './UndoRedo.fn'
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 const reset = {
   selected: false,

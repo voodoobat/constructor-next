@@ -2,7 +2,7 @@ import { uid } from 'uid'
 import _ from 'lodash'
 
 import { createEmptyCanvas } from '@src/util'
-import * as act from '@src/actions'
+import * as act from '@src/store/actions'
 
 export function createScheme ({ uid, name, rows, cols }) {
   return dispatch => {

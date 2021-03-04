@@ -3,7 +3,7 @@ import scss from './Resize.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 import * as fn from './Resize.fn'
 

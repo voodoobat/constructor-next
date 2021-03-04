@@ -1,4 +1,4 @@
-import { initialState } from '@src/state'
+import { initialState } from '@store/state'
 
 export default function reducers (state = initialState, { type, payload }) {
 

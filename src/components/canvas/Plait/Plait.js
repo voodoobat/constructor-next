@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import Row from '@components/canvas/Row/Row'
 import Cell from '@components/canvas/Cell/Cell'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 function Plait ({ className, plait, dispatch }) {
   const setActive = () => dispatch(store.setActiveGroup(plait))

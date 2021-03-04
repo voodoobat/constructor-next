@@ -83,3 +83,4 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
 
   return text
 }
+

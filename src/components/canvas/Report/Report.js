@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import CircleButton from '@components/common/CircleButton/CircleButton'
 
 import { formatPlural } from '@src/util'
-import * as store from '@src/functions'
+import * as store from '@src/store/functions'
 
 function Report ({ className, report, dispatch }) {
   const rows = report.canvas.length

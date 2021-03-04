@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import CloseButton from '@components/common/CloseButton/CloseButton'
 import Button from '@components/common/Button/Button'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 function Colorpicker ({ className, dispatch, activeColor, defaultSwatches, swatches }) {
   const [color, setColor] = useState(activeColor || '#000')

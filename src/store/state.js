@@ -34,7 +34,6 @@ export const initialState = {
   // scheme
   schemeUid: '',
   schemeName: '',
-  schemeCanvasUid: '',
   schemeCanvas: [],
   schemeLegends: [],
   schemeGroups: [],

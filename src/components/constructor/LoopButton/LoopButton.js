@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import Loop from '@components/constructor/Loop/Loop'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 import OptionsIcon from './svg/options_icon.svg'
 

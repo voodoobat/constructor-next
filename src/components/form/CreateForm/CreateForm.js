@@ -10,7 +10,7 @@ import { Input, Number } from '@components/form/Input/Input'
 import { Checkbox } from '@components/form/Checkbox/Checkbox'
 import Button from '@components/common/Button/Button'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 function CreateForm ({ dispatch }) {
   const router = useRouter()

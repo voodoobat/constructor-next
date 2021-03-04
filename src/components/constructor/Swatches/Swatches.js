@@ -3,7 +3,7 @@ import scss from './Swatches.module.scss'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 function Swatches ({ className, dispatch, activeColor, activeSwatches, }) {
 

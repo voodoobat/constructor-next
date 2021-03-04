@@ -9,7 +9,7 @@ import CanvasCell from '@components/canvas/CanvasCell/CanvasCell'
 import Row from '@components/canvas/Row/Row'
 
 import { is, or } from '@src/util'
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 import * as fn from './Canvas.fn'
 
 function Canvas ({

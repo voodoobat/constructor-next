@@ -6,7 +6,7 @@ import ContentEditable from 'react-contenteditable'
 import striptags from 'striptags'
 import classNames from 'classnames'
 
-import * as store from '@src/functions'
+import * as store from '@store/functions'
 
 function SchemeName ({ className, schemeName, dispatch }) {
   const editable = useRef(null)
