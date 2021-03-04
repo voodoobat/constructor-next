@@ -6,9 +6,20 @@ import { createEmptyCanvas } from '@src/util'
 import * as local from '@store/localstorage'
 import * as act from '@src/store/actions'
 
+import { API_URL } from '@src/config'
+
 export function localSave () {
   return (dispatch, getState) => {
     local.save(getState())
+  }
+}
+
+export function setSchemeByUid (query) {
+  return async () => {
+    const res = await fetch(`${API_URL}/schemes/${query.uid}`)
+      const scheme = await res.json()
+
+      local.save(scheme)
   }
 }
 
@@ -40,8 +51,6 @@ export function setSchemeHistorytStep (uid) {
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
     const { schemeHistory, schemeCurrentStep } = getState()
-
-    console.log(getState())
 
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),

@@ -1,5 +1,7 @@
 import scss from './Constructor.module.scss'
 
+import { connect } from 'react-redux'
+import { useRouter } from 'next/router'
 import classNames from 'classnames'
 
 import Container from '@components/layout/Container/Container'
@@ -9,7 +11,13 @@ import GroupContainer from '@components/canvas/GroupContainer/GroupContainer'
 import SchemeName from '@components/constructor/SchemeName/SchemeName'
 import Download from '@components/constructor/Download/Download'
 
-export default function Constructor ({ className, inactive, children }) {
+import * as store from '@store/functions'
+
+function Constructor ({ className, inactive, children, dispatch }) {
+  const { query }  = useRouter()
+
+  dispatch(store.setSchemeByUid(query))
+
   return (
     <Container className={classNames(className, scss._)}>
       {!inactive &&
@@ -37,3 +45,5 @@ export default function Constructor ({ className, inactive, children }) {
     </Container>
   )
 }
+
+export default connect(state => ({ ...state }))(Constructor)
