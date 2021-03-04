@@ -10,9 +10,6 @@
 }
 
 .row {
-  display: flex;
-  position: relative;
-
   &::before, &::after {
     display: block;
     padding: 0 0.35em;

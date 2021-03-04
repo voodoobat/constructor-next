@@ -3,5 +3,6 @@
 @import '@scss/mixins';
 
 ._ {
-  display: table-row;
+  display: flex;
+  position: relative;
 }

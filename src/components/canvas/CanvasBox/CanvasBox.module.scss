@@ -6,6 +6,7 @@
 }
 
 .scale_box {
+  display: inline-block;
   transform-origin: 0 0;
   transition: transform .05s ease-in;
 }
