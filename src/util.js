@@ -94,7 +94,7 @@ export const getSchemeData = store => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
-    schemeHistory
+    // schemeHistory
   } = store
 
   return {
@@ -105,6 +105,6 @@ export const getSchemeData = store => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
-    schemeHistory
+    // schemeHistory
   }
 }
