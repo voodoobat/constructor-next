@@ -30,7 +30,6 @@ export const initialState = {
     { type: 'Size' },
   ],
 
-
   // scheme
   schemeUid: '',
   schemeName: '',

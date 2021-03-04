@@ -84,3 +84,27 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
   return text
 }
 
+
+export const getSchemeData = store => {
+  const {
+    schemeUid,
+    schemeName,
+    schemeCanvas,
+    schemeLegends,
+    schemeGroups,
+    schemeReports,
+    schemeHistoryStep,
+    schemeHistory
+  } = store
+
+  return {
+    schemeUid,
+    schemeName,
+    schemeCanvas,
+    schemeLegends,
+    schemeGroups,
+    schemeReports,
+    schemeHistoryStep,
+    schemeHistory
+  }
+}

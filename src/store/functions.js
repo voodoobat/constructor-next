@@ -1,8 +1,14 @@
 import { uid } from 'uid'
 import _ from 'lodash'
 
-import { createEmptyCanvas } from '@src/util'
+import { createEmptyCanvas, getSchemeData } from '@src/util'
 import * as act from '@src/store/actions'
+
+export function localSave () {
+  return (dispatch, getState) => {
+    console.log(getSchemeData(getState()))
+  }
+}
 
 export function createScheme ({ uid, name, rows, cols }) {
   return dispatch => {
