@@ -6,27 +6,51 @@ import classNames from 'classnames'
 import { formatPlural } from '@src/util'
 import * as store from '@src/store/functions'
 
-function Report ({ className, report, dispatch }) {
-  const rows = report.canvas.length
-  const cell = report.canvas[0].length
+import { CANVAS_CELL_WIDTH, CANVAS_CELL_HEIGHT } from '@src/config'
+
+function Report ({ className, report, type, dispatch }) {
+  const { canvas } = report
+
+  const size = {
+    y: canvas.length,
+    x: canvas[0].length
+  }
+
+  const position = {
+    x: canvas[0][0].x
+  }
+
+  const ySpace = CANVAS_CELL_HEIGHT * (2)
+  const css = {
+    cell: {
+      left: position.x * CANVAS_CELL_WIDTH,
+      width: size.x * CANVAS_CELL_WIDTH
+    },
+
+    cline: {
+      top: ySpace * -1,
+      height: ySpace
+    }
+  }
+
 
   const remove = () => dispatch(store.removeReport(report))
 
   return (
-    <div className={classNames(className, scss._)}>
-      <span className={scss.line}></span>
-      <span className={scss.label}>Раппорт</span>
-      <span className={scss.unit}>
-        {formatPlural(rows, 'ряд', 'ряда', 'рядов')} 
-      </span>
-      <span className={scss.unit}>
-        {formatPlural(cell, 'петля', 'петли', 'петель')} 
-      </span>
-      <span className={scss.icon}
-            style={{backgroundColor: report.color}}
-            onClick={remove}>
-      </span>
-      {/* <CircleButton icon="Close" onClick={remove} /> */}
+    <div className={classNames(className, scss._)}
+         style={css[type]}>
+      <i className={classNames(scss.xline, scss.is_left)}
+         style={css.cline}></i>
+      <i className={classNames(scss.xline, scss.is_right)}
+         style={css.cline}></i>
+      <div className={scss.label}>
+        Раппорт &nbsp;
+        {type == 'rows' && formatPlural(size.y, 'ряд', 'ряда', 'рядов')}
+        {type == 'cell' && formatPlural(size.x, 'петля', 'петли', 'петель')}
+        <span className={scss.icon}
+              style={{backgroundColor: report.color}}
+              onClick={remove}></span>
+      </div>
     </div>
   )
 }

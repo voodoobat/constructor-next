@@ -2,10 +2,9 @@
 @import '@scss/mixins';
 
 ._ {
-  display: inline-flex;
+  position: absolute;
   align-items: center;
-  margin: 0.25em 0.25em;
-  padding: 0.35em;
+  border-top: 1px solid $medium-gray;
   font-size: $text-sm;
 }
 
@@ -14,6 +13,7 @@
   $height: get-persent-of-size($canvas-cell-height, 80);
 
   @include size($width $height);
+  min-width: $width;
   position: relative;
   margin-left: 0.5em;
   border: 1px solid $text-color;
@@ -36,10 +36,25 @@
   }
 }
 
-.label {
-  margin-right: 0.75em;
+.xline {
+  position: absolute;
+  width: 1px; height: 50px;
+  background: $medium-gray;
+
+  &.is_left {
+    left: 0;
+  }
+
+  &.is_right {
+    right: 0;
+  }
 }
 
-.unit {
-  margin-right: 0.5em;
+.label {
+  @include position(absolute, 0.5em 50%);
+  display: inline-flex;
+  justify-content: center;
+  transform: translateX(50%);
+  white-space: nowrap;
+  background: $body-bg;
 }

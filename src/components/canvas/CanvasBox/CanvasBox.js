@@ -28,7 +28,7 @@ function CanvasBox ({
              style={style}>
           {children}
           <CellNumbers cells={schemeCanvas[0]} />
-          <ReportContainer />
+          <ReportContainer type="cell" />
         </div>
       </div>
     </Draggable>
