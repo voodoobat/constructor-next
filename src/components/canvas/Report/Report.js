@@ -20,8 +20,9 @@ function Report ({
 
   const { canvas } = report
   const cell = fn.getCellByUid(schemeCanvas, canvas[0][0].uid)
+  const last = fn.getCellByUid(schemeCanvas, fn.getLastCellUid(canvas))
 
-  if (!cell) dispatch(store.removeReport(report))
+  if (!cell || !last) dispatch(store.removeReport(report))
 
   const size = {
     y: canvas.length,

@@ -6,6 +6,11 @@ export const getCellByUid = (canvas, uid) => {
   })
 }
 
+export const getLastCellUid = canvas => {
+  const lastRow = canvas[canvas.length - 1]
+  return lastRow[lastRow.length - 1].uid
+}
+
 export const calcOffset = index => {
   return CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index;
 }
