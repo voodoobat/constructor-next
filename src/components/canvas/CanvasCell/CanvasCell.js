@@ -30,6 +30,7 @@ export default function CanvasCell ({
          onMouseDown={onMouseDown}
          onMouseUp={onMouseUp}
          onMouseEnter={onMouseEnter}
+         data-uid={cell.uid}
          style={{background: cell.preview.background || cell.background}}>
       {cell.report && <div className={scss.report} style={{background: cell.report.color}} />}
       {cell.preview.loop && <Loop className={scss.loop} icon={`${cell.preview.loop}.svg`} />}

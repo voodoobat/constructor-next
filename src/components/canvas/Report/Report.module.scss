@@ -4,8 +4,9 @@
 ._ {
   position: absolute;
   align-items: center;
-  border-top: 1px solid $medium-gray;
-  font-size: $text-sm;
+  border-top: 1px solid $light-gray;
+  font-size: $text-xs;
+  line-height: 1.7;
 }
 
 .icon {
@@ -39,14 +40,14 @@
 .xline {
   position: absolute;
   width: 1px; height: 50px;
-  background: $medium-gray;
+  background: $light-gray;
 
   &.is_left {
     left: 0;
   }
 
   &.is_right {
-    right: 0;
+    right: -1px;
   }
 }
 
@@ -57,4 +58,5 @@
   transform: translateX(50%);
   white-space: nowrap;
   background: $body-bg;
+  z-index: 10;
 }

@@ -163,7 +163,10 @@ export const createReport = (canvas, reports) => {
       colorIndex = index + 1
     }
   })
-  
+
+  const elements = mapMatrix(canvas, ({ uid }) => uid)
+  console.log(elements)
+
   return {
     uid: uid(),
     color: sampleColors[colorIndex] || sampleColors[0],

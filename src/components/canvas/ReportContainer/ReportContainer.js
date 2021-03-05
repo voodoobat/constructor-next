@@ -8,8 +8,9 @@ import Report from '@components/canvas/Report/Report'
 function ReportContainer ({ className, schemeReports, type }) {
   return (
     <div className={classNames(className, scss._)}>
-      {schemeReports.map(report => (
+      {schemeReports.map((report, index) => (
         <Report report={report}
+                index={index}
                 key={report.uid}
                 type="cell" />
       ))}

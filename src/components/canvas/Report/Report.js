@@ -8,7 +8,14 @@ import * as store from '@src/store/functions'
 
 import { CANVAS_CELL_WIDTH, CANVAS_CELL_HEIGHT } from '@src/config'
 
-function Report ({ className, report, type, dispatch }) {
+function Report ({
+  className,
+  report,
+  type,
+  index,
+  dispatch
+}) {
+
   const { canvas } = report
 
   const size = {
@@ -20,9 +27,10 @@ function Report ({ className, report, type, dispatch }) {
     x: canvas[0][0].x
   }
 
-  const ySpace = CANVAS_CELL_HEIGHT * (2)
+  const ySpace = CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index
   const css = {
     cell: {
+      top: index * CANVAS_CELL_HEIGHT,
       left: position.x * CANVAS_CELL_WIDTH,
       width: size.x * CANVAS_CELL_WIDTH
     },
@@ -33,6 +41,7 @@ function Report ({ className, report, type, dispatch }) {
     }
   }
 
+  console.log(report)
 
   const remove = () => dispatch(store.removeReport(report))
 
