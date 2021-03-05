@@ -5,6 +5,7 @@ import classNames from 'classnames'
 
 import { formatPlural } from '@src/util'
 import * as store from '@src/store/functions'
+import * as fn from './Report.fn'
 
 import { CANVAS_CELL_WIDTH, CANVAS_CELL_HEIGHT } from '@src/config'
 
@@ -17,6 +18,8 @@ function Report ({
 }) {
 
   const { canvas } = report
+
+  console.log(fn.getCellByUid(canvas, canvas[0][0].uid))
 
   const size = {
     y: canvas.length,
@@ -41,7 +44,6 @@ function Report ({
     }
   }
 
-  console.log(report)
 
   const remove = () => dispatch(store.removeReport(report))
 
