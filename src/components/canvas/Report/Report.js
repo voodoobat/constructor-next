@@ -11,6 +11,7 @@ import { CANVAS_CELL_WIDTH, CANVAS_CELL_HEIGHT } from '@src/config'
 
 function Report ({
   className,
+  schemeCanvas,
   report,
   type,
   index,
@@ -18,8 +19,9 @@ function Report ({
 }) {
 
   const { canvas } = report
+  const cell = fn.getCellByUid(schemeCanvas, canvas[0][0].uid)
 
-  console.log(fn.getCellByUid(canvas, canvas[0][0].uid))
+  if (!cell) dispatch(store.removeReport(report))
 
   const size = {
     y: canvas.length,
@@ -27,10 +29,10 @@ function Report ({
   }
 
   const position = {
-    x: canvas[0][0].x
+    x: cell?.x
   }
 
-  const ySpace = CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index
+  const ySpace = fn.calcOffset(index)
   const css = {
     cell: {
       top: index * CANVAS_CELL_HEIGHT,
@@ -49,11 +51,11 @@ function Report ({
 
   return (
     <div className={classNames(className, scss._)}
-         style={css[type]}>
+        style={css[type]}>
       <i className={classNames(scss.xline, scss.is_left)}
-         style={css.cline}></i>
+        style={css.cline}></i>
       <i className={classNames(scss.xline, scss.is_right)}
-         style={css.cline}></i>
+        style={css.cline}></i>
       <div className={scss.label}>
         Раппорт &nbsp;
         {type == 'rows' && formatPlural(size.y, 'ряд', 'ряда', 'рядов')}

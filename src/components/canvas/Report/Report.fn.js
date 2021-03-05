@@ -1,8 +1,13 @@
-export const getCellByUid = (canvas, uid) => {
+import { CANVAS_CELL_HEIGHT } from '@src/config'
 
-  canvas.flat().find(cell => {
+export const getCellByUid = (canvas, uid) => {
+  return canvas.flat().find(cell => {
     return cell.uid == uid
-      ? cell
-      : null
   })
 }
+
+export const calcOffset = index => {
+  return CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index;
+}
+
+// export calcSize = 

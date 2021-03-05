@@ -169,6 +169,7 @@ export const createReport = (canvas, reports) => {
   return {
     uid: uid(),
     color: sampleColors[colorIndex] || sampleColors[0],
+    canvas,
     elements 
   }
 }
