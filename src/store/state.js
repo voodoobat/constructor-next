@@ -6,9 +6,7 @@ import { colors } from '@src/fixtures/colors'
 
 const getLocalState = () => util.isClient ? local.fetch() : {}
 
-export const initialState = {
-
-  // app static state
+export const instruments = {
   activeTool: '',
   activeLoop: NaN,
   activeLoopIcon: '', 
@@ -29,8 +27,9 @@ export const initialState = {
     { type: 'Group' },
     { type: 'Size' },
   ],
+}
 
-  // scheme
+export const scheme = {
   schemeUid: '',
   schemeName: '',
   schemeCanvas: [],
@@ -39,7 +38,13 @@ export const initialState = {
   schemeReports: [],
 
   schemeHistoryStep: '',
-  schemeHistory: [],
+  schemeHistory: []
+}
+
+
+export const initialState = {
+  ...instruments,
+  ...scheme,
 
   ...getLocalState()
 }

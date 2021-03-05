@@ -1,11 +1,13 @@
-import { getSchemeData } from '@src/util'
+import { isClient, getSchemeData } from '@src/util'
 import { LOCALSTORAGE_KEY } from '@src/config'
 
 export const save = store => {
   const data = JSON.stringify(getSchemeData(store))
-  localStorage.setItem(LOCALSTORAGE_KEY, data)
+  isClient && localStorage.setItem(LOCALSTORAGE_KEY, data)
 }
 
 export const fetch = () => {
-  return JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))
+  return isClient
+    ? JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))
+    : null
 }

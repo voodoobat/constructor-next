@@ -21,7 +21,8 @@ function CanvasContainer ({ className, dispatch }) {
   const onMouseEnter = () => setCursor(true)
   const onMouseLeave = () => setCursor(false)
 
-  util.isClient && setTimeout(() => dispatch(store.localSave()), AUTOSAVE_DELAY)
+  store.localSave()
+  setTimeout(() => dispatch(store.localSave()), AUTOSAVE_DELAY)
 
   return (
     <div className={classNames(className, scss._)}

@@ -15,8 +15,11 @@ export function localSave () {
 }
 
 export function createScheme ({ uid, name, rows, cols }) {
-  return dispatch => {
+  return (dispatch, getState) => {
     const canvas = createEmptyCanvas(cols, rows)
+
+    dispatch(act.resetState())
+    local.save(getState())
 
     dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setSchemeName(name))

@@ -1,3 +1,13 @@
+import { instruments, scheme } from '@store/state'
+
+export const resetState = () => ({
+  type: 'RESET_STATE',
+  payload: {
+    ...instruments,
+    ...scheme
+  }
+})
+
 export const setActiveLoop = activeLoop => ({
   type: 'SET_ACTIVE_LOOP',
   payload: { activeLoop }

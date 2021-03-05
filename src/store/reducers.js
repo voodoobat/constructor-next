@@ -3,6 +3,18 @@ import { initialState } from '@store/state'
 export default function reducers (state = initialState, { type, payload }) {
 
   switch (type) {
+    case 'RESET_STATE':
+      return {
+        ...state,
+        ...payload
+      }
+
+    case 'SET_SCHEME':
+      return {
+        ...state,
+        ...payload
+      }
+
     case 'SET_CANVAS':
       return {
         ...state,

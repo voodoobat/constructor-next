@@ -25,8 +25,8 @@ function UndoRedo ({
 
   const size = schemeHistory.length
 
-  const hasNext = schemeHistory[size - 1].uid != schemeHistoryStep
-  const hasPrev = schemeHistory[0].uid != schemeHistoryStep
+  const hasNext = size && schemeHistory[size - 1].uid != schemeHistoryStep
+  const hasPrev = size && schemeHistory[0].uid != schemeHistoryStep
 
   const jump = location => {
     const step = fn.getStep(schemeHistory, schemeHistoryStep)[location]
