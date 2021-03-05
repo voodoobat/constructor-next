@@ -10,9 +10,8 @@ import Cursor from '@components/canvas/Cursor/Cursor'
 import Zoom from '@components/canvas/Zoom/Zoom'
 
 import { AUTOSAVE_DELAY } from '@src/config'
-import * as store from '@store/functions'
-import * as util from '@src/util'
 
+import * as store from '@store/functions'
 
 function CanvasContainer ({ className, dispatch }) {
   const [scale, setScale] = useState(100)

@@ -4,14 +4,13 @@ import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
 import classNames from 'classnames'
 
-import Report from '@components/canvas/Report/Report'
 import CellNumbers from '@components/canvas/CellNumbers/CellNumbers'
+import ReportContainer from '@components/canvas/ReportContainer/ReportContainer'
 
 
 function CanvasBox ({
   className,
   activeTool,
-  schemeReports,
   schemeCanvas,
   scale,
   children
@@ -29,9 +28,7 @@ function CanvasBox ({
              style={style}>
           {children}
           <CellNumbers cells={schemeCanvas[0]} />
-          <div className={scss.report}>
-            {schemeReports.map(rep => <Report report={rep} key={rep.uid} />)}
-          </div>
+          <ReportContainer />
         </div>
       </div>
     </Draggable>
