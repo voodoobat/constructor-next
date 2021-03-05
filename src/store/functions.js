@@ -14,15 +14,6 @@ export function localSave () {
   }
 }
 
-export function setSchemeByUid (query) {
-  return async () => {
-    const res = await fetch(`${API_URL}/schemes/${query.uid}`)
-      const scheme = await res.json()
-
-      local.save(scheme)
-  }
-}
-
 export function createScheme ({ uid, name, rows, cols }) {
   return dispatch => {
     const canvas = createEmptyCanvas(cols, rows)
@@ -33,6 +24,15 @@ export function createScheme ({ uid, name, rows, cols }) {
 
     dispatch(act.setSchemeHistorytStep('zero-step'))
     dispatch(act.setSchemeHistory([{ uid: 'zero-step', canvas }]))
+  }
+}
+
+export function setSchemeByUid (query) {
+  return async () => {
+    const res = await fetch(`${API_URL}/schemes/${query.uid}`)
+      const scheme = await res.json()
+
+      local.save(scheme)
   }
 }
 

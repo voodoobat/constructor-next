@@ -5,6 +5,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.history {
+  margin-bottom: 1em;
+}
+
+.bar {
   background: $light-gray;
   border-radius: $radius;
 }

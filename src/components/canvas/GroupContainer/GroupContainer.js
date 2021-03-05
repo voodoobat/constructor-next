@@ -24,7 +24,7 @@ function GroupContainer ({
                 active={false}
                 size="sm">
         <div className={classNames(scss.content)}>
-          {activePlaits.map((plait, key) =>
+          {!inactive && activePlaits.map((plait, key) =>
             <Plait className={scss.plait}
                    plait={plait}
                    key={key} />
@@ -35,7 +35,7 @@ function GroupContainer ({
         <Dropdown caption="Мои группы элементов"
                   size="sm">
           <div className={scss.content}>
-            {schemeGroups.map((group, key) =>
+            {!inactive && schemeGroups.map((group, key) =>
               <Group className={scss.group}
                     group={group}
                     key={key} />
