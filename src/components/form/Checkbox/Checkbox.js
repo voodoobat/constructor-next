@@ -1,12 +1,12 @@
 import scss from './Checkbox.module.scss'
 
-import { useState } from 'react'
 import classNames from 'classnames'
 
 import Icon from './svg/check_icon.svg'
 
-export function Checkbox ({ className, checked, label, reverse }) {
-  const [isChecked, setChecked] = useState(Boolean(checked))
+export function Checkbox ({ className, checked, label, setter, reverse }) {
+
+  const onChange = () => setter(!checked)
 
   return (
     <label className={classNames(
@@ -15,10 +15,10 @@ export function Checkbox ({ className, checked, label, reverse }) {
       reverse ? scss.is_reverse : '', 
     )}>
       <input type="checkbox"
-             onChange={() => setChecked(!isChecked)}
-             checked={isChecked} />
+             onChange={() => onChange()}
+             checked={checked} />
       <span className={scss.icon}>
-        {isChecked && <Icon />}
+        {checked && <Icon />}
       </span>
       <span className={scss.label}>
         {label}

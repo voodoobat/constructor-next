@@ -18,14 +18,16 @@ function CreateForm ({ dispatch }) {
   const [name, setName] = useState('Моя схема')
   const [rows, setRows] = useState(2)
   const [cols, setCols] = useState(2)
+  const [onlyOdd, setOnlyOdd] = useState(false)
 
   const createScheme = ev => {
     const schemeUid = uid()
 
     ev.preventDefault()
+
     dispatch(store.createScheme({
       uid: schemeUid,
-      name, rows, cols
+      name, rows, cols, onlyOdd
     }))
 
     router.push(`/constructor/${schemeUid}`)
@@ -67,6 +69,8 @@ function CreateForm ({ dispatch }) {
       </Field>
       <Field>
         <Checkbox className={scss.checkbox}
+                  checked={onlyOdd}
+                  setter={setOnlyOdd}
                   label="Схема узора только для лицевых рядов" />
       </Field>
       <Field>

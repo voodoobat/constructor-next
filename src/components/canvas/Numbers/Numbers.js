@@ -4,8 +4,8 @@ import classNames from 'classnames'
 
 import * as fn from './Numbers.fn'
 
-export default function CellNumbers ({ className, cells }) {
-  const nums = fn.getCellNums(cells?.length || 0, true)
+export default function Numbers ({ className, cells, onlyOdd }) {
+  const nums = fn.getCellNums(cells?.length || 0, onlyOdd)
 
   return (
     <div className={classNames(className, scss._)}>

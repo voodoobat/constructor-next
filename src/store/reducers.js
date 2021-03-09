@@ -117,6 +117,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_SCHEME_ONLY_ODD_CELLS':
+      return {
+        ...state,
+        ...payload
+      }
+    
     default:
       return state
   }

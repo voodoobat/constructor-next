@@ -94,3 +94,8 @@ export const setSchemeHistorytStep = schemeHistoryStep => ({
   type: 'SET_CURRENT_STEP',
   payload: { schemeHistoryStep }
 })
+
+export const setSchemeOnlyOddCells = schemeOnlyOddCells => ({
+  type: 'SET_SCHEME_ONLY_ODD_CELLS',
+  payload: { schemeOnlyOddCells }
+})

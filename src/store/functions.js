@@ -14,7 +14,7 @@ export function localSave () {
   }
 }
 
-export function createScheme ({ uid, name, rows, cols }) {
+export function createScheme ({ uid, name, rows, cols, onlyOdd }) {
   return (dispatch, getState) => {
     const canvas = createEmptyCanvas(cols, rows)
 
@@ -24,7 +24,7 @@ export function createScheme ({ uid, name, rows, cols }) {
     dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setSchemeName(name))
     dispatch(act.setSchemeUid(uid))
-
+    dispatch(act.setSchemeOnlyOddCells(onlyOdd))
     dispatch(act.setSchemeHistorytStep('zero-step'))
     dispatch(act.setSchemeHistory([{ uid: 'zero-step', canvas }]))
   }

@@ -8,7 +8,7 @@ export const getCellNums = (size, onlyOdd = false) => {
   }
 
   else {
-    for (let j = 1; j < size; j++) {
+    for (let j = 1; j <= size; j++) {
       nums.push(j)
     }
   }
