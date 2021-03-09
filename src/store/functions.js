@@ -67,7 +67,12 @@ export function setSchemeCustomCells (cells) {
 
 export function commitCanvas (canvas, save = true) {
   return (dispatch, getState) => {
-    const { schemeHistory, schemeCurrentStep } = getState()
+    const {
+      schemeCanvas,
+      schemeHistory,
+      schemeCurrentStep,
+      schemeCustomCells
+    } = getState()
 
     const uniq = _.uniqBy(
       _.flatten(canvas).filter(({ loop }) => loop != null),
@@ -76,6 +81,19 @@ export function commitCanvas (canvas, save = true) {
 
     dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setCanvasLegend(uniq))
+
+    if (schemeCustomCells.length) {
+      if (schemeCanvas[0].length < canvas[0].length) {
+        const temp = [...schemeCustomCells, NaN]
+        dispatch(act.setSchemeCustomCells(temp))
+      }
+
+      if (schemeCanvas[0].length > canvas[0].length) {
+        const temp = [...schemeCustomCells] 
+        temp.length = temp.length - 1 
+        dispatch(act.setSchemeCustomCells(temp))
+      }
+    }
 
     if (save) {
       const stepUid = uid()
