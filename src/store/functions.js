@@ -82,38 +82,23 @@ export function commitCanvas (canvas, save = true) {
     dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setCanvasLegend(uniq))
 
-    if (schemeCustomCells.length) {
+    if (schemeCustomCells.length &&
+        schemeCanvas[0].length != canvas[0].length) {
 
+      let temp = [...schemeCustomCells]
       const diff = util.getCanvasDiff(schemeCanvas, canvas)
-      console.log(diff)
 
       if (diff.side == 'right') {
-
-        if (diff.type == 'remove') {
-          const temp = [...schemeCustomCells]
-          temp.length = temp.length - 1
-          dispatch(act.setSchemeCustomCells(temp))
-        }
-
-        if (diff.type == 'add') {
-          const temp = [...schemeCustomCells, NaN]
-          dispatch(act.setSchemeCustomCells(temp))
-        }
+        if (diff.type == 'remove') temp.pop()
+        if (diff.type == 'add') temp.push(NaN)
       }
 
       if (diff.side == 'left') {
-
-        if (diff.type == 'add') {
-          const temp = [NaN, ...schemeCustomCells]
-          dispatch(act.setSchemeCustomCells(temp))
-        }
-
-        if (diff.type == 'remove') {
-          const temp = [...schemeCustomCells]
-          temp.shift()
-          dispatch(act.setSchemeCustomCells(temp))
-        }
+        if (diff.type == 'add') temp = [NaN, ...schemeCustomCells]
+        if (diff.type == 'remove') temp.shift()
       }
+
+      dispatch(act.setSchemeCustomCells(temp))
     }
 
     if (save) {
