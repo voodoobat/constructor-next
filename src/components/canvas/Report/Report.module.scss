@@ -7,6 +7,10 @@
   border-top: 1px solid $light-gray;
   font-size: $text-xs;
   line-height: 1.7;
+
+  &.is_rows {
+    transform: rotate(-90deg);
+  }
 }
 
 .icon {

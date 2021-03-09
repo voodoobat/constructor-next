@@ -51,7 +51,7 @@ function Report ({
   const remove = () => dispatch(store.removeReport(report))
 
   return (
-    <div className={classNames(className, scss._)}
+    <div className={classNames(className, scss._, scss[`is_${type}`])}
         style={css[type]}>
       <i className={classNames(scss.xline, scss.is_left)}
         style={css.cline}></i>

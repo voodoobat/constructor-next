@@ -1,8 +1,15 @@
 @import '@scss/config';
 @import '@scss/mixins';
 
-._ {
+.cell_container {
   position: relative;
   margin-top: $canvas-cell-height;
   max-width: 100%;
+}
+
+.rows_container {
+  @include position(absolute, 0 (- $canvas-cell-height));
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

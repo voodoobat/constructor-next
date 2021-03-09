@@ -14,5 +14,3 @@ export const getLastCellUid = canvas => {
 export const calcOffset = index => {
   return CANVAS_CELL_HEIGHT * 3 + CANVAS_CELL_HEIGHT * index;
 }
-
-// export calcSize = 
