@@ -18,6 +18,18 @@ function GroupContainer ({
   inactive
 }) {
 
+  const compare = (x, z) => {
+    if (x.canvas.length > z.canvas.length) {
+      return -1
+    }
+
+    if (x.canvas.length < z.canvas.lenght) {
+      return 1
+    }
+
+    return 0
+  }
+
   return (
     <div className={classNames(className, scss._)}>
       <Dropdown caption="Элементы для кос"
@@ -35,7 +47,7 @@ function GroupContainer ({
         <Dropdown caption="Мои группы элементов"
                   size="sm">
           <div className={scss.content}>
-            {!inactive && schemeGroups.map((group, key) =>
+            {!inactive && schemeGroups.sort(compare).map((group, key) =>
               <Group className={scss.group}
                     group={group}
                     key={key} />
