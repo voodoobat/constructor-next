@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Draggable from 'react-draggable'
 import classNames from 'classnames'
 
-import CellNumbers from '@components/canvas/CellNumbers/CellNumbers'
+import Numbers from '@components/canvas/Numbers/Numbers'
 import ReportContainer from '@components/canvas/ReportContainer/ReportContainer'
 
 
@@ -27,7 +27,7 @@ function CanvasBox ({
         <div className={scss.scale_box}
              style={style}>
           {children}
-          <CellNumbers cells={schemeCanvas[0]} />
+          <Numbers cells={schemeCanvas[0]} />
           <ReportContainer type="cell" />
         </div>
       </div>

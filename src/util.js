@@ -106,6 +106,7 @@ export const getSchemeData = state => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
+    schemeOddSells,
     // schemeHistory
   } = state
 
@@ -117,6 +118,7 @@ export const getSchemeData = state => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
+    schemeOddSells
     // schemeHistory
   }
 }

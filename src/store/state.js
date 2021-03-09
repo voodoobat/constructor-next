@@ -38,7 +38,8 @@ export const scheme = {
   schemeReports: [],
 
   schemeHistoryStep: '',
-  schemeHistory: []
+  schemeHistory: [],
+  schemeOnlyOddSells: true,
 }
 
 
