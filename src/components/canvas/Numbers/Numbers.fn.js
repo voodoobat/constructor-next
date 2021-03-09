@@ -1,20 +1,17 @@
-export const isEven = n => n % 2 == 0
-
-export const getCellNums = size => {
+export const getCellNums = (size, onlyOdd = false) => {
   const nums = []
 
-  let n = 1;
-  for (let j = 1; j < size; j++) {
-    if (isEven(n)) {
-      n = n + 1
+  if (onlyOdd) {
+    for (let j = 1; j < size * 2; j++) {
+      if (j % 2 != 0) nums.push(j)
     }
-
-    if (nums[nums.length - 1] == n) {
-      n = n + 2
-    }
-
-    nums.push(n)
   }
 
-  return nums
+  else {
+    for (let j = 1; j < size; j++) {
+      nums.push(j)
+    }
+  }
+
+  return nums.reverse()
 }
