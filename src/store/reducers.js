@@ -123,6 +123,12 @@ export default function reducers (state = initialState, { type, payload }) {
         ...payload
       }
     
+    case 'SET_SCHEME_CUSTOM_CELLS':
+      return {
+        ...state,
+        ...payload
+      }
+    
     default:
       return state
   }

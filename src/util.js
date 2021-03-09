@@ -106,7 +106,8 @@ export const getSchemeData = state => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
-    schemeOnlyOddCells
+    schemeOnlyOddCells,
+    schemeCustomCells
     // schemeHistory
   } = state
 
@@ -118,7 +119,8 @@ export const getSchemeData = state => {
     schemeGroups,
     schemeReports,
     schemeHistoryStep,
-    schemeOnlyOddCells
+    schemeOnlyOddCells,
+    schemeCustomCells
     // schemeHistory
   }
 }

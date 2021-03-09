@@ -14,9 +14,16 @@ export function localSave () {
   }
 }
 
-export function createScheme ({ uid, name, rows, cols, onlyOdd }) {
+export function createScheme ({ uid, name, rows, cols, onlyOdd, customCells }) {
   return (dispatch, getState) => {
     const canvas = createEmptyCanvas(cols, rows)
+    const schemeCustomCells = []
+
+    if (customCells) {
+      for (let j = 0; j < cols; j++) {
+        schemeCustomCells.push(NaN)
+      }
+    }
 
     dispatch(act.resetState())
     local.save(getState())
@@ -25,6 +32,7 @@ export function createScheme ({ uid, name, rows, cols, onlyOdd }) {
     dispatch(act.setSchemeName(name))
     dispatch(act.setSchemeUid(uid))
     dispatch(act.setSchemeOnlyOddCells(onlyOdd))
+    dispatch(act.setSchemeCustomCells(schemeCustomCells))
     dispatch(act.setSchemeHistorytStep('zero-step'))
     dispatch(act.setSchemeHistory([{ uid: 'zero-step', canvas }]))
   }
@@ -48,6 +56,12 @@ export function setSchemeName (name) {
 export function setSchemeHistorytStep (uid) {
   return dispatch => {
     dispatch(act.setSchemeHistorytStep(uid))
+  }
+}
+
+export function setSchemeCustomCells (cells) {
+  return dispatch => {
+    dispatch(act.setSchemeCustomCells(cells))
   }
 }
 

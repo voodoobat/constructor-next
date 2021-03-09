@@ -40,6 +40,7 @@ export const scheme = {
   schemeHistoryStep: '',
   schemeHistory: [],
   schemeOnlyOddCells: false,
+  schemeCustomCells: []
 }
 
 

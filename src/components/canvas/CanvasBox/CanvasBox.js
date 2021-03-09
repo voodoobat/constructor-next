@@ -11,8 +11,6 @@ import ReportContainer from '@components/canvas/ReportContainer/ReportContainer'
 function CanvasBox ({
   className,
   activeTool,
-  schemeCanvas,
-  schemeOnlyOddCells,
   scale,
   children
 }) {
@@ -28,8 +26,7 @@ function CanvasBox ({
         <div className={scss.scale_box}
              style={style}>
           {children}
-          <Numbers cells={schemeCanvas[0]}
-                   onlyOdd={schemeOnlyOddCells} />
+          <Numbers />
           <ReportContainer type="cell" />
         </div>
       </div>

@@ -19,6 +19,7 @@ function CreateForm ({ dispatch }) {
   const [rows, setRows] = useState(2)
   const [cols, setCols] = useState(2)
   const [onlyOdd, setOnlyOdd] = useState(false)
+  const [customCells, setCustomCells] = useState(false)
 
   const createScheme = ev => {
     const schemeUid = uid()
@@ -27,7 +28,11 @@ function CreateForm ({ dispatch }) {
 
     dispatch(store.createScheme({
       uid: schemeUid,
-      name, rows, cols, onlyOdd
+      name,
+      rows,
+      cols,
+      onlyOdd,
+      customCells
     }))
 
     router.push(`/constructor/${schemeUid}`)
@@ -75,6 +80,8 @@ function CreateForm ({ dispatch }) {
       </Field>
       <Field>
         <Checkbox className={scss.checkbox}
+                  checked={customCells}
+                  setter={setCustomCells}
                   label="Вписать нумерацию петель вручную" />
       </Field>
       <Field className={scss.submit}>

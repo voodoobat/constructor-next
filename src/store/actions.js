@@ -99,3 +99,8 @@ export const setSchemeOnlyOddCells = schemeOnlyOddCells => ({
   type: 'SET_SCHEME_ONLY_ODD_CELLS',
   payload: { schemeOnlyOddCells }
 })
+
+export const setSchemeCustomCells = schemeCustomCells => ({
+  type: 'SET_SCHEME_CUSTOM_CELLS',
+  payload: { schemeCustomCells }
+})
