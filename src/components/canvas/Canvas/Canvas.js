@@ -27,6 +27,7 @@ function Canvas ({
   const [confirm, setConfirm] = useState(false)
   const [group, setGroup] = useState(null)
   const [report, setReport] = useState(null)
+  const [crossingReports, setCrossingReports] = useState([])
   const [active, setActive] = useState(null)
 
   useEffect(() => setCanvas(schemeCanvas))
@@ -111,7 +112,7 @@ function Canvas ({
         : commitWithNewProps('selected', true, props)
     }
 
-    if (or(activeTool, 'Group', 'Report')) {
+    if (or(activeTool, ['Group', 'Report'])) {
       const temp = fn.getSubMatrix(canvas, 'selected', true)
       const withConfirm = fn.lastCellWithProp(canvas, temp, 'confirm', true)
       setCanvas(withConfirm)
@@ -126,6 +127,7 @@ function Canvas ({
 
         if (is(activeTool, 'Report')) {
           setReport(fn.createReport(temp, schemeReports))
+          setCrossingReports(fn.getCrossingsReportsUids(temp))
           setConfirm(true)
         }
       }
@@ -171,10 +173,19 @@ function Canvas ({
       const withReport = fn.mapMatrix(canvas, (cell => {
         const { uid, color } = report
 
-        return cell.selected
-          ? { ...cell, ...commonProps, report: { uid, color }}
-          : { ...cell, ...commonProps }
+        if (cell.selected) {
+          return { ...cell, ...commonProps, report: { uid, color }}
+        }
+
+        if (cell.report && or(cell.report.uid, crossingReports)) {
+          return { ...cell, ...commonProps, report: null }
+        }
+
+        return { ...cell, ...commonProps }
       }))
+
+      crossingReports.forEach(uid => dispatch(store.removeReport({ uid })))
+      setCrossingReports([])
 
       setCanvas(withReport)
       dispatch(store.commitCanvas(withReport), false)

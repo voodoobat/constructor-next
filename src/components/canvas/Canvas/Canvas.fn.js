@@ -1,6 +1,10 @@
+import _ from 'lodash'
 import { uid } from 'uid'
 
 export const mapMatrix = (matrix, fn) => matrix.map(y => y.map(x => fn(x)))
+
+export const findMatrix = (matrix, fn) => matrix.flat().find(fn)
+export const filterMatrix = (matrix, fn) => matrix.flat().filter(fn)
 
 export const getSubMatrix = (canvas, prop, compare) => {
   const temp = []
@@ -172,4 +176,10 @@ export const createReport = (canvas, reports) => {
     canvas,
     elements 
   }
+}
+
+export const getCrossingsReportsUids = (canvas) => {
+  const crossings = filterMatrix(canvas, cell => cell.report != null)
+
+  return _.uniq(crossings.map(({ report }) => report.uid))
 }

@@ -46,7 +46,7 @@ export const is = (x, ...args) => {
   return bool
 }
 
-export const or = (x, ...args) => {
+export const or = (x, args) => {
   let bool = false
 
   args.forEach(y => {
