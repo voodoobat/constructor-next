@@ -39,7 +39,7 @@ export const scheme = {
 
   schemeHistoryStep: '',
   schemeHistory: [],
-  schemeOnlyOddCells: false,
+  schemeOnlyOddRows: false,
   schemeCustomCells: []
 }
 

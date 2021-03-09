@@ -26,15 +26,23 @@
     transform: translateX(100%);
   }
 
-  &:nth-child(odd) {
-    &::after {
-      opacity: 0;
+  &:not(.only_odd) {
+    &:nth-child(even) {
+      &::before {
+        content: none;
+      }
+    }
+
+    &:nth-child(odd) {
+      &::after {
+        content: none;
+      }
     }
   }
 
-  &:nth-child(even) {
+  &.only_odd {
     &::before {
-      opacity: 0;
+      content: none;
     }
   }
 }

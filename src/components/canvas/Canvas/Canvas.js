@@ -20,6 +20,7 @@ function Canvas ({
   activeTool,
   schemeCanvas,
   schemeReports,
+  schemeOnlyOddRows,
   dispatch
 }) {
 
@@ -29,6 +30,8 @@ function Canvas ({
   const [report, setReport] = useState(null)
   const [crossingReports, setCrossingReports] = useState([])
   const [active, setActive] = useState(null)
+
+  const nums = fn.getRowNums(canvas.length, schemeOnlyOddRows)
 
   useEffect(() => setCanvas(schemeCanvas))
 
@@ -198,7 +201,8 @@ function Canvas ({
     <div className={classNames(className, scss._)}
          onMouseLeave={canvasMouseLeave}>
       {canvas.map((row, index) => (
-        <Row number={canvas.length - index}
+        <Row number={nums[index]}
+             onlyOdd={schemeOnlyOddRows}
              key={index}>
           {row.map((cell, x) => (
             <CanvasCell cell={cell}

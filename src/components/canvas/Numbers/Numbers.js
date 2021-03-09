@@ -11,10 +11,9 @@ import * as fn from './Numbers.fn'
 function Numbers ({
   className,
   schemeCanvas,
-  schemeOnlyOddCells,
   schemeCustomCells
 }) {
-  const nums = fn.getCellNums(schemeCanvas[0]?.length || 0, schemeOnlyOddCells)
+  const nums = fn.getCellNums(schemeCanvas[0]?.length || 0)
 
   return (
     <div className={classNames(className, scss._)}>

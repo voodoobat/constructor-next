@@ -31,7 +31,7 @@ export function createScheme ({ uid, name, rows, cols, onlyOdd, customCells }) {
     dispatch(act.setSchemeCanvas(canvas))
     dispatch(act.setSchemeName(name))
     dispatch(act.setSchemeUid(uid))
-    dispatch(act.setSchemeOnlyOddCells(onlyOdd))
+    dispatch(act.setSchemeOnlyOddRows(onlyOdd))
     dispatch(act.setSchemeCustomCells(schemeCustomCells))
     dispatch(act.setSchemeHistorytStep('zero-step'))
     dispatch(act.setSchemeHistory([{ uid: 'zero-step', canvas }]))
