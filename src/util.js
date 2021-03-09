@@ -84,6 +84,24 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
   return text
 }
 
+export const getCanvasDiff = (canvas, resized) => {
+  const diff = {
+    type: null,
+    side: null
+  }
+
+  diff.type = canvas[0].length > resized[0].length
+    ? 'remove'
+    : 'add'
+
+
+  diff.side = canvas[0][0].uid == resized[0][0].uid
+    ? 'right'
+    : 'left'
+
+  return diff
+}
+
 export const resetSchemeProps = () => {
   return {
     schemeUid: '',

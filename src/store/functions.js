@@ -2,7 +2,7 @@ import { uid } from 'uid'
 
 import _ from 'lodash'
 
-import { createEmptyCanvas } from '@src/util'
+import * as util from '@src/util'
 import * as local from '@store/localstorage'
 import * as act from '@src/store/actions'
 
@@ -16,7 +16,7 @@ export function localSave () {
 
 export function createScheme ({ uid, name, rows, cols, onlyOdd, customCells }) {
   return (dispatch, getState) => {
-    const canvas = createEmptyCanvas(cols, rows)
+    const canvas = util.createEmptyCanvas(cols, rows)
     const schemeCustomCells = []
 
     if (customCells) {
@@ -83,15 +83,36 @@ export function commitCanvas (canvas, save = true) {
     dispatch(act.setCanvasLegend(uniq))
 
     if (schemeCustomCells.length) {
-      if (schemeCanvas[0].length < canvas[0].length) {
-        const temp = [...schemeCustomCells, NaN]
-        dispatch(act.setSchemeCustomCells(temp))
+
+      const diff = util.getCanvasDiff(schemeCanvas, canvas)
+      console.log(diff)
+
+      if (diff.side == 'right') {
+
+        if (diff.type == 'remove') {
+          const temp = [...schemeCustomCells]
+          temp.length = temp.length - 1
+          dispatch(act.setSchemeCustomCells(temp))
+        }
+
+        if (diff.type == 'add') {
+          const temp = [...schemeCustomCells, NaN]
+          dispatch(act.setSchemeCustomCells(temp))
+        }
       }
 
-      if (schemeCanvas[0].length > canvas[0].length) {
-        const temp = [...schemeCustomCells] 
-        temp.length = temp.length - 1 
-        dispatch(act.setSchemeCustomCells(temp))
+      if (diff.side == 'left') {
+
+        if (diff.type == 'add') {
+          const temp = [NaN, ...schemeCustomCells]
+          dispatch(act.setSchemeCustomCells(temp))
+        }
+
+        if (diff.type == 'remove') {
+          const temp = [...schemeCustomCells]
+          temp.shift()
+          dispatch(act.setSchemeCustomCells(temp))
+        }
       }
     }
 
