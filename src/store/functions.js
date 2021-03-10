@@ -125,6 +125,12 @@ export function setReport (report) {
   }
 }
 
+export function setSchemeLegends(legends) {
+  return dispatch => {
+    dispatch(act.setCanvasLegend(legends))
+  }
+}
+
 export function setCanvasLegendCustomHint (loop, value) {
   return (dispatch, getState) => {
     const legends = [ ...getState().schemeLegends ]

@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import * as store from '@store/functions'
 
 import RemoveIcon from './svg/remove.svg'
+import MoveIcon from './svg/move.svg'
 
 function Legend ({
   className,
@@ -20,6 +21,7 @@ function Legend ({
   
   return (
     <div className={classNames(className, scss._)}>
+      <MoveIcon className={scss.move} />
       <div className={scss.legend}>
         <i className={scss.icon}>
           <RemoveIcon />

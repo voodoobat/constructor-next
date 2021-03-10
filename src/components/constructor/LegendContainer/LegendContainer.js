@@ -1,27 +1,23 @@
 import scss from './LegendContainer.module.scss'
 
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
+
+import { ReactSortable } from 'react-sortablejs'
 
 import Legend from '@components/constructor/Legend/Legend'
 import Cell from '@components/canvas/Cell/Cell'
 
-import { getData } from '@src/fixtures/loops'
-const data = getData(true)
+import * as fn from './LegendsContainer.fn'
 
-function LegendContainer ({ className, schemeLegends }) {
+import * as store from '@store/functions'
 
-  const withLegends = src => src.map(({ element, customHint }) => {
-    const hint = customHint || data.find(el => el.id == element.loop).hint
+function LegendContainer ({ className, schemeCanvas, schemeLegends, dispatch }) {
+  const [legends, setLegends] = useState(schemeLegends)
 
-    return {
-      ...element,
-      background: '#ffffff',
-      hint
-    }
-  })
-
-  withLegends(schemeLegends)
+  const onChange = () => console.log('change'); dispatch(store.setSchemeLegends(legends))
+  useEffect(() => setLegends(schemeLegends), [schemeCanvas, schemeLegends])
 
   return <>
     {!!schemeLegends.length &&
@@ -30,14 +26,16 @@ function LegendContainer ({ className, schemeLegends }) {
           Условные обозначения:
         </div>
         <div className={scss.content}>
-          {withLegends(schemeLegends).map(legend => (
-            <Legend className={scss.legend}
-                    loop={legend.loop}
-                    hint={legend.hint}
-                    key={legend.uid}>
-              <Cell cell={legend} />
-            </Legend>
-          ))}
+          <ReactSortable list={legends} setList={setLegends} onChange={onChange}>
+            {fn.withLegends(legends).map(legend => (
+              <Legend className={scss.legend}
+                      loop={legend.loop}
+                      hint={legend.hint}
+                      key={legend.uid}>
+                <Cell cell={legend} />
+              </Legend>
+            ))}
+          </ReactSortable>
         </div>
       </div>
     }

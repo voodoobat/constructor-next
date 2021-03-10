@@ -33,7 +33,7 @@ function Canvas ({
 
   const nums = fn.getRowNums(canvas.length, schemeOnlyOddRows)
 
-  useEffect(() => setCanvas(schemeCanvas))
+  useEffect(() => setCanvas(schemeCanvas), [schemeCanvas])
 
   const commitWithNewProps = (prop, compare, props, save = true) => {
     const temp = fn.mapMatrix(canvas, cell => {

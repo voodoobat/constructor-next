@@ -2,7 +2,7 @@
 @import '@scss/mixins';
 
 ._ {
-  // ...
+  position: relative;
 }
 
 .legend {
@@ -14,12 +14,21 @@
   border-radius: $radius;
 
   &:hover {
+    .move {
+      opacity: 0.75;
+    }
 
     .icon {
       transform: scale(1);
       opacity: 1;
     }
   }
+}
+
+.move {
+  @include position(absolute, 1.2rem null null -1.5rem);
+  transition: opacity .15s ease;
+  opacity: 0.65;
 }
 
 .caption {
