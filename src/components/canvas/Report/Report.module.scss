@@ -4,7 +4,7 @@
 ._ {
   position: absolute;
   align-items: center;
-  border-top: 1px solid $light-gray;
+  border-top: 1px solid $text-color;
   font-size: $text-xs;
   line-height: 1.7;
 }
@@ -38,9 +38,9 @@
 }
 
 .xline {
-  position: absolute;
-  width: 1px; height: 50px;
-  background: $light-gray;
+  @include position(absolute, -1em);
+  @include size(1px 1em);
+  background: $text-color;
 
   &.is_left {
     left: 0;

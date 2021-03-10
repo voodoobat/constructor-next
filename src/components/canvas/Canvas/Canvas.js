@@ -204,7 +204,7 @@ function Canvas ({
         <Row number={nums[index]}
              onlyOdd={schemeOnlyOddRows}
              key={index}>
-          {row.map((cell, x) => (
+          {row.map(cell => (
             <CanvasCell cell={cell}
                         className={scss.cell}
                         onMouseEnter={() => onMouseEnter(cell)}
@@ -212,7 +212,7 @@ function Canvas ({
                         onMouseUp={() => onMouseUp(cell)}
                         acceptGroup={acceptSelection}
                         rejectGroup={rejectSelection}
-                        key={x} />
+                        key={cell.uid} />
           ))}
         </Row>
       ))}

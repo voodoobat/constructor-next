@@ -33,17 +33,11 @@ function Report ({
     x: cell?.x
   }
 
-  const ySpace = fn.calcOffset(index)
   const css = {
     cell: {
-      top: index * CANVAS_CELL_HEIGHT,
-      left: position.x * CANVAS_CELL_WIDTH,
-      width: size.x * CANVAS_CELL_WIDTH
-    },
-
-    cline: {
-      top: ySpace * -1,
-      height: ySpace
+      top: index * (CANVAS_CELL_HEIGHT * 1.5),
+      left: position.x * CANVAS_CELL_WIDTH + 10,
+      width: size.x * CANVAS_CELL_WIDTH - 20
     }
   }
 
@@ -53,10 +47,8 @@ function Report ({
   return (
     <div className={classNames(className, scss._)}
         style={css[type]}>
-      <i className={classNames(scss.xline, scss.is_left)}
-        style={css.cline}></i>
-      <i className={classNames(scss.xline, scss.is_right)}
-        style={css.cline}></i>
+      <i className={classNames(scss.xline, scss.is_left)}></i>
+      <i className={classNames(scss.xline, scss.is_right)}></i>
       <div className={scss.label}>
         Раппорт &nbsp;
         {type == 'rows' && formatPlural(size.y, 'ряд', 'ряда', 'рядов')}
