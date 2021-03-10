@@ -71,16 +71,17 @@ export function commitCanvas (canvas, save = true) {
       schemeCanvas,
       schemeHistory,
       schemeCurrentStep,
-      schemeCustomCells
+      schemeCustomCells,
+      schemeLegends
     } = getState()
 
-    const uniq = _.uniqBy(
-      _.flatten(canvas).filter(({ loop }) => loop != null),
-      'loop'
-    )
+    const uniq = _.uniqBy(canvas.flat().filter(({ loop }) => loop != null), 'loop')
 
     dispatch(act.setSchemeCanvas(canvas))
-    dispatch(act.setCanvasLegend(uniq))
+
+    dispatch(act.setCanvasLegend(uniq.map(
+      loop => util.createCanvasLegend(loop, schemeLegends)
+    )))
 
     if (schemeCustomCells.length &&
         schemeCanvas[0].length != canvas[0].length) {
@@ -121,6 +122,16 @@ export function setReport (report) {
     const { schemeReports } = getState()
 
     dispatch(act.setReport([...schemeReports, report]))
+  }
+}
+
+export function setCanvasLegendCustomHint (loop, value) {
+  return (dispatch, getState) => {
+    const legends = [ ...getState().schemeLegends ]
+    const index = legends.findIndex(el => el.element.loop == loop)
+
+    legends[index].customHint = value
+    dispatch(act.setCanvasLegend(legends))
   }
 }
 

@@ -84,6 +84,16 @@ export const formatPlural = (number, text1, text2, text5, returnNumber = true) =
   return text
 }
 
+export const createCanvasLegend = (loop, legends, hint) => {
+  const exists = legends.find(element => element)
+  const customHint = hint || exists?.customHint || ''
+
+  return {
+    element: loop,
+    customHint
+  }
+}
+
 export const getCanvasDiff = (canvas, resized) => {
   const diff = {
     type: null,

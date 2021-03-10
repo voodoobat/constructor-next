@@ -11,14 +11,17 @@ const data = getData(true)
 
 function LegendContainer ({ className, schemeLegends }) {
 
-  const withLegends = src => src.map(loop => {
-    const { hint } = data.find(el => el.id == loop.loop)
+  const withLegends = src => src.map(({ element, customHint }) => {
+    const hint = customHint || data.find(el => el.id == element.loop).hint
+
     return {
-      ...loop,
+      ...element,
       background: '#ffffff',
       hint
     }
   })
+
+  withLegends(schemeLegends)
 
   return <>
     {!!schemeLegends.length &&
@@ -27,10 +30,12 @@ function LegendContainer ({ className, schemeLegends }) {
           Условные обозначения:
         </div>
         <div className={scss.content}>
-          {withLegends(schemeLegends).map((cell, key) => (
+          {withLegends(schemeLegends).map(legend => (
             <Legend className={scss.legend}
-                    hint={cell.hint} key={key}>
-              <Cell cell={cell} />
+                    loop={legend.loop}
+                    hint={legend.hint}
+                    key={legend.uid}>
+              <Cell cell={legend} />
             </Legend>
           ))}
         </div>
